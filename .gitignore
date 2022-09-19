@@ -1,1 +1,2 @@
-controleur/modele/dao/Database.php
+#ignore les changements d'info mysql
+/modele/dao/Database.php
