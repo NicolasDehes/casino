@@ -34,7 +34,7 @@
             <input type="email" class="input--secondary" name="email" placeholder="Email" required>
             <input type="password" class="input--secondary" name="password" placeholder="Mot de passe" required>
             <input type="password" class="input--secondary" name="password_conf" placeholder="Confirmer le mot de passe" required>
-            <button type="submit" class="button--secondary">Créez un compte</button>
+            <button type="submit" class="button button--secondary">Créez un compte</button>
             <p class="separator"><span class="separator-text">Ou</span></p>
             <a class="button" href="../controleur/FrontControleur.php?action=login">Se connecter</a>
         </form>
