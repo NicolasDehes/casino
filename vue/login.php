@@ -13,6 +13,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="css/animation.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&family=Poppins:ital,wght@0,200;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet"> 
@@ -31,12 +32,12 @@ session_start();
         <form class="form" method="POST" action="../controleur/FrontControleur.php?action=authentifier">
             <input type="email" class="input" name="email" placeholder="Email" required>
             <input type="password" class="input" name="password" placeholder="Mot de passe" required>
-        <button type="submit" name="envoi" class="login__button">Se connecter</button>
+        <button type="submit" name="envoi" class="button">Se connecter</button>
         </form>
         
         <div class="messagesLogin">
-        <p class="messageLogin">Mot de passe oublié ? <a href="../controleur/FrontControleur.php?action=demander_inscription" class="link link--strong">Cliquez ici</a></p>
-        <p class="messageLogin">Vous n'avez pas de compte ? <br/><a href="../controleur/FrontControleur.php?action=demander_motdepasse" class="link">S'inscrire</a></p>
+        <p class="messageLogin">Mot de passe oublié ? <a href="../controleur/FrontControleur.php?action=demander_motdepasse" class="link link--strong">Cliquez ici</a></p>
+        <p class="messageLogin">Vous n'avez pas de compte ? <br/><a href="../controleur/FrontControleur.php?action=demander_inscription" class="link">S'inscrire</a></p>
         </div>
 
         <p class="separator"><span class="separator-text">Ou</span></p>
