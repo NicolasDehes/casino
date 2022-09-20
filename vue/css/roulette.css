@@ -16,16 +16,18 @@ body {
     top: -30vw;
     width: 90vw;
     height: 90vw;
+    max-width: 500px;
+    max-height: 500px;
     border-radius: 50%;
     background: white;
     position: relative;
     transform: rotate(22.5deg); /* 22.5 = 360 / 8 / 2 */
-    transition: 3s;
+    transition: transform 3s;
 }
 
 .roulette__label {
     position: absolute;
-    top: 116px;
+    top: 28vw;
     left: 36px;
     transform: rotate(112deg);
     color: white;
@@ -39,6 +41,8 @@ body {
     left: 0;
     width: 90vw;
     height: 90vw;
+    max-width: 500px;
+    max-height: 500px;
     border-radius: 50%;
     -webkit-clip-path: polygon(0% 0%, 50% 50%, 0% 50%, 0% 0%);
     clip-path: polygon(0% 0%, 50% 50%, 0% 50%, 0% 0%);
@@ -85,10 +89,12 @@ body {
 
 .roulette__line {
     width: 90vw;
+    max-width: 500px;
+    max-height: 500px;
     height: 3px;
     background: white;
     position: absolute;
-    top: 184px;
+    top: 45vw;
     left: 0;
 }
 
@@ -146,4 +152,15 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+@media screen and (min-width: 500px) {
+    .roulette__line {
+        top: 250px;
+    }
+
+    .roulette__label {
+        top: 148px;
+        font-size: 32px;
+    }
 }
