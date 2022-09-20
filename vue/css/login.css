@@ -1,32 +1,11 @@
-.header {
-  display: flex;
-  align-items: center;
-  padding: 5vh 10vw;
-}
-.header .back {
-  margin-right: 1rem;
-  display: flex;
-  align-items: center;
-}
-.header__title {
-  font-family: Nunito, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 41px;
-  color: #3B3D73;
-}
-.header__title--center {
-  margin: auto;
-  text-align: center;
-}
+
 
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
-  width: 60%;
+  gap: 2rem;
+  width: 80%;
 }
 
 .login {
@@ -36,7 +15,8 @@
   gap: 2rem;
   width: 100%;
 }
-.login__button {
+
+.button {
   background-color: #F79A6F;
   border: 0;
   font-size: 18px;
@@ -49,45 +29,25 @@
   text-decoration: none;
   text-align: center;
   margin: 15px;
+  box-sizing: border-box;
 }
 
-.input {
-  background-color: #FDDACC;
-  border: 0;
-  padding: 1rem 2.5rem;
-  font-size: 18px;
-  border-radius: 11px;
-  width: 100%;
-}
-.input::placeholder {
-  color: white;
-  opacity: 1;
-}
-.input--secondary {
-  background-color: rgba(135, 138, 219, 0.5);
-}
-
-.separator {
-  text-align: center;
-  padding: 1vw 0;
-}
-.separator::after {
-  content: "";
-  display: block;
-  height: 1px;
-  width: 80vw;
+.button--secondary{
   background-color: #3B3D73;
-  position: relative;
-  bottom: 8px;
-  z-index: -1;
+  border: 0;
+  font-size: 18px;
+  color: white;
+  width: 100%;
+  min-width: fit-content;
+  max-width: 100vw;
+  padding: 1.5rem 1.5rem;
+  border-radius: 13px;
+  text-decoration: none;
+  text-align: center;
+  margin: 15px;
+  box-sizing: border-box;
 }
-.separator-text {
-  background-color: white;
-  color: #3B3D73;
-  padding: 0 0.5rem;
-  font-size: 16px;
-  font-family: Nunito, sans-serif;
-}
+
 
 .messageLogin {
   font-family: Poppins, sans-serif;
@@ -136,3 +96,8 @@
 .alert{
   color: red ; 
 }
+
+
+/* Register */
+
+
