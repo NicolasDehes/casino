@@ -8,7 +8,8 @@ CREATE TABLE T_UTILISATEUR (
     prenom VARCHAR(80) NOT NULL,
     email VARCHAR(50),
     motdepasse VARCHAR(40),
-    balance FLOAT DEFAULT 0
+    solde FLOAT DEFAULT 0,
+  	isAdmin BOOLEAN DEFAULT 0
 );
 
 CREATE TABLE T_JEU (
@@ -23,7 +24,7 @@ CREATE TABLE T_HISTORIQUE (
     idUtilisateur INT NOT NULL REFERENCES T_UTILISATEUR(id),
     dateJeu DATETIME DEFAULT CURRENT_TIMESTAMP,
     mise FLOAT NOT NULL,
-    gain FLOAT, /* Négatif = Perdu -> Positif = Gagner */ 
+    gain FLOAT, /* que positif */
     PRIMARY KEY(idJeu, idUtilisateur, dateJeu)
 );
 
