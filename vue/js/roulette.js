@@ -1,6 +1,7 @@
 const rouletteContainer = document.getElementById("roulette__container");
+// TODO : A changer pour déclancher la rotation
 const rouletteBtn = document.getElementById("roulette__btn");
-rouletteBtn.addEventListener("click", onClickRoulette);
+rouletteBtn.addEventListener("click", onClickRoulette)
 
 function onClickRoulette() {
     // TODO changer ici la valeur de la rotation

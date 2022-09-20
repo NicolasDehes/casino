@@ -148,3 +148,4 @@ UtilisateurService -> check_login()
 UtilisateurDAO -> check_login()
 UtilisateurDAO -> check_login() : mot de passe : 71ec2af811cdf898bce6904a75a48d75UtilisateurService -> __destruct
 UtilisateurDAO -> __destruct()
+FrontControleur -> Demande de login

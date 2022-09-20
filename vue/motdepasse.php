@@ -29,7 +29,7 @@
         <?php } ?>
         <form class="form" method="POST" action="../controleur/FrontControleur.php?action=valider_demander_motdepasse">
             <input type="nom" class="input--secondary" name="nom" id="exampleInputPassword1" placeholder="Votre adresse mail" required>
-            <button type="submit" class="button--secondary">Créez un compte</button>
+            <button type="submit" class="button button--secondary">Créez un compte</button>
             <p class="separator"><span class="separator-text">Ou</span></p>
             <a class="button" href="../controleur/FrontControleur.php?action=login">Se connecter</a>
         </form>

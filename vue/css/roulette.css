@@ -13,7 +13,7 @@ body {
 
 .roulette__container {
     position: absolute;
-    top: -50vw;
+    top: -30vw;
     width: 90vw;
     height: 90vw;
     border-radius: 50%;
@@ -25,11 +25,12 @@ body {
 
 .roulette__label {
     position: absolute;
-    top: 120px;
+    top: 116px;
     left: 36px;
     transform: rotate(112deg);
     color: white;
     font-size: 8vw;
+    font-family: Popins, sans-serif;
 }
 
 .roulette__item {
@@ -45,41 +46,41 @@ body {
 
 .roulette__item:nth-child(1) {
     transform: rotate(225deg);
-    background: #3B3D73;
+    background: #3b3d73;
 }
 
 .roulette__item:nth-child(2) {
     transform: rotate(180deg);
-    background: #F79A6F;
+    background: #f79a6f;
 }
 
 .roulette__item:nth-child(3) {
     transform: rotate(135deg);
-    background: #3B3D73;
+    background: #3b3d73;
 }
 
 .roulette__item:nth-child(4) {
     transform: rotate(90deg);
-    background: #F79A6F;
+    background: #f79a6f;
 }
 
 .roulette__item:nth-child(5) {
     transform: rotate(45deg);
-    background: #3B3D73;
+    background: #3b3d73;
 }
 
 .roulette__item:nth-child(6) {
-    background: #F79A6F;
+    background: #f79a6f;
 }
 
 .roulette__item:nth-child(7) {
     transform: rotate(315deg);
-    background: #3B3D73;
+    background: #3b3d73;
 }
 
 .roulette__item:nth-child(8) {
     transform: rotate(270deg);
-    background: #F79A6F;
+    background: #f79a6f;
 }
 
 .roulette__line {
@@ -107,11 +108,42 @@ body {
     transform: rotate(180deg);
 }
 
-.roulette__btn {
-    margin-top: 20px;
-    font-size: 30px;
-    border-radius: 15px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+.roulette-form {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 8vh;
+    margin: auto;
+}
+
+.roulette-result {
+    font-family: Nunito, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #3b3d73;
+    margin: 0 20%;
+    text-align: center;
+}
+
+.roulette-result__gain span{
+    color: #f79a6f;
+}
+
+.roulette-result__gain--null {
+    color: #f79a6f;
+}
+
+.roulette-result__gain--null span {
+    color: #878ADB;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
