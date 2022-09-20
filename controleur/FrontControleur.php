@@ -69,7 +69,7 @@ if (isset($_GET['action']))
     // Récupérer la valeur du paramètre action
     $requested_page = htmlspecialchars($_GET['action']);
 // SINON paramètre action absent
-else 
+else
     // Retourner la page d'authentification
     $requested_page = 'login';
 
