@@ -121,3 +121,24 @@ UtilisateurService -> Utilisateurs : Array
 )
 UtilisateurService -> __destruct
 UtilisateurDAO -> __destruct()
+FrontControleur -> Demande de login
+UtilisateurService -> __construct()
+UtilisateurDAO -> __construct()
+UtilisateurService -> check_login()
+UtilisateurDAO -> check_login()
+UtilisateurDAO -> check_login() : mot de passe : 2acba7f51acfd4fd5102ad090fc612eeUtilisateurService -> __destruct
+UtilisateurDAO -> __destruct()
+FrontControleur -> Demande de login
+UtilisateurService -> __construct()
+UtilisateurDAO -> __construct()
+UtilisateurService -> check_login()
+UtilisateurDAO -> check_login()
+UtilisateurDAO -> check_login() : mot de passe : 9990775155c3518a0d7917f7780b24aaUtilisateurService -> __destruct
+UtilisateurDAO -> __destruct()
+FrontControleur -> Demande de login
+UtilisateurService -> __construct()
+UtilisateurDAO -> __construct()
+UtilisateurService -> check_login()
+UtilisateurDAO -> check_login()
+UtilisateurDAO -> check_login() : mot de passe : 2acba7f51acfd4fd5102ad090fc612eeUtilisateurService -> __destruct
+UtilisateurDAO -> __destruct()
