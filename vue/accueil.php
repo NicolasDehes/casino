@@ -9,11 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&family=Poppins:ital,wght@0,200;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/animation.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/navigation.css">
     <title>Accueil</title>
   </head>
-  <body style="background: #62bba7" class="text-white">
+  <body>
+
+    <?php 
+      $id_actif_navigation = 3; 
+      require_once("./navigation.php") 
+    ?>
     Bonjour <?php session_name('myid');session_start();echo $_SESSION["prenom_nom"] ?>
 
      <p><a href="../controleur/FrontControleur.php?action=deconnexion">Déconnexion</a></p>
