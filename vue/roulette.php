@@ -3,11 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" type="text/css" href="css/roulette.css">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/global.css">
+        <link rel="stylesheet" type="text/css" href="css/navigation.css">
+        <link rel="stylesheet" type="text/css" href="css/roulette.css">
         <title>Roulette</title>
     </head>
     <body>
+      <?php 
+          $id_actif_navigation = 2; 
+          require_once("./navigation.php") 
+      ?>
+
     <span class="solde">Solde : 100</span>
     <div class="roulette">
       <div class="roulette__container" id="roulette__container">
