@@ -12,12 +12,9 @@ body {
 }
 
 .roulette__container {
-    position: absolute;
     top: -30vw;
     width: 90vw;
     height: 90vw;
-    max-width: 500px;
-    max-height: 500px;
     border-radius: 50%;
     background: white;
     position: relative;
@@ -41,8 +38,6 @@ body {
     left: 0;
     width: 90vw;
     height: 90vw;
-    max-width: 500px;
-    max-height: 500px;
     border-radius: 50%;
     -webkit-clip-path: polygon(0% 0%, 50% 50%, 0% 50%, 0% 0%);
     clip-path: polygon(0% 0%, 50% 50%, 0% 50%, 0% 0%);
@@ -89,8 +84,6 @@ body {
 
 .roulette__line {
     width: 90vw;
-    max-width: 500px;
-    max-height: 500px;
     height: 3px;
     background: white;
     position: absolute;
@@ -154,13 +147,45 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 600px) {
+    .roulette {
+        width: 40%;
+        min-width: 40vh;
+    }
+
+    .roulette__container {
+        width: 80vh;
+        height: 80vh;
+        left: -50%;
+        top: 50%;
+        transform: rotate(-67.5deg);
+    }
+
+    .roulette__item {
+        width: 80vh;
+        height: 80vh;
+    }
+
     .roulette__line {
-        top: 250px;
+        width: 80vh;
+        top: 40vh;
     }
 
     .roulette__label {
-        top: 148px;
-        font-size: 32px;
+        top: 25vh;
+        transform: rotate(203deg);
+        left: 64px;
+        font-size: 28px;
+    }
+
+    .roulette-form {
+        width: 50%;
+    }
+
+    .body__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 28px);
     }
 }

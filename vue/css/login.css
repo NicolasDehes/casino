@@ -64,7 +64,42 @@
   color: red ; 
 }
 
+.desktop-img {
+  display: none;
+}
 
-/* Register */
+@media screen and (min-width: 600px) {
+  .body {
+    display: flex;
+    column-gap: 30px;
+  }
 
+  .body__content {
+    margin: auto;
+    width: 50%;
+  }
 
+  .desktop-img {
+    transition: .2s;
+    display: block;
+    object-fit: cover;
+    width: 35%;
+    height: 100vh;
+    filter: saturate(80%) grayscale(10%) contrast(90%);
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+  }
+
+  .desktop-img:hover {
+    filter: saturate(90%) contrast(90%);
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .social-login {
+    margin-top: 8vh;
+  }
+
+}

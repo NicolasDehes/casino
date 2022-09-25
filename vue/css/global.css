@@ -1,6 +1,7 @@
 .header {
     display: flex;
     align-items: center;
+    column-gap: 18px;
     padding: 3vh 5vw;
 }
 
@@ -95,6 +96,7 @@
     margin: 15px;
     box-sizing: border-box;
     cursor: pointer;
+    font-family: 'Nunito', sans-serif;
 }
 
 .button--min {
