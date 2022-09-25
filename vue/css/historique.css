@@ -32,6 +32,13 @@
     font-weight: 400;
     font-size: 16px;
     color: #3b3d73;
+    display: inline-block;
+    overflow: auto;
+    /* Pour pouvoir scroller dans le tableau */
+    max-height: 50vh;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .historique__header {

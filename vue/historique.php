@@ -36,6 +36,36 @@
                     <td>250</td>
                     <td>12/12/2019</td>
                 </tr>
+                <tr class="historique__item">
+                    <td>50</td>
+                    <td>250</td>
+                    <td>12/12/2019</td>
+                </tr>
+                <tr class="historique__item historique__item--lost">
+                    <td>50</td>
+                    <td>250</td>
+                    <td>12/12/2019</td>
+                </tr>
+                <tr class="historique__item">
+                    <td>50</td>
+                    <td>250</td>
+                    <td>12/12/2019</td>
+                </tr>
+                <tr class="historique__item historique__item--lost">
+                    <td>50</td>
+                    <td>250</td>
+                    <td>12/12/2019</td>
+                </tr>
+                <tr class="historique__item">
+                    <td>50</td>
+                    <td>250</td>
+                    <td>12/12/2019</td>
+                </tr>
+                <tr class="historique__item historique__item--lost">
+                    <td>50</td>
+                    <td>250</td>
+                    <td>12/12/2019</td>
+                </tr>
             </tbody>
         </table>
         <div class="double-btn">
