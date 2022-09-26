@@ -11,6 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/cotton/2x/checkmark.png">
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/animation.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
@@ -21,7 +22,7 @@ session_start();
 </head>
 <body>
     <header class="header">
-        <h2 class="header__title">Se connecter</h2>
+        <h2 class="header__title">S'authentifier</h2>
     </header>
     <div class="login">
         <?php if (!empty($_SESSION['message'])) { ?>

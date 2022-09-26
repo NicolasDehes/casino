@@ -12,21 +12,27 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/animation.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/accueil.css">
     <link rel="stylesheet" type="text/css" href="css/navigation.css">
     <title>Accueil</title>
   </head>
   <body>
-
+  <?php session_name('myid');session_start(); ?>
     <?php 
       $id_actif_navigation = 3; 
       require_once("./navigation.php") 
     ?>
-    Bonjour <?php session_name('myid');session_start();echo $_SESSION["prenom_nom"] ?>
+    <header class="header">
+      <h2 class="header__title">Bonjour <span class="header__title--orange"><?php echo $_SESSION["prenom_nom"] ?></span>, </h2>
+      <img class="header__logo" src="./../public/logo.png">
+    </header>
 
-     <p><a href="../controleur/FrontControleur.php?action=deconnexion">Déconnexion</a></p>
-     <p><a href="../controleur/FrontControleur.php?action=list_utilisateurs">Liste des utilisateurs</a></p>
-        
-    </div>
+    <section class="home-solde">
+      <p class="home-solde__texte">Vous avez : </p>
+      <p class="home-solde__credit"> 100 <span  class="home-solde__unite"> crédits</span> </p>
+    </section>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

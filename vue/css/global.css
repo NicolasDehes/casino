@@ -10,6 +10,11 @@
     align-items: center;
 }
 
+.header__logo {
+    position: absolute;
+    right: 30px;
+}
+
 .header__title {
     font-family: Nunito, sans-serif;
     font-style: normal;
@@ -17,6 +22,10 @@
     font-size: 30px;
     line-height: 41px;
     color: #3b3d73;
+}
+
+.header__title--orange{
+    color: #f79a6f;
 }
 
 .header__title--center {

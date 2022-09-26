@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/cotton/2x/checkmark.png">
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +30,7 @@
         <?php } ?>
         <form class="form" method="POST" action="../controleur/FrontControleur.php?action=valider_demander_motdepasse">
             <input type="nom" class="input--secondary" name="nom" id="exampleInputPassword1" placeholder="Votre adresse mail" required>
-            <button type="submit" class="button button--secondary">Créez un compte</button>
+            <button type="submit" class="button button--secondary">Envoyer</button>
             <p class="separator"><span class="separator-text">Ou</span></p>
             <a class="button" href="../controleur/FrontControleur.php?action=login">Se connecter</a>
         </form>
