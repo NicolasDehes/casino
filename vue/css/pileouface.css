@@ -116,9 +116,12 @@
     background: transparent;
     border: 1px solid #bebebe;
     border-radius: 50%;
+    transition: .2s;
+    cursor: pointer;
 }
 
 .container input:checked ~ .radio-btn {
     background: #f79a6f;
     border: 1px solid #f79a6f;
+    box-shadow: -2px 5px 26px -1px rgba(247, 154, 111, 0.6);
 }
