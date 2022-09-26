@@ -35,7 +35,7 @@
             <a class="button">Ajouter des crédits</a>
             <a class="button button--secondary">Retirer ses crédits</a>
         </div>
-        <a href="#" class="deconnect">Se déconnecter</a>
+        <a href="../controleur/FrontControleur.php?action=deconnexion" class="deconnect">Se déconnecter</a>
     </section>
 </body>
 
