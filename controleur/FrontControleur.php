@@ -150,6 +150,24 @@ switch ($requested_page) {
         header("Location: ../vue/accueil.php");
     break;
 
+    // Afficher le jeu roulette
+    case 'roulette':
+        // Retourner la page accueil.php : page d'accueil de l'application
+        header("Location: ../vue/roulette.php");
+    break;
+
+    // Afficher la page d'historique
+    case 'historique':
+        // Retourner la page accueil.php : page d'accueil de l'application
+        header("Location: ../vue/historique.php");
+    break;
+
+    // Afficher la page d'accueil
+    case 'profil':
+        // Retourner la page accueil.php : page d'accueil de l'application
+        header("Location: ../vue/profil.php");
+    break;
+
     // Afficher la page de saisie d'un compte
     case 'demander_inscription':
         // Suppression de la variable de session nommée message
