@@ -25,6 +25,7 @@
             </svg></a>
             <h2 class="header__title">Mot de passe oublié ? </h2>
         </header>
+        <p class="describe">Nous allons vous envoyer un mail afin de réinitialiser votre mot de passe.</p>
         <div class="login">
             <?php if (!empty($_SESSION['message'])) { ?>
                 <div class="alert" role="alert">

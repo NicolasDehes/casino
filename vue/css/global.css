@@ -1,8 +1,8 @@
 .header {
     display: flex;
     align-items: center;
-    column-gap: 18px;
-    padding: 3vh 8vw;
+    column-gap: 8px;
+    margin-bottom: 2vh;
 }
 
 .header .back {
@@ -20,7 +20,7 @@
     font-family: Nunito, sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 26px;
     line-height: 41px;
     color: #3b3d73;
 }
