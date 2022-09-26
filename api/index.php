@@ -2,10 +2,7 @@
 
 require_once("../Autoloader.php");
 
-$data = [
-    "result" => 1,
-    "message" => "Api is running"
-];
+$data = "Api is running well";
 
 header('Content-Type: application/json; charset=utf-8');
 echo json_encode($data);

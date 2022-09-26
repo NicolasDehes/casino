@@ -165,6 +165,12 @@ switch ($requested_page) {
         
     break;
 
+    // Afficher le jeu pileouface
+    case 'pileouface':
+        // Retourner la page pileouface.php
+        header("Location: ../vue/pileouface.php");
+    break;
+
     // Afficher la page d'historique
     case 'historique':
         $HistoriqueService = new HistoriqueService(); 

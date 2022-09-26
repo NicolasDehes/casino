@@ -19,6 +19,7 @@ class Utilisateur {
     private $prenom; 
     private $mail; 
     private $motdepasse;
+    private $solde;
 
     /** 
     * Cette méthode un peu spéciale est le constructeur
@@ -73,6 +74,14 @@ class Utilisateur {
     public function getMotdepasse() {
         return $this->motdepasse;
     }
+	
+    public function setSolde($solde) : void {
+        $this->solde = $solde;
+    }
+
+    public function getSolde() {
+        return $this->solde;
+    }
 
     /**  
     * Destructeur, appelé quand l'objet est détruit
@@ -99,7 +108,8 @@ class Utilisateur {
             "nom" => $this->nom,
             "prenom" => $this->prenom, 
             "mail" => $this->mail,
-            "motdepasse" => $this->motdepasse
+            "motdepasse" => $this->motdepasse,
+            "solde" => $this->solde
         ];
     }
 }

@@ -2,9 +2,7 @@
 
 namespace modele\service;
 
-use \modele\dao\UtilisateurDao;
-// Inclure le fichier des constantes : il contient notamment la constante LOGFILE
-//include(__DIR__.'/../../Constantes.php');
+use \modele\dao\UtilisateurDAO;
 
 class UtilisateurService { 
 
@@ -22,7 +20,7 @@ class UtilisateurService {
         try {
             // Instancier la classe UtilisateurDao : appel du constructeur __construct() 
             // Si problème, la classe UtilisateurDao lève une exception
-            $this->hUtilisateurDao = new UtilisateurDao();
+            $this->hUtilisateurDao = new UtilisateurDAO();
         }
         // Propagation de l'exception : l'exception est transmise à la méthode appelante
         catch (\Exception $e) {
@@ -100,14 +98,12 @@ class UtilisateurService {
         return $bRet;
     }
 
-    public function findById($id)
-    { 
-        // Enregistrement du message dans le fichier log
 
+    public function getUserById($id){
         try {
             // Appel de la méthode deleteUser() de la classe UtilisateurDao
             // Retourne true si utilisateur créé SINON false
-            $bRet = $this->hUtilisateurDao->findById($id);
+            $bRet = $this->hUtilisateurDao->getUserById($id);
         }
         // Propagation de l'exception : suppression impossible
         catch (\Exception $e) {
@@ -118,5 +114,19 @@ class UtilisateurService {
         return $bRet;
     }
 
+    public function changeSolde($id,$gain){
+        try {
+            // Appel de la méthode deleteUser() de la classe UtilisateurDao
+            // Retourne true si utilisateur créé SINON false
+            $bRet = $this->hUtilisateurDao->changeSolde($id,$gain);
+        }
+        // Propagation de l'exception : suppression impossible
+        catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+
+        // Retourne true si utilisateur a été supprimé 
+        return $bRet;
+    }
 }
 ?>

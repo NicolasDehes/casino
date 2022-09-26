@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../vue/css/coin.css" />
+    <link rel="stylesheet" href="../vue/css/pileouface.css" />
     <link rel="stylesheet" href="../vue/css/global.css" />
     <link rel="stylesheet" type="text/css" href="css/navigation.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
@@ -16,6 +16,8 @@
       require_once("./navigation.php") 
     ?>
     <main>
+        <span class="solde">Solde : 100</span>
+
         <div class="cut-background">
 
         </div>
@@ -32,11 +34,17 @@
             <div>
                 <form action="" method="post">
                     <div class="radio_container">
-                        <input type="radio" class="radio" id="pile" name="pile" value="0" >
-                        <label for="pile">Pile</label>
+                        <label class="btn-radio__container" for="pile">
+                            <input type="radio" class="radio" id="pile" name="pileouface" value="0" checked>
+                            <span class="radio-btn"></span>    
+                            Pile
+                        </label>
 
-                        <input type="radio" class="radio" id="face"  name="face" value="1" >
-                        <label for="face">Face</label>
+                        <label class="btn-radio__container" for="face">
+                            <input type="radio" class="radio" id="face" name="pileouface" value="1" >
+                            <span class="radio-btn"></span>
+                            Face
+                        </label>
                     </div>
                     <br><input type="text" placeholder="Crédits misés" class="input " id="mise">
                     <br><input type="submit" class="button button--secondary button--min" onclick="toss()" value="Jouer">

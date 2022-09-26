@@ -1,4 +1,4 @@
-    .header {
+.header {
     display: flex;
     align-items: center;
     column-gap: 8px;
@@ -14,6 +14,7 @@
 .header__logo {
     position: absolute;
     right: 30px;
+    width: 38px;
 }
 
 .header__title {
