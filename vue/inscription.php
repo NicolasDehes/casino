@@ -29,6 +29,7 @@
                             <?php echo $_SESSION['message']; ?>
                         </div>
                     <?php } ?>
+                    <p class="describe">Vous devez vous créer un compte pour accéder aux différentes fonctionnalités.</p>
                     <form class="form" method="POST" action="../controleur/FrontControleur.php?action=creer_inscription">
                         <input type="nom" class="input--secondary" name="nom" placeholder="Nom" required>
                         <input type="prenom" class="input--secondary" name="prenom" placeholder="Prénom" required>
