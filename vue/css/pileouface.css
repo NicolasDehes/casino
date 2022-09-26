@@ -1,0 +1,124 @@
+.cut-background {
+    display: block;
+    background-color: #f79a6f;
+    width: 100vw;
+    height: 30vh;
+    position: absolute;
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 58%, 0 100%);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#coin {
+    height: 120px;
+    width: 120px;
+    position: relative;
+    margin: 0;
+    transform-style: preserve-3d;
+}
+
+#coin img {
+    width: 120px;
+}
+
+.tails {
+    transform: rotateX(180deg);
+}
+
+.heads,
+.tails {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+@keyframes flip-heads {
+    0% {
+        transform: rotateX(0);
+    }
+    100% {
+        transform: rotateX(2520deg);
+    }
+}
+
+@keyframes flip-tails {
+    0% {
+        transform: rotateX(0);
+    }
+    100% {
+        transform: rotateX(2340deg);
+    }
+}
+
+/* fin de la partie animation pièce */
+
+.radio_container {
+    margin-top: 2%;
+    text-align: center;
+    font-size: 3rem;
+    color: #3b3d73;
+    display: flex;
+    column-gap: 32px;
+    justify-content: center;
+}
+
+.radio {
+    font-size: 3rem;
+    color: #3b3d73;
+}
+
+#coin {
+    position: relative;
+    float: none;
+    margin-bottom: 15%;
+}
+.button {
+    margin: 3%;
+}
+
+.input {
+    margin: 3%;
+    margin-bottom: 15%;
+}
+
+.radio-btn {
+    display: none;
+}
+
+.radio {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.btn-radio__container {
+    position: relative;
+    display: flex;
+}
+
+.radio-btn {
+    display: block;
+    position: absolute;
+    left: calc(50% - 8px);
+    top: -42px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 1px solid #bebebe;
+    border-radius: 50%;
+}
+
+.container input:checked ~ .radio-btn {
+    background: #f79a6f;
+    border: 1px solid #f79a6f;
+}
