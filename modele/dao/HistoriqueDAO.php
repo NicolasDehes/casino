@@ -74,7 +74,19 @@ class HistoriqueDAO {
         // Retourner le tableau des utilisateurs
         return $tab_historique;
     }
-    
+
+    public function addHistorique($idUser, $mise, $gain, $idJeu){
+        $requete = $this->Connection->prepare("
+            INSERT INTO ".self::TABLE."(idJeu, idUtilisateur, mise, gain)
+            VALUES(:idJeu,:idUtilisateur,:mise,:gain);
+        ");
+        $requete->bindValue('idJeu', $idJeu);
+        $requete->bindValue('idUtilisateur', $idUser);
+        $requete->bindValue('mise', $mise);
+        $requete->bindValue('gain', $gain);
+        $succes = $requete->execute();
+        return $succes;
+    }
     /**  
     * Destructeur, appelé quand l'objet est détruit
     */  

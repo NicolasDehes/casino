@@ -2,7 +2,7 @@
 
 namespace modele\service;
 
-use \modele\dao\HistoriqueDAO;
+use modele\dao\HistoriqueDAO;
 
 class HistoriqueService { 
 
@@ -14,7 +14,7 @@ class HistoriqueService {
         try {
             // Instancier la classe HistoriqueDao : appel du constructeur __construct() 
             // Si problème, la classe HistoriqueDao lève une exception
-            $this->hHistoriqueDao = new HistoriqueDao();
+            $this->hHistoriqueDao = new HistoriqueDAO();
         }
         // Propagation de l'exception : l'exception est transmise à la méthode appelante
         catch (\Exception $e) {
@@ -37,6 +37,20 @@ class HistoriqueService {
         // Appel de la méthode findAll() de la classe HistoriqueDao
         // Retourne le tableau des utilisateurs
         $results = $this->hHistoriqueDao->findByUserAndGame($jeu, $idUser);
+
+        // Enregistrement du tableau dans le fichier log
+    
+        // Retourne le tableau des utilisateurs
+        return $results;
+    }
+
+    public function addHistorique($idUser, $mise, $gain, $jeu)
+    { 
+        // Enregistrement du message dans le fichier log
+
+        // Appel de la méthode findAll() de la classe HistoriqueDao
+        // Retourne le tableau des utilisateurs
+        $results = $this->hHistoriqueDao->addHistorique($idUser, $mise, $gain, $jeu);
 
         // Enregistrement du tableau dans le fichier log
     

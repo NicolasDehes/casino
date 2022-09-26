@@ -204,6 +204,39 @@ class UtilisateurDAO {
         // Retourner le tableau des utilisateurs
         return $tab_utilisateurs;
     }
+
+    public function getUserById($id){
+        $requete = $this->Connection->prepare("
+            SELECT id,nom,prenom,email,motdepasse,solde
+            FROM ".self::TABLE."
+            WHERE id = :id"
+        );
+        $requete->bindValue("id",$id);
+        $requete->execute();
+        $result = $requete->fetch();
+        $user = new Utilisateur();
+        $user->setId($result['id']);
+        $user->setMail($result['mail']);
+        $user->setNom($result['nom']);
+        $user->setPrenom($result['prenom']);
+        $user->setSolde($result['solde']);
+        return $user;
+    }
+
+    // Change le solde de l'utilisateur et retourne son nouveau solde
+    public function changeSolde($id, $gain){
+        $user = $this->getUserById($id);
+        $newSolde = $user->getSolde() + $gain;
+        $requete = $this->Connection->prepare("
+            UPDATE ".self::TABLE." 
+            SET solde = :newSolde
+            WHERE id = :id"
+        );
+        $requete->bindValue('newSolde',$newSolde);
+        $requete->bindValue('id',$id);
+        $succes = $requete->execute();
+        return $newSolde;
+    }
     
     /**  
     * Destructeur, appelé quand l'objet est détruit
