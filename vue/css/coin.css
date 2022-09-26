@@ -1,0 +1,93 @@
+.cut-background{
+  display: block;
+  background-color: #F79A6F;
+  width: 100vw;
+  height: 30vh;
+  position: absolute ;
+  top: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 58%, 0 100%);
+
+}
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  #coin {
+    height: 120px;
+    width: 120px;
+    position: relative;
+    margin: 0;
+    transform-style: preserve-3d;
+  }
+  
+  #coin img {
+    width: 120px;
+  }
+  
+  .tails {
+    transform: rotateX(180deg);
+  }
+  
+  .heads,
+  .tails {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  @keyframes flip-heads {
+    0% {
+      transform: rotateX(0);
+    }
+    100% {
+      transform: rotateX(2520deg);
+    }
+  }
+  
+  @keyframes flip-tails {
+    0% {
+      transform: rotateX(0);
+    }
+    100% {
+      transform: rotateX(2340deg);
+    }
+  }
+
+/* fin de la partie animation pièce */ 
+
+.radio_container{
+    margin-top: 2%;
+    text-align: center;
+    font-size: 3rem;
+    color: #3b3d73;
+
+}
+.radio{
+  font-size: 3rem;
+  color: #3b3d73;
+}
+#face{
+    margin-left: 10%;
+}
+
+#coin{
+    position: relative;
+    float:none ;
+    margin-bottom: 15%;
+}
+.button{
+    margin: 3%;
+}
+
+.input{
+    margin:3%;
+    margin-bottom: 15%;
+
+}
