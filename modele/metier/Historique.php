@@ -111,5 +111,15 @@ class Historique {
         prenom : $this->prenom   
         mail : $this->mail".self::CR;   
 	}
+
+    public function toJson(){
+        return [
+            "idUtilisateur" => $this->idUtilisateur,
+            "idJeu" => $this->idJeu,
+            "dateJeu" => $this->dateJeu,
+            "mise" => $this->mise,
+            "gain" => $this->gain
+        ];
+    }
 }
 ?>

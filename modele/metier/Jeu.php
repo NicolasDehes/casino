@@ -85,5 +85,14 @@ class Jeu {
         minimum : $this->minimum   
         maximum : $this->maximum".self::CR;   
 	}
+
+    public function toJson(){
+        return [
+            "id" => $this->id,
+            "nom" => $this->nom, 
+            "minimum" => $this->minimum,
+            "maximum" => $this->maximum
+        ];
+    }
 }
 ?>

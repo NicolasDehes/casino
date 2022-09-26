@@ -1,6 +1,8 @@
 <?php 
+
 namespace modele\dao;
 
+use \modele\metier\Utilisateur;
 // Inclure le fichier des constantes : il contient notamment la constante LOGFILE
 //include(__DIR__.'/../../Constantes.php');
 
@@ -20,7 +22,6 @@ class UtilisateurDAO {
     public function __construct() 
     { 
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurDAO -> __construct()".PHP_EOL, 3, LOGFILE);
 
         try {
             // Obtenir une connexion à la base
@@ -41,7 +42,6 @@ class UtilisateurDAO {
     public function check_login($login, $password) : bool
     { 
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurDAO -> check_login()".PHP_EOL, 3, LOGFILE);
 
         // Par défaut, le retour de la fonction est positionné à false
         $bRet = false;
@@ -55,8 +55,7 @@ class UtilisateurDAO {
         //$password = hash('sha256', $password);
 
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurDAO -> check_login() : mot de passe : ".$password , 3, LOGFILE);
-
+        
         // Exécuter la requête préparée en lui passant une tableau avec le login et le 
         // mot de passe : 1er ? est remplacé par le login, le second ? par le password
         $bret = $requete->execute(array($login, $password));
@@ -91,7 +90,6 @@ class UtilisateurDAO {
     public function create($user) : bool
     { 
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurDAO -> create()".PHP_EOL, 3, LOGFILE);
 
         //
         // Vérifier si le compte existe déjà
@@ -144,7 +142,6 @@ class UtilisateurDAO {
      public function deleteUser($id)
      {
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurDAO -> deleteUser()".PHP_EOL, 3, LOGFILE);
 
         $bRet = true;
         try {
@@ -171,7 +168,6 @@ class UtilisateurDAO {
     public function findAll() : array{
 
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurDAO -> findAll()".PHP_EOL, 3, LOGFILE);
         
         // Création d'une requête préparée
         $requete = $this->Connection->prepare("SELECT id,nom,prenom,email,motdepasse FROM ".self::TABLE);
@@ -187,7 +183,7 @@ class UtilisateurDAO {
 
         foreach ($result as $valeur) {
             // Création d'un objet Utilisateur
-            $utilisateur = new \modele\metier\Utilisateur();
+            $utilisateur = new Utilisateur();
 
             // Positionner les attributs en utilisant les fonctions setter
             $utilisateur->setId($valeur["id"]);
@@ -200,7 +196,6 @@ class UtilisateurDAO {
             $tab_utilisateurs[] = $utilisateur;
 
             // Enregistrement du message dans le fichier log
-            error_log("UtilisateurDAO -> Utilisateur : ".$utilisateur, 3, LOGFILE);
         }
 
         // Fermer la connexion à la BDD
@@ -216,7 +211,6 @@ class UtilisateurDAO {
     public function __destruct()  
     {  
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurDAO -> __destruct()".PHP_EOL, 3, LOGFILE);
     }
 }
 

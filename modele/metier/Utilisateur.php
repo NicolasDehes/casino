@@ -92,5 +92,15 @@ class Utilisateur {
         prenom : $this->prenom   
         mail : $this->mail".self::CR;   
 	}
+
+    public function toJson(){
+        return [
+            "id" => $this->id,
+            "nom" => $this->nom,
+            "prenom" => $this->prenom, 
+            "mail" => $this->mail,
+            "motdepasse" => $this->motdepasse
+        ];
+    }
 }
 ?>
