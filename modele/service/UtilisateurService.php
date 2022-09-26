@@ -1,6 +1,8 @@
 <?php 
+
 namespace modele\service;
 
+use \modele\dao\UtilisateurDao;
 // Inclure le fichier des constantes : il contient notamment la constante LOGFILE
 //include(__DIR__.'/../../Constantes.php');
 
@@ -16,12 +18,11 @@ class UtilisateurService {
     public function __construct() 
     {   
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurService -> __construct()".PHP_EOL, 3, LOGFILE);
 
         try {
             // Instancier la classe UtilisateurDao : appel du constructeur __construct() 
             // Si problème, la classe UtilisateurDao lève une exception
-            $this->hUtilisateurDao = new \modele\dao\UtilisateurDao();
+            $this->hUtilisateurDao = new UtilisateurDao();
         }
         // Propagation de l'exception : l'exception est transmise à la méthode appelante
         catch (\Exception $e) {
@@ -35,13 +36,11 @@ class UtilisateurService {
     public function __destruct()  
     {  
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurService -> __destruct".PHP_EOL, 3, LOGFILE);	
     }
 
     public function check_login($login, $password)
     { 
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurService -> check_login()".PHP_EOL, 3, LOGFILE);
 
         // Appel de la méthode check_login() de la classe UtilisateurDao
         // Retourne true si authentification ok SINON false 
@@ -54,15 +53,13 @@ class UtilisateurService {
     public function findAll() : array
     { 
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurService -> findAll()".PHP_EOL, 3, LOGFILE);
 
         // Appel de la méthode findAll() de la classe UtilisateurDao
         // Retourne le tableau des utilisateurs
         $results = $this->hUtilisateurDao->findAll();
 
         // Enregistrement du tableau dans le fichier log
-        error_log("UtilisateurService -> Utilisateurs : ".print_r($results, TRUE), 3, LOGFILE);
-
+        
         // Retourne le tableau des utilisateurs
         return $results;
     }
@@ -70,7 +67,6 @@ class UtilisateurService {
     public function createUser($utilisateur)
     { 
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurService -> createUser()".PHP_EOL, 3, LOGFILE);
 
         try {
             // Appel de la méthode create() de la classe UtilisateurDao
@@ -89,7 +85,6 @@ class UtilisateurService {
     public function deleteUser($id)
     { 
         // Enregistrement du message dans le fichier log
-        error_log("UtilisateurService -> deleteUser()".PHP_EOL, 3, LOGFILE);
 
         try {
             // Appel de la méthode deleteUser() de la classe UtilisateurDao

@@ -1,5 +1,7 @@
 <?php
 
+require_once("../Autoloader.php");
+
 $data = [
     "result" => 1,
     "message" => "Api is running"

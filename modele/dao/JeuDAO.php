@@ -1,6 +1,8 @@
 <?php 
 namespace modele\dao;
 
+use \modele\metier\Jeu;
+
 class JeuDAO { 
 
     private const TABLE = "T_JEU";
@@ -15,7 +17,6 @@ class JeuDAO {
     public function __construct() 
     { 
         // Enregistrement du message dans le fichier log
-        error_log("JEUDAO -> __construct()".PHP_EOL, 3, LOGFILE);
 
         try {
             // Obtenir une connexion à la base
@@ -35,7 +36,6 @@ class JeuDAO {
     public function findAll() : array{
 
         // Enregistrement du message dans le fichier log
-        error_log("JEUDAO -> findAll()".PHP_EOL, 3, LOGFILE);
         
         // Création d'une requête préparée
         $requete = $this->Connection->prepare("SELECT * FROM ".self::TABLE);
@@ -51,7 +51,7 @@ class JeuDAO {
 
         foreach ($result as $valeur) {
             // Création d'un objet Utilisateur
-            $utilisateur = new \modele\metier\Jeu();
+            $utilisateur = new Jeu();
 
             // Positionner les attributs en utilisant les fonctions setter
             $utilisateur->setId($valeur["id"]);
@@ -63,7 +63,6 @@ class JeuDAO {
             $tab_utilisateurs[] = $utilisateur;
 
             // Enregistrement du message dans le fichier log
-            error_log("JEUDAO -> Utilisateur : ".$utilisateur, 3, LOGFILE);
         }
 
         // Fermer la connexion à la BDD
@@ -79,7 +78,6 @@ class JeuDAO {
     public function __destruct()  
     {  
         // Enregistrement du message dans le fichier log
-        error_log("JEUDAO -> __destruct()".PHP_EOL, 3, LOGFILE);
     }
 }
 

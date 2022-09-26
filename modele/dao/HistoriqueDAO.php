@@ -1,5 +1,8 @@
 <?php 
+
 namespace modele\dao;
+
+use \modele\metier\Historique;
 
 class HistoriqueDAO { 
 
@@ -14,8 +17,6 @@ class HistoriqueDAO {
     */ 
     public function __construct() 
     { 
-        // Enregistrement du message dans le fichier log
-        error_log("HistoriqueDAO -> __construct()".PHP_EOL, 3, LOGFILE);
 
         try {
             // Obtenir une connexion à la base
@@ -33,9 +34,6 @@ class HistoriqueDAO {
 
     // Fonction qui retourne sous forme d'un tableau tous les enregistrements de la table T_UTILISATEUR
     public function findByUserAndGame($jeu, $idUser) : array{
-
-        // Enregistrement du message dans le fichier log
-        error_log("HistoriqueDAO -> findAll()".PHP_EOL, 3, LOGFILE);
         
         // Création d'une requête préparée
         $requete = $this->Connection->prepare("
@@ -44,7 +42,9 @@ class HistoriqueDAO {
             JOIN T_UTILISATEUR u ON h.idUtilisateur = u.id
             JOIN T_JEU j ON h.idJeu = j.id
             WHERE j.nom = :nomJeu 
-            AND u.id = :idUtilisateur
+            AND h.idUtilisateur = :idUtilisateur
+            ORDER BY h.dateJeu
+            LIMIT 50;
         ");
         $requete->bindParam("nomJeu",$jeu);
         $requete->bindParam("idUtilisateur", $idUser);
@@ -53,25 +53,19 @@ class HistoriqueDAO {
         
         // Retourne le résultat de la requête sous forme d'un tableau
         $result = $requete->fetchAll();
-
         // Tableau des historique
         $tab_historique = array();
-
         foreach ($result as $valeur) {
             // Création d'un objet historique
-            $historique = new \modele\metier\Historique();
-
+            $historique = new Historique();
             // Positionner les attributs en utilisant les fonctions setter
-            $historique->setIdJeu($valeur["idJeu"]);
             $historique->setIdUtilisateur($valeur["idUtilisateur"]);
-            $historique->setDateJeu($valeur['dateJeu']);
+            $historique->setIdJeu($valeur["idJeu"]);
+            $historique->setDateJeu($valeur["dateJeu"]);
             $historique->setMise($valeur["mise"]);
             $historique->setGain($valeur["gain"]);
             // Ajouter l'objet historique dans le tableau
-            $tab_historique[] = $historique;
-
-            // Enregistrement du message dans le fichier log
-            error_log("HistoriqueDAO -> Utilisateur : ".$historique, 3, LOGFILE);
+            array_push($tab_historique, $historique->toJson());
         }
 
         // Fermer la connexion à la BDD
@@ -86,8 +80,6 @@ class HistoriqueDAO {
     */  
     public function __destruct()  
     {  
-        // Enregistrement du message dans le fichier log
-        error_log("HistoriqueDAO -> __destruct()".PHP_EOL, 3, LOGFILE);
     }
 }
 

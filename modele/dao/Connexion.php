@@ -1,4 +1,5 @@
 <?php
+
 namespace modele\dao;
 
 class Connexion{

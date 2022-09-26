@@ -1,7 +1,8 @@
 <?php
 // Auto chargement des classes utilisées
 require_once("../Autoloader.php");
-require_once(__DIR__.'/../Constantes.php');
+
+use \modele\service\UtilisateurService;
 
 // LES SESSIONS
 // Une session en PHP correspond à une façon de stocker des données différentes pour chaque 
@@ -80,7 +81,6 @@ switch ($requested_page) {
     case 'authentifier':  
 
         // Enregistrement du message dans le fichier log
-        error_log("FrontControleur -> Demande de login".PHP_EOL, 3, LOGFILE);
 
         // SI formulaire soumis = attribut name du bouton submit
         if(isset($_POST['envoi'])) { 
@@ -110,7 +110,7 @@ switch ($requested_page) {
             try {
                 // Création de l'objet UtilisateurService : appel du constructeur de la classe
                 // Si problème retourne une exception
-                $hUtilisateurService = new \modele\service\UtilisateurService();
+                $hUtilisateurService = new UtilisateurService();
             }
             // Impossible de se connecter à la BD
             catch (\Exception $e) {
@@ -194,7 +194,6 @@ switch ($requested_page) {
     // Demande de création d'un compte
     case 'creer_inscription':
         // Enregistrement du message dans le fichier log
-        error_log("FrontControleur -> Creer_inscription".PHP_EOL, 3, LOGFILE);
 
         // Vérifier si les paramètres obligatoires ont été saisis
         if (!checkPOSTParameters(['email','nom','prenom','password','password_conf'])) {
@@ -312,7 +311,6 @@ switch ($requested_page) {
     // Afficher la liste des utilisateurs
     case 'list_utilisateurs':
         // Enregistrement du message dans le fichier log
-        error_log("FrontControleur -> Liste des utilisateurs".PHP_EOL, 3, LOGFILE);
 
         // Afficher la page liste_utilisateurs
         afficherUtilisateurs();
@@ -384,7 +382,6 @@ function afficherUtilisateurs() {
     $_SESSION['tableau']=$tab_utilisateurs;
 
     // Enregistrement du message dans le fichier log
-    // error_log("FrontControleur -> list_utilisateurs".print_r($_SESSION['tableau'], TRUE).PHP_EOL, 3, LOGFILE);
     
     // Retourner la page liste_utilisateurs
     header('Location: ../vue/liste_utilisateurs.php');
