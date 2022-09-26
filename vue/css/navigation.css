@@ -1,0 +1,44 @@
+.nav {
+  background-color: #3B3D73;
+  border-radius: 38px 38px 0px 0px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.nav__list {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 16px 16px 18px;
+}
+.nav__item {
+  height: 28px;
+  position: relative;
+  width: 25px;
+}
+.nav__item path {
+  transition: 0.2s;
+  stroke: #878ADB;
+  fill: #878ADB;
+  stroke-width: 2;
+}
+.nav__item--selected path {
+  stroke: #F79A6F;
+  fill: #F79A6F;
+}
+.nav__item--selected::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  display: block;
+  bottom: -10px;
+  background-color: #F79A6F;
+  left: 50%;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+.nav__item--center {
+  height: 38px;
+}
