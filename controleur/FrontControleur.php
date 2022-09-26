@@ -233,7 +233,7 @@ switch ($requested_page) {
             // Positionner les attributs de l'objet en utilisant les fonctions setter
             $utilisateur->setPrenom(htmlspecialchars($_POST['prenom']));
             $utilisateur->setNom(htmlspecialchars($_POST['nom']));
-            $utilisateur->setMail(htmlspecialchars($_POST['email']));
+            $utilisateur->setEmail(htmlspecialchars($_POST['email']));
             $utilisateur->setMotdepasse(htmlspecialchars($_POST['password']));
 
             try {

@@ -19,8 +19,8 @@ if($mise == null || $idUser == null){
 }
 try{
 
-    $roulette = [-1,-1,-1,-1,1,1,1,2,2,3];  
-    $random = rand(0,count($roulette));
+    $roulette = [-1,-1,-1,-1,1,1,2,3];  
+    $random = rand(0,count($roulette)-1);
     $gain = $roulette[$random]*$mise;
 
     $utilisateurService = new UtilisateurService();

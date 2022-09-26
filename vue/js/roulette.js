@@ -1,21 +1,35 @@
-const rouletteContainer = document.getElementById("roulette__container");
-// TODO : A changer pour déclancher la rotation
-const rouletteBtn = document.getElementById("roulette__btn");
-rouletteBtn.addEventListener("click", onClickRoulette)
+const rouletteContainer = document.getElementById('roulette__container');
+const rouletteForm = document.getElementById('roulette-form');
+rouletteForm.addEventListener('submit', onClickRoulette);
 
-function onClickRoulette() {
-  const width = window.innerWidth;
-  let baseRotate = 22.5;
-  if (width >= 600) {
-    baseRotate = -67.5;
-  }
+async function onClickRoulette(evt) {
+    evt.preventDefault();
+
+    const mise = document.getElementById('creditsInput').value;
+
+    var formData = new FormData();
+    formData.append('idUser', 1);
+    formData.append('mise', mise);
+
+    const res = await fetch('/casino/api/roulette.php', {
+        method: 'POST',
+        body: formData,
+    }).then((data) => data.json());
+
+    const width = window.innerWidth;
+    let baseRotate = 22.5;
+    if (width >= 600) {
+        baseRotate = -67.5;
+    }
 
     // TODO changer ici la valeur de la rotation
-    const nbSections = 2;
-    
-    const nbTours = Math.floor(Math.random() * 10) + 1;
-    
-    const totalDeg = (nbSections+nbTours*8)*45; // 45 = 360/8
+    const nbSections = res.random;
 
-    rouletteContainer.style.transform = `rotate(${totalDeg+baseRotate}deg)`;
-  }
+    console.log(nbSections);
+
+    const nbTours = Math.floor(Math.random() * 10) + 1;
+
+    const totalDeg = (nbSections + nbTours * 8) * 45; // 45 = 360/8
+
+    rouletteContainer.style.transform = `rotate(${totalDeg + baseRotate}deg)`;
+}

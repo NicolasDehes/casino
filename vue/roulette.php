@@ -20,6 +20,7 @@
     <section class="body__container">
       <div class="roulette">
         <div class="roulette__container" id="roulette__container">
+          <div class="roulette__item"><span class="roulette__label">x0</span></div>
           <div class="roulette__item"><span class="roulette__label">x1</span></div>
           <div class="roulette__item"><span class="roulette__label">x2</span></div>
           <div class="roulette__item"><span class="roulette__label">x3</span></div>
@@ -27,7 +28,6 @@
           <div class="roulette__item"><span class="roulette__label">x5</span></div>
           <div class="roulette__item"><span class="roulette__label">x6</span></div>
           <div class="roulette__item"><span class="roulette__label">x7</span></div>
-          <div class="roulette__item"><span class="roulette__label">x8</span></div>
           <div>
               <div class="roulette__line"></div>
               <div class="roulette__line"></div>
@@ -37,10 +37,9 @@
         </div>
       </div>
       <!-- TODO à implémenter -->
-      <form class="roulette-form" method="POST" action="">
-          <input type="number" min="1" max="100" class="input" placeholder="Crédits misés" required>
+      <form class="roulette-form"  id="roulette-form">
+          <input id="creditsInput" type="number" min="1" max="100" class="input" placeholder="Crédits misés" required>
           <button type="submit" class="button button--secondary button--min">Jouer</button>
-          <button id="roulette__btn">Tourner</button>
       </form>
       <!-- TODO à implémenter QUAND ON VIENT DE JOUER
       <section class="roulette-result">
