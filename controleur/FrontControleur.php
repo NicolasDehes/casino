@@ -156,6 +156,12 @@ switch ($requested_page) {
         header("Location: ../vue/roulette.php");
     break;
 
+    // Afficher le jeu pileouface
+    case 'pileouface':
+        // Retourner la page pileouface.php
+        header("Location: ../vue/pileouface.php");
+    break;
+
     // Afficher la page d'historique
     case 'historique':
         // Retourner la page accueil.php : page d'accueil de l'application

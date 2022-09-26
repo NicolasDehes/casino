@@ -16,6 +16,8 @@
       require_once("./navigation.php") 
     ?>
     <main>
+        <span class="solde">Solde : 100</span>
+
         <div class="cut-background">
 
         </div>
