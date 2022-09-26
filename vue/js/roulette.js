@@ -4,6 +4,12 @@ const rouletteBtn = document.getElementById("roulette__btn");
 rouletteBtn.addEventListener("click", onClickRoulette)
 
 function onClickRoulette() {
+  const width = window.innerWidth;
+  let baseRotate = 22.5;
+  if (width >= 600) {
+    baseRotate = -67.5;
+  }
+
     // TODO changer ici la valeur de la rotation
     const nbSections = 2;
     
@@ -11,5 +17,5 @@ function onClickRoulette() {
     
     const totalDeg = (nbSections+nbTours*8)*45; // 45 = 360/8
 
-    rouletteContainer.style.transform = `rotate(${totalDeg+22.5}deg)`;
+    rouletteContainer.style.transform = `rotate(${totalDeg+baseRotate}deg)`;
   }

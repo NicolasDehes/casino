@@ -18,7 +18,7 @@
         </a>
       </li>
       <li class="nav__item <?php if($id_actif_navigation == 2) echo 'nav__item--selected'; ?>">
-        <a href="../controleur/FrontControleur.php?action=deconnexion" class="">
+        <a href="roulette.php" class="">
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="26" height="26" fill="url(#pattern0)"/>
             <defs>
@@ -31,9 +31,8 @@
         </a>
       </li>
       <li class="nav__item <?php if($id_actif_navigation == 3) echo 'nav__item--selected'; ?>">
-        <a href="../controleur/FrontControleur.php?action=deconnexion" class="">
+        <a href="accueil.php" class="">
           <?xml version="1.0" encoding="iso-8859-1"?>
-          <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
             <g>
@@ -88,12 +87,12 @@
         </a>
       </li>
       <li class="nav__item <?php if($id_actif_navigation == 4) echo 'nav__item--selected'; ?>">
-        <a href="../controleur/FrontControleur.php?action=deconnexion" class="">
+        <a href="historique.php" class="">
           <svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="25px" height="25px"><path d="M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 24.984375 6.9863281 A 1.0001 1.0001 0 0 0 24 8 L 24 22.173828 A 3 3 0 0 0 22 25 A 3 3 0 0 0 22.294922 26.291016 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 23.708984 27.705078 A 3 3 0 0 0 25 28 A 3 3 0 0 0 28 25 A 3 3 0 0 0 26 22.175781 L 26 8 A 1.0001 1.0001 0 0 0 24.984375 6.9863281 z"/></svg>        
         </a>
       </li>
       <li class="nav__item <?php if($id_actif_navigation == 5) echo 'nav__item--selected'; ?>">
-        <a href="../controleur/FrontControleur.php?action=deconnexion" class="">
+        <a href="profil.php" class="">
             <?xml version="1.0" encoding="iso-8859-1"?>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
