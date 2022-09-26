@@ -14,6 +14,10 @@
           $id_actif_navigation = 2; 
           require_once("./navigation.php") 
       ?>
+      <?php 
+          $id_actif_navigation = 2; 
+          require_once("./navigation.php") 
+      ?>
 
     <span class="solde">Solde : 100</span>
 

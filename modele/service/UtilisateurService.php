@@ -99,5 +99,24 @@ class UtilisateurService {
         // Retourne true si utilisateur a été supprimé 
         return $bRet;
     }
+
+    public function findById($id)
+    { 
+        // Enregistrement du message dans le fichier log
+
+        try {
+            // Appel de la méthode deleteUser() de la classe UtilisateurDao
+            // Retourne true si utilisateur créé SINON false
+            $bRet = $this->hUtilisateurDao->findById($id);
+        }
+        // Propagation de l'exception : suppression impossible
+        catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+
+        // Retourne true si utilisateur a été supprimé 
+        return $bRet;
+    }
+
 }
 ?>
