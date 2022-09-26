@@ -6,7 +6,7 @@
     padding: 5vw;
     font-family: Nunito, sans-serif;
     font-weight: bold;
-    padding-bottom: 40px;
+    padding-bottom: 10vw;
 }
 .home-solde__texte {
     color: #3B3D73;
@@ -23,4 +23,12 @@
     font-size: 27px;
     margin-top: 55px;
     margin-left: -40px;
+}
+
+@media screen and (min-width: 600px) {
+    .home-solde{
+        width: 500px;
+        padding: 2vw;
+        padding-bottom: 3vw;
+    }
 }
