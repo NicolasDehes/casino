@@ -101,46 +101,31 @@ class UtilisateurService {
 
     public function getUserById($id){
         try {
-            // Appel de la méthode deleteUser() de la classe UtilisateurDao
-            // Retourne true si utilisateur créé SINON false
             $bRet = $this->hUtilisateurDao->getUserById($id);
         }
-        // Propagation de l'exception : suppression impossible
         catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
-
-        // Retourne true si utilisateur a été supprimé 
         return $bRet;
     }
 
     public function changeSolde($id,$gain){
         try {
-            // Appel de la méthode deleteUser() de la classe UtilisateurDao
-            // Retourne true si utilisateur créé SINON false
             $bRet = $this->hUtilisateurDao->changeSolde($id,$gain);
         }
-        // Propagation de l'exception : suppression impossible
         catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
-
-        // Retourne true si utilisateur a été supprimé 
         return $bRet;
     }
 
     public function isSoldeOk($id,$mise){
         try {
-            // Appel de la méthode deleteUser() de la classe UtilisateurDao
-            // Retourne true si utilisateur créé SINON false
             $bRet = $this->hUtilisateurDao->isSoldeOk($id,$mise);
         }
-        // Propagation de l'exception : suppression impossible
         catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
-
-        // Retourne true si utilisateur a été supprimé 
         return $bRet;
     }
 }

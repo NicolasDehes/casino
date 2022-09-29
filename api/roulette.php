@@ -43,15 +43,15 @@ try{
     $historiqueService = new HistoriqueService();
     $result = $historiqueService->addHistorique($idUser, $mise, $gain, 1);
 
-    $gainReel = $gain;
-    
-    if($gain > 0){
-        $gainReel + $mise;   
+    $gainToPrint = $gain;
+
+    if($gain >= 0){
+        $gainToPrint+= $mise;
     }
-    
+
     $data = [
         "result" => $gain >= $mise,
-        "gain" => $gainReel,
+        "gain" => $gainToPrint,
         "newSolde" => $newSolde,
         'random' => $random,
     ];
