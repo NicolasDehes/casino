@@ -228,7 +228,7 @@ switch ($requested_page) {
 
         // Vérifier si les paramètres obligatoires ont été saisis
         if (!checkPOSTParameters(['email','nom','prenom','password','password_conf'])) {
-            $_SESSION['message'] = "Champ obligatoire non renseigné.";
+            $_SESSION['message'] = "Champ obligatoire non renseigné";
             header("Location: ../vue/inscription.php");
             // Fin du script
             die();
@@ -238,7 +238,7 @@ switch ($requested_page) {
         // la méthode filter_var() et un filtre correspondant au type de données attendu.
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 // Positionner un message en variable de session
-                $_SESSION['message'] = "Adresse mail incorrecte."; 
+                $_SESSION['message'] = "Adresse email incorrecte"; 
                 // Retourner la page login.php
                 header("Location: ../vue/inscription.php");
                 // Fin du script
@@ -269,7 +269,7 @@ switch ($requested_page) {
             // Problème : exemple -> Impossible de se connecter à la BD
             catch (\Exception $e) {
                 // Positionner un message en variable de session : message utilisé par login.php
-                $_SESSION['message'] = "Création du compte impossible."; 
+                $_SESSION['message'] = "Création du compte impossible"; 
                 // Retourner la page inscription.php
                 header('Location: ../vue/inscription.php');
                 // Fin du script
@@ -281,9 +281,15 @@ switch ($requested_page) {
                 // Appel de la méthode createUser() de la classe UtilisateurService
                 // La fonction prend en paramètre un objet de type Utilisateur
                 // La fonction lève une exception si impossible de créer l'utilisateur
-                $bRet = $hUtilisateurService->createUser($utilisateur);
-                // Positionner un message en variable de session : message utilisé par inscription.php  
-                $_SESSION['message'] = "Compte créé."; 
+                $id = $hUtilisateurService->createUser($utilisateur);
+
+                $hUtilisateurService = new \modele\service\UtilisateurService();
+
+                $user = $hUtilisateurService->getUserById($id);
+                // Connecter l'utilisateur
+                $_SESSION["id_user"] = $user->getId();
+                header("Location: ../controleur/FrontControleur.php?action=accueil");
+                exit;
             }
             // Exception levée si impossible de créer le compte utilisateur
             catch (\Exception $e) {  
@@ -296,8 +302,8 @@ switch ($requested_page) {
         // SINON les 2 mots de passe sont différents
         else {
             // Positionner un message en variable de session 
-            $_SESSION['message'] = "Mots de passe différents !!"; 
-            // Retourner la page d'inscription        
+            $_SESSION['message'] = "Les mots de passe sont différents"; 
+            // Retourner la page d'inscription
             header("Location: ../vue/inscription.php");
         }
     break;

@@ -72,9 +72,7 @@ class UtilisateurDAO {
             // Démarrer une session
             //session_start();
 
-            // Sauvegarder le prénom et le nom dans une variable de session nommée prenom_nom
             $_SESSION["id_user"] = $user[0]["id"]; 
-            $_SESSION["prenom_nom"] = ucfirst(strtolower($user[0]["prenom"]))." ".strtoupper($user[0]["nom"]);
 
             // Positionner à true le booléen retourné par la fonction
             $bRet = true;
@@ -88,7 +86,7 @@ class UtilisateurDAO {
     }
 
     // Fonction de création d'un utilisateur
-    public function create($user) : bool
+    public function create($user) : int
     { 
         // Enregistrement du message dans le fichier log
 
@@ -131,12 +129,14 @@ class UtilisateurDAO {
                 "email" => $user->getEmail(),
                 "motdepasse" => $password));
 
+        $id = $this->Connection->lastInsertId();
         
         // Fermer la connexion à la BDD
         $this->Connection = null;
 
+
         // Retourner le résultat
-        return $result;
+        return $id;
     }
 
      // Fonction de suppression d'un utilisateur à partir de son id
