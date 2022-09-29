@@ -106,7 +106,7 @@
 .action{
     display: flex;
     flex-direction: column;
-    padding: 9%;
-    height: 24vh;
-    justify-content: space-around;
+    margin: 8vh 0;
+    row-gap: 18px;
+    align-items: center;
 }
