@@ -3,7 +3,7 @@ session_name('myid');
 session_start();  
 
 
-if(!isset($_SESSION["prenom_nom"])){
+if(!isset($_SESSION["id_user"])){
   // logout.php supprime la session et redirige vers la page de login
   header('Location: ../vue/logout.php');
 }

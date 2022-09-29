@@ -69,7 +69,7 @@ class UtilisateurService {
         try {
             // Appel de la méthode create() de la classe UtilisateurDao
             // Retourne true si utilisateur créé SINON false
-            $bRet = $this->hUtilisateurDao->create($utilisateur);
+            $id = $this->hUtilisateurDao->create($utilisateur);
         }
         // Propagation de l'exception : utilisateur existe déjà
         catch (\Exception $e) {
@@ -77,7 +77,7 @@ class UtilisateurService {
         }
 
         // Retourne true si utilisateur créé SINON false 
-        return $bRet;
+        return $id;
     }
 
     public function deleteUser($id)
