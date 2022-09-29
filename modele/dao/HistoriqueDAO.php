@@ -43,7 +43,7 @@ class HistoriqueDAO {
             JOIN T_JEU j ON h.idJeu = j.id
             WHERE j.id = :idjeu 
             AND h.idUtilisateur = :idUtilisateur
-            ORDER BY h.dateJeu
+            ORDER BY h.dateJeu DESC
             LIMIT 50;
         ");
         $requete->bindParam("idjeu",$jeu);
@@ -87,7 +87,7 @@ class HistoriqueDAO {
             SELECT h.idUtilisateur, h.idJeu, h.dateJeu, h.mise, h.gain
             FROM ".self::TABLE." h 
             WHERE h.idUtilisateur = :idUtilisateur
-            ORDER BY h.dateJeu
+            ORDER BY h.dateJeu DESC
             LIMIT 5;
         ");
         $requete->bindParam("idUtilisateur", $idUser);
