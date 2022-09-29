@@ -44,6 +44,20 @@ class HistoriqueService {
         return $results;
     }
 
+    public function findByUser($idUser) : array
+    { 
+        // Enregistrement du message dans le fichier log
+
+        // Appel de la méthode findAll() de la classe HistoriqueDao
+        // Retourne le tableau des utilisateurs
+        $results = $this->hHistoriqueDao->findByUser($idUser);
+
+        // Enregistrement du tableau dans le fichier log
+    
+        // Retourne le tableau des utilisateurs
+        return $results;
+    }
+
 
     public function addHistorique($idUser, $mise, $gain, $jeu)
     { 

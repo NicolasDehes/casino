@@ -56,7 +56,7 @@ class HistoriqueDAO {
 
         // Tableau des historique
         $tab_historique = array();
-        if(count($tab_historique)>0){
+        if(count($result)>0){
             foreach ($result as $valeur) {
                 // Création d'un objet historique
                 $historique = new Historique();
@@ -80,17 +80,15 @@ class HistoriqueDAO {
     }
 
     // Fonction qui retourne sous forme d'un tableau tous les enregistrements de la table T_UTILISATEUR
-    public function findByUser($jeu) : array{
+    public function findByUser($idUser) : array{
 
         // Création d'une requête préparée
         $requete = $this->Connection->prepare("
             SELECT h.idUtilisateur, h.idJeu, h.dateJeu, h.mise, h.gain
             FROM ".self::TABLE." h 
-            JOIN T_UTILISATEUR u ON h.idUtilisateur = u.id
-            JOIN T_JEU j ON h.idJeu = j.id
             WHERE h.idUtilisateur = :idUtilisateur
             ORDER BY h.dateJeu
-            LIMIT 50;
+            LIMIT 5;
         ");
         $requete->bindParam("idUtilisateur", $idUser);
         // Exécution de la requête
@@ -101,7 +99,7 @@ class HistoriqueDAO {
 
         // Tableau des historique
         $tab_historique = array();
-        if(count($tab_historique)>0){
+        if(count($result)>0){
             foreach ($result as $valeur) {
                 // Création d'un objet historique
                 $historique = new Historique();

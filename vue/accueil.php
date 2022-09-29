@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/global.css">
     <link rel="stylesheet" type="text/css" href="css/accueil.css">
     <link rel="stylesheet" type="text/css" href="css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="css/historique.css">
     <title>Accueil</title>
   </head>
   <body>
@@ -29,6 +30,27 @@
       <p class="home-solde__credit"> 100 <span  class="home-solde__unite"> crédits</span> </p>
     </section>
 
-    <?php echo '<pre>';  $_SESSION['HISTO']; echo'</pre>';?>
+    
+
+    <table class="historique">
+      <thead class="historique__header">
+        <td>Mise</td>
+        <td>Gain</td>
+        <td>Date</td>
+      </thead>
+      <tbody class="historique__body">
+        <?php 
+          foreach($_SESSION['HISTO'] as $value){ 
+            ?>
+            <tr class="historique__item <?php if($value['gain'] <= 0 ) echo 'historique__item--lost'?>">
+              <td><?php echo $value['mise'] ?></td>
+              <td><?php echo $value['gain'] ?></td>
+              <td><?php echo $value['dateJeu'] ?></td>
+            </tr><?php
+          } 
+        ?>
+      
+      </tbody>
+    </table>
   </body>
 </html>

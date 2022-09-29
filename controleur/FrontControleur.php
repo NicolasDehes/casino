@@ -138,7 +138,7 @@ switch ($requested_page) {
             // SINON authentification correcte
             else
                 // Retourner la page accueil.php : page d'accueil de l'application
-                header("Location: ../vue/accueil.php");
+                header("Location: ../controleur/FrontControleur.php?action=accueil");
         
             // Suppression de l'objet
             $hUtilisateurService = null;
@@ -173,13 +173,16 @@ switch ($requested_page) {
 
     // Afficher la page d'historique
     case 'historique':
-        $HistoriqueService = new HistoriqueService(); 
-        $_SESSION['HISTO'][1] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
+        if(htmlspecialchars($_GET['jeu']) == 'roulette'){
+            $HistoriqueService = new HistoriqueService(); 
+            $_SESSION['HISTO'] = array();
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( 1,$_SESSION["id_user"]); 
+        }else{
+            unset($HistoriqueService); 
+            $HistoriqueService = new HistoriqueService(); 
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
+        }
         
-        unset($HistoriqueService); 
-        $HistoriqueService = new HistoriqueService(); 
-        $_SESSION['HISTO'][2] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
-
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/historique.php");
     break;

@@ -26,51 +26,22 @@
                 <td>Date</td>
             </thead>
             <tbody class="historique__body">
-                <tr class="historique__item">
-                    <td>50</td>
-                    <td>250</td>
-                    <td>12/12/2019</td>
-                </tr>
-                <tr class="historique__item historique__item--lost">
-                    <td>50</td>
-                    <td>250</td>
-                    <td>12/12/2019</td>
-                </tr>
-                <tr class="historique__item">
-                    <td>50</td>
-                    <td>250</td>
-                    <td>12/12/2019</td>
-                </tr>
-                <tr class="historique__item historique__item--lost">
-                    <td>50</td>
-                    <td>250</td>
-                    <td>12/12/2019</td>
-                </tr>
-                <tr class="historique__item">
-                    <td>50</td>
-                    <td>250</td>
-                    <td>12/12/2019</td>
-                </tr>
-                <tr class="historique__item historique__item--lost">
-                    <td>50</td>
-                    <td>250</td>
-                    <td>12/12/2019</td>
-                </tr>
-                <tr class="historique__item">
-                    <td>50</td>
-                    <td>250</td>
-                    <td>12/12/2019</td>
-                </tr>
-                <tr class="historique__item historique__item--lost">
-                    <td>50</td>
-                    <td>250</td>
-                    <td>12/12/2019</td>
-                </tr>
+                <?php 
+                foreach($_SESSION['HISTO'] as $value){ 
+                    ?>
+                    <tr class="historique__item <?php if($value['gain'] <= 0 ) echo 'historique__item--lost'?>">
+                    <td><?php echo $value['mise'] ?></td>
+                    <td><?php echo $value['gain'] ?></td>
+                    <td><?php echo $value['dateJeu'] ?></td>
+                    </tr><?php
+                } 
+                ?>
+            
             </tbody>
         </table>
         <div class="double-btn">
-            <a class="double-btn__item">Roulette</a>
-            <a class="double-btn__item">Pile ou Face</a>
+            <a class="double-btn__item" href="../controleur/FrontControleur.php?action=historique&jeu=roulette">Roulette</a>
+            <a class="double-btn__item" href="../controleur/FrontControleur.php?action=historique&jeu=pileouface">Pile ou Face</a>
         </div>
     </body>
 </html>
