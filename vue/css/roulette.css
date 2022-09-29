@@ -159,10 +159,6 @@ input[type=number] {
         min-width: 40vh;
     }
 
-    .roulette-result {
-        width: 50%;
-    }
-
     .roulette__container {
         width: 80vh;
         height: 80vh;
@@ -188,8 +184,9 @@ input[type=number] {
         font-size: 28px;
     }
 
-    .roulette-form {
+    .roulette-form, .roulette-result {
         width: 50%;
+        max-width: 500px;
     }
 
     .body__container {
