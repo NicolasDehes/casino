@@ -237,6 +237,19 @@ class UtilisateurDAO {
         $succes = $requete->execute();
         return $newSolde;
     }
+
+    public function isSoldeOk($id, $mise){
+        $requete = $this->Connection->prepare("
+            SELECT *
+            FROM ".self::TABLE." 
+            WHERE id = :id"
+        );
+        $requete->bindValue('id',$id);
+        $succes = $requete->execute();
+        $user = $requete->fetch();
+        $isSoldeOk = $user['solde'] >= $mise;
+        return $isSoldeOk;
+    }
     
     /**  
     * Destructeur, appelé quand l'objet est détruit
