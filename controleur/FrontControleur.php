@@ -138,7 +138,7 @@ switch ($requested_page) {
             // SINON authentification correcte
             else
                 // Retourner la page accueil.php : page d'accueil de l'application
-                header("Location: ../vue/accueil.php");
+                header("Location: ../controleur/FrontControleur.php?action=accueil");
         
             // Suppression de l'objet
             $hUtilisateurService = null;
@@ -160,6 +160,10 @@ switch ($requested_page) {
 
     // Afficher le jeu roulette
     case 'roulette':
+        $userService = new UtilisateurService();
+        $user = $userService->getUserById($_SESSION["id_user"]);
+        $_SESSION['USER'] = $user->toArray();
+        
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/roulette.php");
         
@@ -173,13 +177,16 @@ switch ($requested_page) {
 
     // Afficher la page d'historique
     case 'historique':
-        $HistoriqueService = new HistoriqueService(); 
-        $_SESSION['HISTO'][1] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
+        if(htmlspecialchars($_GET['jeu']) == 'roulette'){
+            $HistoriqueService = new HistoriqueService(); 
+            $_SESSION['HISTO'] = array();
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( 1,$_SESSION["id_user"]); 
+        }else{
+            unset($HistoriqueService); 
+            $HistoriqueService = new HistoriqueService(); 
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
+        }
         
-        unset($HistoriqueService); 
-        $HistoriqueService = new HistoriqueService(); 
-        $_SESSION['HISTO'][2] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
-
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/historique.php");
     break;
@@ -249,7 +256,7 @@ switch ($requested_page) {
             // Positionner les attributs de l'objet en utilisant les fonctions setter
             $utilisateur->setPrenom(htmlspecialchars($_POST['prenom']));
             $utilisateur->setNom(htmlspecialchars($_POST['nom']));
-            $utilisateur->setMail(htmlspecialchars($_POST['email']));
+            $utilisateur->setEmail(htmlspecialchars($_POST['email']));
             $utilisateur->setMotdepasse(htmlspecialchars($_POST['password']));
 
             try {

@@ -17,7 +17,7 @@ class Utilisateur {
     private $id;
     private $nom; 
     private $prenom; 
-    private $mail; 
+    private $email; 
     private $motdepasse;
     private $solde;
 
@@ -59,12 +59,12 @@ class Utilisateur {
         return $this->prenom;
     }
 
-    public function setMail($mail) : void {
-        $this->mail = $mail;
+    public function setEmail($email) : void {
+        $this->email = $email;
     }
 
-    public function getMail() {
-        return $this->mail;
+    public function getEmail() {
+        return $this->email;
     }
 
     public function setMotdepasse($motdepasse) : void {
@@ -83,6 +83,17 @@ class Utilisateur {
         return $this->solde;
     }
 
+    public function toArray() : array{ 
+        return array(
+            'id' => $this->id,
+            'nom' => $this->nom,
+            'prenom' => $this->prenom,
+            'email' => $this->email,
+            'motdepasse' => $this->motdepasse,
+            'solde' => $this->solde
+        );
+    }
+
     /**  
     * Destructeur, appelé quand l'objet est détruit
     */  
@@ -92,14 +103,14 @@ class Utilisateur {
         // unset() détruit la ou les variables dont le nom a été passé en argument
     	// unset($this->nom);
        	// unset($this->prenom);
-       	// unset($this->mail);   	
+       	// unset($this->email);   	
     }
     
 	public function __toString() 
 	{    
 	    return "id : $this->id nom : $this->nom  
         prenom : $this->prenom   
-        mail : $this->mail".self::CR;   
+        email : $this->email".self::CR;   
 	}
 
     public function toJson(){
@@ -107,7 +118,7 @@ class Utilisateur {
             "id" => $this->id,
             "nom" => $this->nom,
             "prenom" => $this->prenom, 
-            "mail" => $this->mail,
+            "email" => $this->email,
             "motdepasse" => $this->motdepasse,
             "solde" => $this->solde
         ];
