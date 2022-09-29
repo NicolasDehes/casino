@@ -18,7 +18,7 @@
         <div class="banner">
             <div class="banner__content"></div>
         </div>
-        <h1 class="title">Roulette</h1>
+        <h1 class="title"><?php echo ($_SESSION['JEU'] == 1)? 'Roulette ': 'Pile ou face'; ?></h1>
         <table class="historique">
             <thead class="historique__header">
                 <td>Mise</td>
@@ -31,7 +31,7 @@
                     ?>
                     <tr class="historique__item <?php if($value['gain'] <= 0 ) echo 'historique__item--lost'?>">
                         <td><?php echo $value['mise'] ?></td>
-                        <td><?php echo $value['gain'] ?></td>
+                        <td><?php echo ($value['gain'] <= 0 )? 0 : $value['gain'] ?></td>
                         <td><?php 
                             $date = new DateTime($value['dateJeu']); 
                             echo $date->format(' d/m/Y ') ?>
