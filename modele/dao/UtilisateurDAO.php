@@ -239,6 +239,7 @@ class UtilisateurDAO {
         return $newSolde;
     }
 
+    // Défini si l'utilisateur à les fonds necéssaire pour jouer
     public function isSoldeOk($id, $mise){
         $requete = $this->Connection->prepare("
             SELECT *
