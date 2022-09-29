@@ -83,6 +83,17 @@ class Utilisateur {
         return $this->solde;
     }
 
+    public function toArray() : array{ 
+        return array(
+            'id' => $this->id,
+            'nom' => $this->nom,
+            'prenom' => $this->prenom,
+            'email' => $this->email,
+            'motdepasse' => $this->motdepasse,
+            'solde' => $this->solde
+        );
+    }
+
     /**  
     * Destructeur, appelé quand l'objet est détruit
     */  

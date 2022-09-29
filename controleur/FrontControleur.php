@@ -160,6 +160,10 @@ switch ($requested_page) {
 
     // Afficher le jeu roulette
     case 'roulette':
+        $userService = new UtilisateurService();
+        $user = $userService->getUserById($_SESSION["id_user"]);
+        $_SESSION['USER'] = $user->toArray();
+        
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/roulette.php");
         

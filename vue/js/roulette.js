@@ -3,6 +3,7 @@ const rouletteForm = document.getElementById('roulette-form');
 const win = document.getElementById('win');
 const lose = document.getElementById('lose');
 const rouletteResult = document.getElementById('roulette-result');
+const solde = document.getElementById('solde');
 
 rouletteForm.addEventListener('submit', onClickRoulette);
 
@@ -26,7 +27,10 @@ async function onClickRoulette(evt) {
     const playBtn = document.getElementById('play-btn');
     playBtn.classList.add('button--disabled');
 
-    const mise = document.getElementById('creditsInput').value;
+    const creditInput = document.getElementById('creditsInput');
+    const mise = creditInput.value;
+
+    solde.textContent = parseInt(solde.textContent) - parseInt(mise);
 
     var formData = new FormData();
     formData.append('idUser', 1);
@@ -53,7 +57,6 @@ async function onClickRoulette(evt) {
     rouletteContainer.style.transform = `rotate(${totalDeg + baseRotate}deg)`;
 
     setTimeout(() => {
-        solde = document.getElementById('solde');
         solde.textContent = res.newSolde;
 
         // Hide form
@@ -75,6 +78,8 @@ async function onClickRoulette(evt) {
         rouletteResult.style.display = 'block';
 
         playBtn.classList.remove('button--disabled');
+
+        creditInput.setAttribute('max', res.newSolde);
 
     }, 3000); // Await transition roulette
 }
