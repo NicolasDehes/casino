@@ -30,9 +30,12 @@
                 foreach($_SESSION['HISTO'] as $value){ 
                     ?>
                     <tr class="historique__item <?php if($value['gain'] <= 0 ) echo 'historique__item--lost'?>">
-                    <td><?php echo $value['mise'] ?></td>
-                    <td><?php echo $value['gain'] ?></td>
-                    <td><?php echo $value['dateJeu'] ?></td>
+                        <td><?php echo $value['mise'] ?></td>
+                        <td><?php echo $value['gain'] ?></td>
+                        <td><?php 
+                            $date = new DateTime($value['dateJeu']); 
+                            echo $date->format(' d/m/Y ') ?>
+                        </td>
                     </tr><?php
                 } 
                 ?>
@@ -40,8 +43,8 @@
             </tbody>
         </table>
         <div class="double-btn">
-            <a class="double-btn__item" href="../controleur/FrontControleur.php?action=historique&jeu=roulette">Roulette</a>
-            <a class="double-btn__item" href="../controleur/FrontControleur.php?action=historique&jeu=pileouface">Pile ou Face</a>
+            <a class="double-btn__item" style="<?php if($_SESSION['JEU'] == 1) echo 'z-index: 3; ' ?>" href="../controleur/FrontControleur.php?action=historique&jeu=roulette">Roulette</a>
+            <a class="double-btn__item" style="<?php if($_SESSION['JEU'] == 2) echo 'z-index: 3; ' ?>" href="../controleur/FrontControleur.php?action=historique&jeu=pileouface">Pile ou Face</a>
         </div>
     </body>
 </html>

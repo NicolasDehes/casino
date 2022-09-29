@@ -22,13 +22,13 @@
     <section class="body__container">
         <div class="informations">
             <h1 class="informations__title">Informations <span>personnelles</span></h1>
-            <p>Nom: Jean</p>
-            <p>Prénom: Francois</p>
-            <p>Email: abc@gmail.com</p>
+            <p>Nom: <?php echo $_SESSION['USER']['nom'] ?></p>
+            <p>Prénom: <?php echo $_SESSION['USER']['prenom'] ?></p>
+            <p>Email: <?php echo $_SESSION['USER']['email'] ?></p>
             <a href="#" class="informations__edit">Modifier</a>
         </div>
         <div class="credits">
-            <p class="credit__number">100</p>
+            <p class="credit__number"><?php echo $_SESSION['USER']['solde'] ?></p>
             <p class="credit__label">crédits</p>
         </div>
         <div class="profil-btn">

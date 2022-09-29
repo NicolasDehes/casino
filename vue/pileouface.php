@@ -16,7 +16,7 @@
       require_once("./navigation.php") 
     ?>
     <main>
-        <span class="solde">Solde : 100</span>
+        <span class="solde">Solde : <?php echo $_SESSION['USER']['solde'] ?></span>
 
         <div class="cut-background">
 

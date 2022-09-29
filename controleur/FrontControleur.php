@@ -75,6 +75,10 @@ else
     // Retourner la page d'authentification
     $requested_page = 'login';
 
+
+$userService = new UtilisateurService();
+$user = $userService->getUserById($_SESSION["id_user"]);
+$_SESSION['USER'] = $user->toArray();
 // En fonction de la demande de l'utilisateur, effectuer le traitement
 switch ($requested_page) {
 
@@ -150,20 +154,12 @@ switch ($requested_page) {
         $HistoriqueService = new HistoriqueService(); 
         $_SESSION['HISTO'] = $HistoriqueService->findByUser($_SESSION["id_user"]);
 
-        // $UserService = new UtilisateurService(); 
-        // $user = $UserService->findById($_SESSION["id_user"]); 
-        // $_SESSION['USER'] = $user;
-
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/accueil.php");
     break;
 
     // Afficher le jeu roulette
-    case 'roulette':
-        $userService = new UtilisateurService();
-        $user = $userService->getUserById($_SESSION["id_user"]);
-        $_SESSION['USER'] = $user->toArray();
-        
+    case 'roulette':        
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/roulette.php");
         
@@ -177,14 +173,14 @@ switch ($requested_page) {
 
     // Afficher la page d'historique
     case 'historique':
+        $HistoriqueService = new HistoriqueService(); 
+
         if(htmlspecialchars($_GET['jeu']) == 'roulette'){
-            $HistoriqueService = new HistoriqueService(); 
-            $_SESSION['HISTO'] = array();
-            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( 1,$_SESSION["id_user"]); 
+            $_SESSION['JEU'] = 1; 
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( $_SESSION['JEU'],$_SESSION["id_user"]); 
         }else{
-            unset($HistoriqueService); 
-            $HistoriqueService = new HistoriqueService(); 
-            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
+            $_SESSION['JEU'] = 2; 
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( $_SESSION['JEU'],$_SESSION["id_user"]); 
         }
         
         // Retourner la page accueil.php : page d'accueil de l'application
