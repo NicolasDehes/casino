@@ -120,6 +120,12 @@
     background-color: #3b3d73;
 }
 
+.button--disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .solde {
     position: absolute;
     top: 0;
