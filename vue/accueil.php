@@ -27,7 +27,7 @@
 
     <section class="home-solde">
       <p class="home-solde__texte">Vous avez : </p>
-      <p class="home-solde__credit"> 100 <span  class="home-solde__unite"> crédits</span> </p>
+      <p class="home-solde__credit"> <?php echo $_SESSION['USER']['solde'] ?> <span  class="home-solde__unite"> crédits</span> </p>
     </section>
 
     
@@ -45,11 +45,13 @@
             <tr class="historique__item <?php if($value['gain'] <= 0 ) echo 'historique__item--lost'?>">
               <td><?php echo $value['mise'] ?></td>
               <td><?php echo $value['gain'] ?></td>
-              <td><?php echo $value['dateJeu'] ?></td>
+              <td><?php 
+                $date = new DateTime($value['dateJeu']); 
+                echo $date->format(' d/m/Y ') ?>
+              </td>
             </tr><?php
           } 
         ?>
-      
       </tbody>
     </table>
   </body>
