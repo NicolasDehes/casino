@@ -4,6 +4,7 @@ const win = document.getElementById('win');
 const lose = document.getElementById('lose');
 const rouletteResult = document.getElementById('roulette-result');
 const solde = document.getElementById('solde');
+let isPlaying = false;
 
 rouletteForm.addEventListener('submit', onClickRoulette);
 
@@ -23,6 +24,10 @@ function onRetry() {
 
 async function onClickRoulette(evt) {
     evt.preventDefault();
+
+    if (isPlaying) return;
+
+    isPlaying = true;
 
     const playBtn = document.getElementById('play-btn');
     playBtn.classList.add('button--disabled');
@@ -80,6 +85,8 @@ async function onClickRoulette(evt) {
         playBtn.classList.remove('button--disabled');
 
         creditInput.setAttribute('max', res.newSolde);
+
+        isPlaying = false;
 
     }, 3000); // Await transition roulette
 }

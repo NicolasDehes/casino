@@ -214,12 +214,12 @@ switch ($requested_page) {
         unset ($_SESSION['message']);
 
         // Retourner la page motdepasse.php 
-        header('Location: ../vue/motdepasse.php');
+        header('Location: ../vue/forgetPwd.php');
     break;
 
     // Clique sur le bouton valider de la page motdepasse.php
     case 'valider_demander_motdepasse':
-        header('Location: ../vue/motdepasse.php');
+        header('Location: ../vue/forgetPwd.php');
     break;
 
     // Demande de création d'un compte
