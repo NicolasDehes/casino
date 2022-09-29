@@ -75,10 +75,11 @@ else
     // Retourner la page d'authentification
     $requested_page = 'login';
 
-    
-$userService = new UtilisateurService();
-$user = $userService->getUserById($_SESSION["id_user"]);
-$_SESSION['USER'] = $user->toArray();
+if(isset($_SESSION["id_user"])){
+    $userService = new UtilisateurService();
+    $user = $userService->getUserById($_SESSION["id_user"]);
+    $_SESSION['USER'] = $user->toArray();
+}
 
 // En fonction de la demande de l'utilisateur, effectuer le traitement
 switch ($requested_page) {
