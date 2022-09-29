@@ -91,3 +91,22 @@
     position: relative;
     right: 20px;
 }
+
+.describe {
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 30px;
+    color: #3B3D73;
+    text-align: center;
+    margin:auto; 
+    margin-top: 40vh;
+    width: 50%;
+}
+
+.action{
+    display: flex;
+    flex-direction: column;
+    padding: 9%;
+    height: 24vh;
+    justify-content: space-around;
+}
