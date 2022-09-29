@@ -44,6 +44,7 @@ class HistoriqueService {
         return $results;
     }
 
+
     public function addHistorique($idUser, $mise, $gain, $jeu)
     { 
         // Enregistrement du message dans le fichier log

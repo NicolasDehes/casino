@@ -14,7 +14,7 @@
             $id_actif_navigation = 4; 
             require_once("./navigation.php") 
         ?>
-        
+    
         <div class="banner">
             <div class="banner__content"></div>
         </div>

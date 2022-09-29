@@ -73,6 +73,7 @@ class UtilisateurDAO {
             //session_start();
 
             // Sauvegarder le prénom et le nom dans une variable de session nommée prenom_nom
+            $_SESSION["id_user"] = $user[0]["id"]; 
             $_SESSION["prenom_nom"] = ucfirst(strtolower($user[0]["prenom"]))." ".strtoupper($user[0]["nom"]);
 
             // Positionner à true le booléen retourné par la fonction

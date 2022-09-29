@@ -15,7 +15,6 @@
     <title>Accueil</title>
   </head>
   <body>
-  <?php session_name('myid');session_start(); ?>
     <?php 
       $id_actif_navigation = 3; 
       require_once("./navigation.php") 
@@ -29,5 +28,7 @@
       <p class="home-solde__texte">Vous avez : </p>
       <p class="home-solde__credit"> 100 <span  class="home-solde__unite"> crédits</span> </p>
     </section>
-    </body>
+
+    <?php echo '<pre>';  $_SESSION['HISTO']; echo'</pre>';?>
+  </body>
 </html>

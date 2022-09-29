@@ -1,3 +1,14 @@
+<?php 
+session_name('myid'); 
+session_start();  
+
+
+if(!isset($_SESSION["prenom_nom"])){
+  // logout.php supprime la session et redirige vers la page de login
+  header('Location: ../vue/logout.php');
+}
+?>
+
 <nav class="nav">
     <ul class="nav__list">
       <li class="nav__item <?php if($id_actif_navigation == 1) echo 'nav__item--selected'; ?>">

@@ -98,6 +98,7 @@ class UtilisateurService {
         return $bRet;
     }
 
+
     public function getUserById($id){
         try {
             // Appel de la méthode deleteUser() de la classe UtilisateurDao

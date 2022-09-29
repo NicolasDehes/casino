@@ -3,6 +3,7 @@
 require_once("../Autoloader.php");
 
 use \modele\service\UtilisateurService;
+use \modele\service\HistoriqueService;
 
 // LES SESSIONS
 // Une session en PHP correspond à une façon de stocker des données différentes pour chaque 
@@ -146,7 +147,14 @@ switch ($requested_page) {
 
     // Afficher la page d'accueil
     case 'accueil':
-            // Retourner la page accueil.php : page d'accueil de l'application
+        $HistoriqueService = new HistoriqueService(); 
+        $_SESSION['HISTO'] = $HistoriqueService->findByUser($_SESSION["id_user"]);
+
+        // $UserService = new UtilisateurService(); 
+        // $user = $UserService->findById($_SESSION["id_user"]); 
+        // $_SESSION['USER'] = $user;
+
+        // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/accueil.php");
     break;
 
@@ -154,6 +162,7 @@ switch ($requested_page) {
     case 'roulette':
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/roulette.php");
+        
     break;
 
     // Afficher le jeu pileouface
@@ -164,6 +173,13 @@ switch ($requested_page) {
 
     // Afficher la page d'historique
     case 'historique':
+        $HistoriqueService = new HistoriqueService(); 
+        $_SESSION['HISTO'][1] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
+        
+        unset($HistoriqueService); 
+        $HistoriqueService = new HistoriqueService(); 
+        $_SESSION['HISTO'][2] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
+
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/historique.php");
     break;
