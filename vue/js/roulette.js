@@ -50,7 +50,7 @@ async function onClickRoulette(evt) {
     // Changer ici la valeur de la rotation
     const nbSections = res.random;
 
-    const nbTours = Math.floor(Math.random() * 10) + 1;
+    const nbTours = Math.floor(Math.random() * 10) + 2;
 
     const totalDeg = (nbSections + nbTours * 8) * 45; // 45 = 360/8
 
