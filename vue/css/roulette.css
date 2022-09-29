@@ -117,12 +117,18 @@ body {
 }
 
 .roulette-result {
+    display: none;
     font-family: Nunito, sans-serif;
     font-weight: 700;
     font-size: 28px;
     color: #3b3d73;
-    margin: 0 20%;
+    margin: 0 8%;
     text-align: center;
+}
+
+.roulette-result__gain {
+    display: none;
+    margin: 2vh 0 8vh;
 }
 
 .roulette-result__gain span{
@@ -151,6 +157,10 @@ input[type=number] {
     .roulette {
         width: 40%;
         min-width: 40vh;
+    }
+
+    .roulette-result {
+        width: 50%;
     }
 
     .roulette__container {

@@ -160,6 +160,10 @@ switch ($requested_page) {
 
     // Afficher le jeu roulette
     case 'roulette':
+        $userService = new UtilisateurService();
+        $user = $userService->getUserById($_SESSION["id_user"]);
+        $_SESSION['USER'] = $user->toArray();
+        
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/roulette.php");
         
@@ -252,7 +256,7 @@ switch ($requested_page) {
             // Positionner les attributs de l'objet en utilisant les fonctions setter
             $utilisateur->setPrenom(htmlspecialchars($_POST['prenom']));
             $utilisateur->setNom(htmlspecialchars($_POST['nom']));
-            $utilisateur->setMail(htmlspecialchars($_POST['email']));
+            $utilisateur->setEmail(htmlspecialchars($_POST['email']));
             $utilisateur->setMotdepasse(htmlspecialchars($_POST['password']));
 
             try {

@@ -10,6 +10,7 @@ $mise = (int)$_POST['mise'];
 
 if($mise == null || $idUser == null){
     $data = [
+        "error" => 1,
         "message" => "Un paramètre est manquant"
     ];
     header('Content-Type: application/json; charset=utf-8');
@@ -19,20 +20,38 @@ if($mise == null || $idUser == null){
 }
 try{
 
-    $roulette = [-1,-1,-1,-1,1,1,1,2,2,3];  
-    $random = rand(0,count($roulette));
+    $utilisateurService = new UtilisateurService();
+    $isSoldeOk = $utilisateurService->isSoldeOk($idUser, $mise);
+
+    if(!$isSoldeOk){
+        $data = [
+            "error" => 2,
+            "message" => "Le solde de l'utilisateur est insuffisant."
+        ];
+        header('Content-Type: application/json; charset=utf-8');
+        http_response_code(401);
+        echo json_encode($data);
+        exit;
+    }
+
+    $roulette = [-1,0,-1,2,-1,1,-1,1];  // -1 => 0, 0 => 1, 1 => 2, 2 => 3
+    $random = rand(0, count($roulette)-1);
     $gain = $roulette[$random]*$mise;
 
-    $utilisateurService = new UtilisateurService();
     $newSolde = $utilisateurService->changeSolde($idUser,$gain);
 
     $historiqueService = new HistoriqueService();
     $result = $historiqueService->addHistorique($idUser, $mise, $gain, 1);
 
+    $gainReel = $gain;
+    
+    if($gain > 0){
+        $gainReel + $mise;   
+    }
+    
     $data = [
         "result" => $gain >= $mise,
-        "mise" => $mise,
-        "gain" => $gain,
+        "gain" => $gainReel,
         "newSolde" => $newSolde,
         'random' => $random,
     ];

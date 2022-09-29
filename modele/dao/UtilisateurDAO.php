@@ -100,7 +100,7 @@ class UtilisateurDAO {
         $requete = $this->Connection->prepare("SELECT * FROM ".self::TABLE." where email=? limit 1");
         
         // Exécution de la requête
-        $requete->execute(array($user->getMail()));
+        $requete->execute(array($user->getEmail()));
 
         // Récupérer le résultat de la requête sous forme d'un tableau 
         $result = $requete->fetchAll();
@@ -128,7 +128,7 @@ class UtilisateurDAO {
         $result = $requete->execute(array(
                 "nom" => $user->getNom(),
                 "prenom" => $user->getPrenom(),
-                "email" => $user->getMail(),
+                "email" => $user->getEmail(),
                 "motdepasse" => $password));
 
         
@@ -190,7 +190,7 @@ class UtilisateurDAO {
             $utilisateur->setId($valeur["id"]);
             $utilisateur->setNom($valeur["nom"]);
             $utilisateur->setPrenom($valeur["prenom"]);
-            $utilisateur->setMail($valeur["email"]);
+            $utilisateur->setEmail($valeur["email"]);
             $utilisateur->setMotdepasse($valeur["motdepasse"]);
 
             // Ajouter l'objet Utilisateur dans le tableau
@@ -217,7 +217,7 @@ class UtilisateurDAO {
         $result = $requete->fetch();
         $user = new Utilisateur();
         $user->setId($result['id']);
-        $user->setMail($result['mail']);
+        $user->setEmail($result['email']);
         $user->setNom($result['nom']);
         $user->setPrenom($result['prenom']);
         $user->setSolde($result['solde']);
@@ -237,6 +237,19 @@ class UtilisateurDAO {
         $requete->bindValue('id',$id);
         $succes = $requete->execute();
         return $newSolde;
+    }
+
+    public function isSoldeOk($id, $mise){
+        $requete = $this->Connection->prepare("
+            SELECT *
+            FROM ".self::TABLE." 
+            WHERE id = :id"
+        );
+        $requete->bindValue('id',$id);
+        $succes = $requete->execute();
+        $user = $requete->fetch();
+        $isSoldeOk = $user['solde'] >= $mise;
+        return $isSoldeOk;
     }
     
     /**  

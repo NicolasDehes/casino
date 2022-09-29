@@ -2,8 +2,11 @@
 
 require_once("../Autoloader.php");
 
-$idUser = $_POST['idUser'];
-$mise = $_POST['mise'];
+use modele\service\UtilisateurService;
+use modele\service\HistoriqueService;
+
+$idUser = (int)$_POST['idUser'];
+$mise = (int)$_POST['mise'];
 
 if($mise == null || $idUser == null){
     $data = [
@@ -16,7 +19,27 @@ if($mise == null || $idUser == null){
 }
 try{
 
-    
+    $random = rand(0,1);
+    if($random){
+        $gain = $gain * 2;
+    } else {
+
+    }
+    $gain = $random*$mise;
+
+    $utilisateurService = new UtilisateurService();
+    $newSolde = $utilisateurService->changeSolde($idUser,$gain);
+
+    $historiqueService = new HistoriqueService();
+    $result = $historiqueService->addHistorique($idUser, $mise, $gain, 2);
+
+    $data = [
+        "result" => $gain >= $mise,
+        "mise" => $mise,
+        "gain" => $gain,
+        "newSolde" => $newSolde,
+        'random' => $random,
+    ];
 
     header('Content-Type: application/json; charset=utf-8');
     http_response_code(200);

@@ -45,7 +45,7 @@ session_start(); ?>
                         <?php echo $utilisateur->getNom();?>
                     </td>
                     <td>
-                        <?php echo $utilisateur->getMail(); ?>
+                        <?php echo $utilisateur->getEmail(); ?>
                     </td>
                     <td>
                         <a href="../controleur/FrontControleur.php?action=supprimer_utilisateur&id=<?PHP echo $utilisateur->getId()?>">Supprimer</a> 
