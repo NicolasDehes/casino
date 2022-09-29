@@ -44,7 +44,7 @@
             ?>
             <tr class="historique__item <?php if($value['gain'] <= 0 ) echo 'historique__item--lost'?>">
               <td><?php echo $value['mise'] ?></td>
-              <td><?php echo $value['gain'] ?></td>
+              <td><?php echo ($value['gain'] <= 0 )? 0 : $value['gain'] ?></td>
               <td><?php 
                 $date = new DateTime($value['dateJeu']); 
                 echo $date->format(' d/m/Y ') ?>
