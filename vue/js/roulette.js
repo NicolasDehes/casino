@@ -41,7 +41,7 @@ async function onClickRoulette(evt) {
     formData.append('idUser', 1);
     formData.append('mise', mise);
 
-    const res = await fetch('/casino/api/roulette.php', {
+    const res = await fetch('../api/roulette.php', {
         method: 'POST',
         body: formData,
     }).then((data) => data.json());
