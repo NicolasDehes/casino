@@ -179,14 +179,13 @@ switch ($requested_page) {
 
     // Afficher la page d'historique
     case 'historique':
+        $HistoriqueService = new HistoriqueService(); 
         if(htmlspecialchars($_GET['jeu']) == 'roulette'){
-            $HistoriqueService = new HistoriqueService(); 
-            $_SESSION['HISTO'] = array();
-            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( 1,$_SESSION["id_user"]); 
+            $_SESSION['JEU'] = 1; 
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame($_SESSION['JEU'],$_SESSION["id_user"]); 
         }else{
-            unset($HistoriqueService); 
-            $HistoriqueService = new HistoriqueService(); 
-            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame( 2,$_SESSION["id_user"]); 
+            $_SESSION['JEU'] = 2; 
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame($_SESSION['JEU'],$_SESSION["id_user"]); 
         }
         
         // Retourner la page accueil.php : page d'accueil de l'application
