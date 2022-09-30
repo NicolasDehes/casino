@@ -384,7 +384,6 @@ switch ($requested_page) {
         
         unset ($_SESSION['message']);
 
-        $hash = $_GET['hash']; 
         // Suppression de la variable de session nommée message
         if (!checkPOSTParameters(['password','password_conf'])) {
             $_SESSION['message'] = "Champ obligatoire non renseigné";
@@ -397,12 +396,11 @@ switch ($requested_page) {
         // Récupérer le 2ème mot de passe saisi
         $mdp2 = $_POST['password_conf'];
         $email = $_POST['email'] ; 
+        $hash = $_GET['hash']; 
         $PassWordService = new ForgetPasswordService();
 
-        if($PassWordService->check($hash, $email)){
-
-        }else{
-            $_SESSION['message'] = "Email non compatinble"; 
+        if(!$PassWordService->check($hash, $email)){
+            $_SESSION['message'] = "Email non compatible"; 
         }
         
         if ($mdp1 == $mdp2 && $PassWordService->check($hash, $email)) {
@@ -417,7 +415,7 @@ switch ($requested_page) {
             // Problème : exemple -> Impossible de se connecter à la BD
             catch (\Exception $e) {
                 // Positionner un message en variable de session : message utilisé par login.php
-                $_SESSION['message'] = "Création du compte impossible"; 
+                $_SESSION['message'] = "Réinitialisation de mot de passe impossible"; 
                 // Retourner la page inscription.php
                 header('Location: ../vue/NewMotDePasse.php');
                 // Fin du script
