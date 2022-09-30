@@ -36,6 +36,8 @@
     color: #3b3d73;
     display: inline-block;
     overflow-Y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
     /* Pour pouvoir scroller dans le tableau */
     max-height: 50vh;
     position: relative;
