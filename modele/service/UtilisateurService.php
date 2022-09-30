@@ -142,7 +142,7 @@ class UtilisateurService {
     public function updateUser($id, $nom, $prenom, $email, $mdp): bool{
         try{
             $bRet = $this->hUtilisateurDAO->updateUser($id, $nom, $prenom, $email);
-            if($bRet && $mdp != null && count($mdp)>0){
+            if($bRet && $mdp != null && $mdp!=""){
                 $bRet = $this->updateMDPUser($email,$mdp);
             }
         }
