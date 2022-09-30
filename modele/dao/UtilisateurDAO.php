@@ -287,9 +287,24 @@ class UtilisateurDAO {
         $success = $requete->execute();
         if($requete->rowCount() > 0){
             return true;
-        } else {
-            return false;
         }
+        return false;
+    }
+
+    public function updateUser($id, $nom, $prenom, $email): bool{
+        $requete = $this->Connection->prepare("
+            UPDATE ".self::TABLE."
+            SET nom = :nom, prenom = :prenom, email = :email
+            WHERE id = :id
+        ");
+        $requete->bindValue("id",$id);
+        $requete->bindValue("nom",$nom);
+        $requete->bindValue("prenom",$prenom);
+        $requete->bindValue("email",$email);
+        if($requete->execute()){
+            return true;
+        }
+        return false;
     }
     /**  
     * Destructeur, appelé quand l'objet est détruit

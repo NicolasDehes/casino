@@ -94,5 +94,14 @@ class Jeu {
             "maximum" => $this->maximum
         ];
     }
+
+    public function toArray() : array{ 
+        return array(
+            'id' => $this->id,
+            'nom' => $this->nom,
+            'minimum' => $this->minimum,
+            'maximum' => $this->maximum
+        );
+    }
 }
 ?>
