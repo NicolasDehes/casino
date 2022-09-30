@@ -417,7 +417,6 @@ switch ($requested_page) {
                 // Fin du script
                 die();
             }
-
         }
         // SINON les 2 mots de passe sont différents
         else {
@@ -465,6 +464,9 @@ switch ($requested_page) {
         $credit = $_POST['credits']; 
         $user = $_SESSION['id_user'];
         
+        $userService = new UtilisateurService();
+        $userService->changeSolde($user, $credit);
+        
         header('Location: ../controleur/FrontControleur.php?action=profil');
 
     break;
@@ -476,6 +478,9 @@ switch ($requested_page) {
         
         $credit = $_POST['credits']; 
         $user = $_SESSION['id_user']; 
+
+        $userService = new UtilisateurService();
+        $userService->changeSolde($user, '-'.$credit);
         
         header('Location: ../controleur/FrontControleur.php?action=profil');
 
