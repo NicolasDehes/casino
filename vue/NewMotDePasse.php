@@ -28,7 +28,8 @@
                     <?php echo $_SESSION['message']; ?>
                 </div>
             <?php } ?>
-            <form id="mdp-form" class="form" >
+            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=update_mot_de_passe">
+                <input type="email" class="input--secondary" name="email" placeholder="Email" required>
                 <input type="password" class="input--secondary" name="password" placeholder="Mot de passe" required>
                 <input type="password" class="input--secondary" name="password_conf" placeholder="Confirmer le mot de passe" required>
                 <button  type="submit" class="button button--secondary" >Réinitialiser le mot de passe</button>
@@ -37,8 +38,6 @@
             </form>
         </div>
     </section>
-    <script src="./js/mail.js">
         
-    </script>
     </body>
 </html>

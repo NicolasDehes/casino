@@ -31,7 +31,7 @@
 
 .link {
     color: #3b3d73;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-decoration: none;
 }
 .link--strong {

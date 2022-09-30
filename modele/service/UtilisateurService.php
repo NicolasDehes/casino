@@ -128,5 +128,16 @@ class UtilisateurService {
         }
         return $bRet;
     }
+
+    public function updateMDPUser($email,$mdp){
+        try {
+            $bRet = $this->hUtilisateurDao->updateMDPUser($email,$mdp);
+        }
+        catch (\Exception $e) {
+            throw new \Exception($e);
+        }
+        return $bRet;
+    }
 }
 ?>
+

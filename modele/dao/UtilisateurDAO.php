@@ -252,6 +252,20 @@ class UtilisateurDAO {
         $isSoldeOk = $user['solde'] >= $mise;
         return $isSoldeOk;
     }
+
+    // Défini si l'utilisateur à les fonds necéssaire pour jouer
+    public function updateMDPUser($email, $mdp){
+        $requete = $this->Connection->prepare("
+            UPDATE ".self::TABLE." 
+            SET motdepasse = :motdepasse
+            WHERE email = :email"
+        );
+        $requete->bindValue('email',$email);
+        $requete->bindValue('motdepasse', md5($mdp));
+        $succes = $requete->execute();
+        $user = $requete->fetch();
+        $this->Connection = null;
+    }
     
     /**  
     * Destructeur, appelé quand l'objet est détruit

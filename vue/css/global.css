@@ -52,8 +52,8 @@
 
 .input::placeholder,
 .input--secondary::placeholder {
-    color: white;
-    opacity: 0.8;
+    color: #000;
+    opacity: 0.6;
 }
 
 .input--secondary {

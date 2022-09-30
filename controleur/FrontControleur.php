@@ -217,6 +217,15 @@ switch ($requested_page) {
         header('Location: ../vue/motdepasse.php');
     break;
 
+    // Afficher la page réinitialisé mot de passe
+    case 'new_motdepasse':
+        // Suppression de la variable de session nommée message
+        unset ($_SESSION['message']);
+
+        // Retourner la page motdepasse.php 
+        header('Location: ../vue/NewMotDePasse.php');
+    break;
+
     // Clique sur le bouton valider de la page motdepasse.php
     case 'valider_demander_motdepasse':
         header('Location: ../vue/motdepasse.php');
@@ -368,6 +377,59 @@ switch ($requested_page) {
         // Retourner la page login
         header('Location: ../vue/login.php');
     break;
+
+    // Afficher la page d'authentification
+    case 'update_mot_de_passe':
+        
+        unset ($_SESSION['message']);
+
+        // Suppression de la variable de session nommée message
+        if (!checkPOSTParameters(['password','password_conf'])) {
+            $_SESSION['message'] = "Champ obligatoire non renseigné";
+            header('Location: ../vue/NewMotDePasse.php');
+            // Fin du script
+            die();
+        }
+
+        $mdp1=$_POST['password'];
+        // Récupérer le 2ème mot de passe saisi
+        $mdp2=$_POST['password_conf'];
+
+        if ($mdp1 == $mdp2) {
+            try{ 
+                $utilisateurService = new UtilisateurService();
+                
+                $email = $_POST['email'] ; 
+                $utilisateurService->updateMDPUser($email ,$mdp1);
+                
+                // Retourner la page inscription.php
+                header('Location: ../controleur/FrontControleur.php?action=login');
+            }
+            // Problème : exemple -> Impossible de se connecter à la BD
+            catch (\Exception $e) {
+                // Positionner un message en variable de session : message utilisé par login.php
+                $_SESSION['message'] = "Création du compte impossible".$e; 
+                // Retourner la page inscription.php
+                header('Location: ../vue/NewMotDePasse.php');
+                // Fin du script
+                die();
+            }
+
+        }
+        // SINON les 2 mots de passe sont différents
+        else {
+            // Positionner un message en variable de session 
+            $_SESSION['message'] = "Les mots de passe sont différents"; 
+            // Retourner la page d'inscription
+            header('Location: ../vue/NewMotDePasse.php');
+        }
+
+        // updateMDPUser
+
+        // header("X-Content-Type-Options", "nosniff");
+        // Retourner la page login
+    break;
+
 
     // Cas où l'action ne correspond à aucune action répertoriée
     default:
