@@ -1,0 +1,36 @@
+.form__content{
+    background: #ffffff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.14);
+    border-radius: 15px;
+    font-family: 'Nunito', sans-serif;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+
+.form__titre{
+    color: #3b3d73;
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+    position: relative;
+    top: 30px;
+    margin-bottom: 30px;
+}
+
+#paypal, #card{
+    display: none ;
+}
+
+#input-paypal:checked ~ #paypal,
+#input-card:checked ~ #card {
+  display: flex;
+  visibility: visible;
+}
+
+.radio{
+}
+
+.radio__label{
+    color: #3b3d73;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+}
