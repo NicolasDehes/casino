@@ -32,8 +32,8 @@
                     <?php echo $_SESSION['message']; ?>
                 </div>
             <?php } ?>
-            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=remove_credit">
-                <input type="email" class="input" name="credits" placeholder="Crédits à retirer" required>
+            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=send_remove_credit">
+                <input type="number" class="input" name="credits" placeholder="Crédits à retirer" required>
                 <fieldset class="form__content form"> 
                     <legend class="form__titre">Coordonnées bancaires</legend>
                     
