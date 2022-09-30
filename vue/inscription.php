@@ -14,7 +14,7 @@
     <title>Création compte</title>
   </head>
   <body class="body">
-    <img class="desktop-img" src="../asset/image/casino3.jpg">
+    <img class="desktop-img" src="../asset/image/casino3.jpg" alt="background-image">
         <section class="body__content">
             <header class="header">
                     <a href="../controleur/FrontControleur.php?action=login"><svg class="back" width="25" height="17" viewBox="0 0 25 17" fill="none" xmlns="http://www.w3.org/2000/svg">

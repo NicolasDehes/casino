@@ -2,7 +2,6 @@
 session_name('myid'); 
 session_start();  
 
-
 if(!isset($_SESSION["id_user"])){
   // logout.php supprime la session et redirige vers la page de login
   header('Location: ../vue/logout.php');
@@ -15,7 +14,7 @@ if(!isset($_SESSION["id_user"])){
         <a href="../controleur/FrontControleur.php?action=pileouface">
           <?xml version='1.0' encoding='utf-8'?>
           <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g>
               <g>
                 <g>
@@ -33,7 +32,7 @@ if(!isset($_SESSION["id_user"])){
         <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 25.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 471.1 471.1" style="enable-background:new 0 0 471.1 471.1;" xml:space="preserve">
+	 viewBox="0 0 471.1 471.1" xml:space="preserve">
 <g>
 	<path d="M412.2,465L350,357.2c35.3-31.5,57.5-77.3,57.5-128.2c0-89.3-68.1-163.3-156.3-171.3l17.2-29.8c0.9-1.6,0.7-3.7-0.8-5
 		c-0.8-0.7-1.8-1-2.8-1h-15.4V5.2c0-2.9-2.3-5.2-5.2-5.2h-17.6c-2.9,0-5.2,2.3-5.2,5.2v16.7h-15.4c-1,0-2,0.3-2.8,1
@@ -139,7 +138,7 @@ if(!isset($_SESSION["id_user"])){
         <a href="../controleur/FrontControleur.php?action=accueil">
           <?xml version="1.0" encoding="iso-8859-1"?>
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+             viewBox="0 0 512 512" xml:space="preserve">
             <g>
               <g>
                 <path d="M506.555,208.064L263.859,30.367c-4.68-3.426-11.038-3.426-15.716,0L5.445,208.064
@@ -200,7 +199,7 @@ if(!isset($_SESSION["id_user"])){
         <a href="../controleur/FrontControleur.php?action=profil">
             <?xml version="1.0" encoding="iso-8859-1"?>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                viewBox="0 0 512 512" xml:space="preserve">
                 <g>
                 <g>
                     <path d="M256,0c-84.83,0-153.6,85.965-153.6,192S171.17,384,256,384s153.6-85.965,153.6-192S340.83,0,256,0z M256,358.4
