@@ -1,82 +1,90 @@
 const win = document.getElementById('win');
 const lose = document.getElementById('lose');
-const tossForm = document.getElementById("toss-form");
+const tossForm = document.getElementById('toss-form');
 const solde = document.getElementById('solde');
-const tossResult = document.getElementById("toss-result");
+const tossResult = document.getElementById('toss-result');
 const retryBtn = document.getElementById('retry-btn');
 const duration = 3000;
+let isPlaying = false;
 
 tossForm.addEventListener('submit', toss);
 retryBtn.addEventListener('click', onRetry);
 
 function onRetry() {
-  // Hide result
-  tossResult.style.display = 'none';
-  win.style.display = 'none';
-  lose.style.display = 'none';
+    // Hide result
+    tossResult.style.display = 'none';
+    win.style.display = 'none';
+    lose.style.display = 'none';
 
-  // Show form
-  tossForm.reset();
-  tossForm.style.display = 'block';
+    // Show form
+    tossForm.reset();
+    tossForm.style.display = 'block';
 }
 
 async function toss(event) {
-  event.preventDefault()
+    event.preventDefault();
 
-  const coin = document.getElementById("coin");
-  coin.style.animation = "none";
+    if (isPlaying) return;
+    isPlaying = true;
 
-  const playBtn = document.getElementById('play-btn');
-  playBtn.classList.add('button--disabled');
+    const coin = document.getElementById('coin');
+    coin.style.animation = 'none';
 
-  const creditInput = document.getElementById('creditsInput');
-  const mise = creditInput.value;
+    const playBtn = document.getElementById('play-btn');
+    playBtn.classList.add('button--disabled');
 
-  solde.textContent = parseInt(solde.textContent) - parseInt(mise);
+    const creditInput = document.getElementById('creditsInput');
+    const mise = creditInput.value;
 
-  var formData = new FormData();
-  formData.append('idUser', creditInput.dataset.user);
-  formData.append('mise', mise);
+    solde.textContent = parseInt(solde.textContent) - parseInt(mise);
 
-  const res = await fetch('../api/pileouface.php', {
-    method: 'POST',
-    body: formData,
-  }).then((data) => data.json());
+    var formData = new FormData();
+    formData.append('idUser', creditInput.dataset.user);
+    formData.append('mise', mise);
 
-  const winRes = res.result;
-  const isCurentHead = document.querySelector('input[name="pileouface"]:checked').value == 0;
+    const res = await fetch('../api/pileouface.php', {
+        method: 'POST',
+        body: formData,
+    }).then((data) => data.json());
 
-  if ((isCurentHead && winRes) || (!winRes && !isCurentHead)) {
-    // HEAD
-    coin.style.animation = `flip-tails ${duration}ms forwards`;
-  } else { 
-    // TAIL
-    coin.style.animation = `flip-heads ${duration}ms forwards`;
-  }
+    const winRes = res.result;
+    const isCurentHead =
+        document.querySelector('input[name="pileouface"]:checked').value == 0;
 
-  setTimeout(() => {
-    tossResult.style.display = 'block';
-    solde.textContent = res.newSolde;
-    // Hide form
-    tossForm.style.display = 'none';
-    if (res.gain > 0) {
-      win.style.display = 'block';
-      // Update gains
-      gains = document.getElementById('gain');
-      gains.textContent = res.gain;
+    if ((isCurentHead && winRes) || (!winRes && !isCurentHead)) {
+        // HEAD
+        coin.style.animation = `flip-tails ${duration}ms forwards`;
     } else {
-      lose.style.display = 'block';
-      // Update perte
-      perte = document.getElementById('perte');
-      perte.textContent = Math.abs(res.gain);
+        // TAIL
+        coin.style.animation = `flip-heads ${duration}ms forwards`;
     }
 
-    // Show result
-    tossResult.style.display = 'block';
+    setTimeout(() => {
+        tossResult.style.display = 'block';
+        solde.textContent = res.newSolde;
+        // Hide form
+        tossForm.style.display = 'none';
+        if (res.gain > 0) {
+            win.style.display = 'block';
 
-    playBtn.classList.remove('button--disabled');
+            party.confetti(win);
+            // Update gains
+            gains = document.getElementById('gain');
+            gains.textContent = res.gain;
+        } else {
+            lose.style.display = 'block';
+            // Update perte
+            perte = document.getElementById('perte');
+            perte.textContent = Math.abs(res.gain);
+        }
 
-    creditInput.setAttribute('max', res.newSolde);
+        // Show result
+        tossResult.style.display = 'block';
 
-  }, duration);
+        playBtn.classList.remove('button--disabled');
+
+        creditInput.setAttribute('max', res.newSolde);
+
+        isPlaying = false;
+    }, duration);
 }
