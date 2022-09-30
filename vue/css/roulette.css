@@ -143,16 +143,6 @@ body {
     color: #878ADB;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 @media screen and (min-width: 600px) {
     .roulette {
         width: 40%;
