@@ -42,7 +42,7 @@ async function toss(event) {
   formData.append('mise', mise);
 
 
-  const res = await fetch('/api/pileouface.php', {
+  const res = await fetch('../api/pileouface.php', {
     method: 'POST',
     body: formData,
   }).then((data) => data.json());

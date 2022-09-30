@@ -36,7 +36,6 @@
                 </div>
             </div>
 
-            <div>
                 <form class="toss-form" id="toss-form">
                     <div class="radio_container">
                         <label class="btn-radio__container" for="pile">
@@ -54,7 +53,6 @@
                     <br><input max="<?php echo $_SESSION['USER']['solde'] ?>" id="creditsInput" type="number" min="1" class="input" placeholder="Crédits misés" required>
                     <br><button type="submit" class="button button--secondary button--min" id="play-btn">Jouer</button>
                 </form>
-            </div>
             
                 <section id="toss-result" class="toss-result">
                     <p>Vous venez de jouer !</p>
