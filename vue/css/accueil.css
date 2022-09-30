@@ -21,7 +21,7 @@
     background-color: #F79A6F;
 }
 
-.home-solde:hover .home-solde__texte, .home-solde:hover .home-solde__credit, .home-solde:hover .home-solde__unite {
+.home-solde:hover .home-solde__texte, .home-solde:hover .home-solde__credit, .home-solde:hover .home-solde__unite,.home-solde:hover .home-solde__info,.home-solde:hover .home-solde__titre  {
     color: white;
 }
 
@@ -30,6 +30,28 @@
     font-size: 20px;
     transition: .2s;
 }
+
+.home-solde__info{
+    color: #F79A6F;
+    font-size: 25px;
+    transition: .2s;
+
+}
+
+.home-solde__double{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.home-solde__titre {
+    text-align: center;
+    color: #3B3D73;
+    font-size: 20px;
+    transition: .2s;
+    margin-bottom: 30px;
+}
+
 .home-solde__credit {
     text-align: center;
     color: #F79A6F;
@@ -44,6 +66,11 @@
     right: 20px;
     transition: .2s;
 }
+
+.action{
+    margin: 8vh 8%;
+}
+
 
 @media screen and (min-width: 600px) {
     .home-solde{

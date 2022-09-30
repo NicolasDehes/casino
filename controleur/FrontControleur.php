@@ -5,6 +5,7 @@ require_once("../Autoloader.php");
 use \modele\service\UtilisateurService;
 use \modele\service\HistoriqueService;
 use \modele\service\ForgetPasswordService;
+use \modele\service\JeuService;
 
 // LES SESSIONS
 // Une session en PHP correspond à une façon de stocker des données différentes pour chaque 
@@ -156,6 +157,10 @@ switch ($requested_page) {
     case 'accueil':
         $HistoriqueService = new HistoriqueService(); 
         $_SESSION['HISTO'] = $HistoriqueService->findByUser($_SESSION["id_user"]);
+
+        
+        $JeuService = new JeuService(); 
+        $_SESSION['JEUX'] = $JeuService->findAll(); 
 
         // $UserService = new UtilisateurService(); 
         // $user = $UserService->findById($_SESSION["id_user"]); 
