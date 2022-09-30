@@ -1,13 +1,19 @@
+.header {
+    margin: 6% 8%;
+}
+
 .home-solde {
-    margin: 5px 10vw;
+    margin: 5px 10vw 40px;
     background: #FFFFFF;
     box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
-    padding: 5vw;
+    padding: 20px 20px 40px;
     font-family: Nunito, sans-serif;
     font-weight: bold;
-    padding-bottom: 10vw;
-    margin-bottom: 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
 }
 .home-solde__texte {
     color: #3B3D73;
@@ -22,14 +28,17 @@
     color: #3B3D73;
     position: absolute;
     font-size: 27px;
-    margin-top: 55px;
-    margin-left: -40px;
+    bottom: 20px;
+    right: 20px;
 }
 
 @media screen and (min-width: 600px) {
     .home-solde{
         width: 500px;
-        padding: 2vw;
-        padding-bottom: 3vw;
+        margin: 3vh auto;
+    }
+
+    .header {
+        margin: 18px 32px;
     }
 }
