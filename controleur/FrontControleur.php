@@ -76,7 +76,7 @@ else
     // Retourner la page d'authentification
     $requested_page = 'login';
 
-if(isset($_SESSION["id_user"])){
+if (isset($_SESSION["id_user"])) {
     $userService = new UtilisateurService();
     $user = $userService->getUserById($_SESSION["id_user"]);
     $_SESSION['USER'] = $user->toArray();
@@ -85,20 +85,20 @@ if(isset($_SESSION["id_user"])){
 // En fonction de la demande de l'utilisateur, effectuer le traitement
 switch ($requested_page) {
 
-    // Demande d'authentification
-    case 'authentifier':  
+        // Demande d'authentification
+    case 'authentifier':
 
         // Enregistrement du message dans le fichier log
 
         // SI formulaire soumis = attribut name du bouton submit
-        if(isset($_POST['envoi'])) { 
+        if (isset($_POST['envoi'])) {
 
             // Il est possible de valider le format des données d’une variable en utilisant 
             // la méthode filter_var() et un filtre correspondant au type de données attendu.
             // SI format du mail non valide
             if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 // Positionner un message en variable de session
-                $_SESSION['message'] = "Adresse mail incorrecte."; 
+                $_SESSION['message'] = "Adresse mail incorrecte.";
                 // Retourner la page login.php
                 header("Location: ../vue/login.php");
                 // Fin du script
@@ -123,7 +123,7 @@ switch ($requested_page) {
             // Impossible de se connecter à la BD
             catch (\Exception $e) {
                 // Positionner un message en variable de session
-                $_SESSION['message'] = "Authentification impossible."; 
+                $_SESSION['message'] = "Authentification impossible.";
                 // Retourner la page login.php
                 header('Location: ../vue/login.php');
                 // Fin du script
@@ -132,13 +132,15 @@ switch ($requested_page) {
 
             // Appel de la méthode check_login() de la classe UtilisateurService
             // Retourne true si authentification ok SINON false
-            $bRet = $hUtilisateurService->check_login(htmlspecialchars($_POST['email']),
-            htmlspecialchars($_POST['password']));
+            $bRet = $hUtilisateurService->check_login(
+                htmlspecialchars($_POST['email']),
+                htmlspecialchars($_POST['password'])
+            );
 
             // SI authentification incorrecte
             if (!$bRet) {
                 // Positionner un message en variable de session
-                $_SESSION['message'] = "Authentification incorrecte."; 
+                $_SESSION['message'] = "Authentification incorrecte.";
                 // Retourner la page login.php
                 header('Location: ../vue/login.php');
             }
@@ -146,15 +148,15 @@ switch ($requested_page) {
             else
                 // Retourner la page accueil.php : page d'accueil de l'application
                 header("Location: ../controleur/FrontControleur.php?action=accueil");
-        
+
             // Suppression de l'objet
             $hUtilisateurService = null;
         }
-    break;
+        break;
 
-    // Afficher la page d'accueil
+        // Afficher la page d'accueil
     case 'accueil':
-        $HistoriqueService = new HistoriqueService(); 
+        $HistoriqueService = new HistoriqueService();
         $_SESSION['HISTO'] = $HistoriqueService->findByUser($_SESSION["id_user"]);
 
         // $UserService = new UtilisateurService(); 
@@ -163,81 +165,112 @@ switch ($requested_page) {
 
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/accueil.php");
-    break;
+        break;
 
-    // Afficher le jeu roulette
+        // Afficher le jeu roulette
     case 'roulette':
-        
+
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/roulette.php");
-        
-    break;
 
-    // Afficher le jeu pileouface
+        break;
+
+        // Afficher le jeu pileouface
     case 'pileouface':
         // Retourner la page pileouface.php
         header("Location: ../vue/pileouface.php");
-    break;
+        break;
 
-    // Afficher la page d'historique
+        // Afficher la page d'historique
     case 'historique':
-        $HistoriqueService = new HistoriqueService(); 
-        if(htmlspecialchars($_GET['jeu']) == 'roulette'){
-            $_SESSION['JEU'] = 1; 
-            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame($_SESSION['JEU'],$_SESSION["id_user"]); 
-        }else{
-            $_SESSION['JEU'] = 2; 
-            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame($_SESSION['JEU'],$_SESSION["id_user"]); 
+        $HistoriqueService = new HistoriqueService();
+        if (htmlspecialchars($_GET['jeu']) == 'roulette') {
+            $_SESSION['JEU'] = 1;
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame($_SESSION['JEU'], $_SESSION["id_user"]);
+        } else {
+            $_SESSION['JEU'] = 2;
+            $_SESSION['HISTO'] = $HistoriqueService->findByUserAndGame($_SESSION['JEU'], $_SESSION["id_user"]);
         }
-        
+
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/historique.php");
-    break;
+        break;
 
-    // Afficher la page d'accueil
+        // Afficher la page d'accueil
     case 'profil':
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/profil.php");
-    break;
+        break;
 
-    // Afficher la page de saisie d'un compte
+        // Afficher la page de saisie d'un compte
     case 'demander_inscription':
         // Suppression de la variable de session nommée message
-        unset ($_SESSION['message']);
+        unset($_SESSION['message']);
 
         // Retourner la page inscription.php 
         header('Location: ../vue/inscription.php');
-    break;
+        break;
 
-    // Afficher la page mot de passe oublié
+        // Afficher la page mot de passe oublié
     case 'demander_motdepasse':
         // Suppression de la variable de session nommée message
-        unset ($_SESSION['message']);
+        unset($_SESSION['message']);
 
         // Retourner la page motdepasse.php 
         header('Location: ../vue/forgetPwd.php');
-    break;
+        break;
 
-    // Afficher la page réinitialisé mot de passe
+        //Recupère les unfo utilisateur 
+    case 'info_utilisateur':
+
+        unset($_SESSION['message']);
+
+        $user = $utilisateurService->getUserById($_SESSION["id_user"]);
+        $tabUser = $user->toArray();
+        $_SESSION['user'] = $tabUser;
+        header('location:../vue/modiUser.php');
+        break;
+        // Renvoi des informations utilisateur modifées
+    case 'modifier_utilisateur':
+        $id = $_SESSION['id_user'];
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $email = $_POST['email'];
+        $utilisateurService = new UtilisateurService();
+
+        if (!checkPOSTParameters([$password, $password_conf])) {
+            $password = $_POST['password'];
+            $password_conf = $_POST['password_conf'];
+            if ($password == $password_conf && count($password) > 0) {
+
+                $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email, $password);
+            };
+        } else {
+            $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email);
+        };
+
+        break;
+
+        // Afficher la page réinitialisé mot de passe
     case 'new_motdepasse':
         // Suppression de la variable de session nommée message
-        unset ($_SESSION['message']);
+        unset($_SESSION['message']);
 
         // Retourner la page motdepasse.php 
         header('Location: ../vue/NewMotDePasse.php');
-    break;
+        break;
 
-    // Clique sur le bouton valider de la page motdepasse.php
+        // Clique sur le bouton valider de la page motdepasse.php
     case 'valider_demander_motdepasse':
         header('Location: ../vue/forgetPwd.php');
-    break;
+        break;
 
-    // Demande de création d'un compte
+        // Demande de création d'un compte
     case 'creer_inscription':
         // Enregistrement du message dans le fichier log
 
         // Vérifier si les paramètres obligatoires ont été saisis
-        if (!checkPOSTParameters(['email','nom','prenom','password','password_conf'])) {
+        if (!checkPOSTParameters(['email', 'nom', 'prenom', 'password', 'password_conf'])) {
             $_SESSION['message'] = "Champ obligatoire non renseigné";
             header("Location: ../vue/inscription.php");
             // Fin du script
@@ -247,18 +280,18 @@ switch ($requested_page) {
         // Il est possible de valider le format des données d’une variable en utilisant 
         // la méthode filter_var() et un filtre correspondant au type de données attendu.
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                // Positionner un message en variable de session
-                $_SESSION['message'] = "Adresse email incorrecte"; 
-                // Retourner la page login.php
-                header("Location: ../vue/inscription.php");
-                // Fin du script
-                die();
+            // Positionner un message en variable de session
+            $_SESSION['message'] = "Adresse email incorrecte";
+            // Retourner la page login.php
+            header("Location: ../vue/inscription.php");
+            // Fin du script
+            die();
         }
 
         // Récupérer le 1er mot de passe saisi
-        $mdp1=$_POST['password'];
+        $mdp1 = $_POST['password'];
         // Récupérer le 2ème mot de passe saisi
-        $mdp2=$_POST['password_conf'];
+        $mdp2 = $_POST['password_conf'];
 
         // Vérifier si les 2 mots de passe sont identiques
         if ($mdp1 == $mdp2) {
@@ -279,15 +312,14 @@ switch ($requested_page) {
             // Problème : exemple -> Impossible de se connecter à la BD
             catch (\Exception $e) {
                 // Positionner un message en variable de session : message utilisé par login.php
-                $_SESSION['message'] = "Création du compte impossible"; 
+                $_SESSION['message'] = "Création du compte impossible";
                 // Retourner la page inscription.php
                 header('Location: ../vue/inscription.php');
                 // Fin du script
                 die();
             }
 
-            try 
-            {
+            try {
                 // Appel de la méthode createUser() de la classe UtilisateurService
                 // La fonction prend en paramètre un objet de type Utilisateur
                 // La fonction lève une exception si impossible de créer l'utilisateur
@@ -302,23 +334,23 @@ switch ($requested_page) {
                 exit;
             }
             // Exception levée si impossible de créer le compte utilisateur
-            catch (\Exception $e) {  
+            catch (\Exception $e) {
                 // Positionner un message en variable de session : message utilisé par inscription.php   
-                $_SESSION['message'] = $e->getMessage(); 
-            } 
+                $_SESSION['message'] = $e->getMessage();
+            }
             // Retourner la page inscription.php
             header('Location: ../vue/inscription.php');
         }
         // SINON les 2 mots de passe sont différents
         else {
             // Positionner un message en variable de session 
-            $_SESSION['message'] = "Les mots de passe sont différents"; 
+            $_SESSION['message'] = "Les mots de passe sont différents";
             // Retourner la page d'inscription
             header("Location: ../vue/inscription.php");
         }
-    break;
+        break;
 
-    // clique sur un lien supprimer de la page list_utilisateurs.php
+        // clique sur un lien supprimer de la page list_utilisateurs.php
     case 'supprimer_utilisateur':
         try {
             // Création de l'objet UtilisateurService : appel du constructeur de la classe
@@ -328,7 +360,7 @@ switch ($requested_page) {
         // Problème : exemple -> Impossible de se connecter à la BD
         catch (\Exception $e) {
             // Positionner un message en variable de session : message utilisé par login.php
-            $_SESSION['message'] = "Problème technique."; 
+            $_SESSION['message'] = "Problème technique.";
             // Retourner la page login.php
             header('Location: ../vue/login.php');
             // Fin du script
@@ -342,9 +374,9 @@ switch ($requested_page) {
             $bRet = $hUtilisateurService->deleteUser($_GET['id']);
         }
         // Exception levée si impossible de créer le compte utilisateur
-        catch (\Exception $e) {  
+        catch (\Exception $e) {
             // Positionner un message en variable de session : message utilisé par login.php
-             $_SESSION['message'] = "Problème technique."; 
+            $_SESSION['message'] = "Problème technique.";
             // Retourner la page login.php
             header('Location: ../vue/login.php');
             // Fin du script
@@ -353,39 +385,39 @@ switch ($requested_page) {
 
         // Afficher la page liste_utilisateurs
         afficherUtilisateurs();
-    break;
+        break;
 
-    // Afficher la liste des utilisateurs
+        // Afficher la liste des utilisateurs
     case 'list_utilisateurs':
         // Enregistrement du message dans le fichier log
 
         // Afficher la page liste_utilisateurs
         afficherUtilisateurs();
-    break;
+        break;
 
-    // Déconnexion
+        // Déconnexion
     case 'deconnexion':
         // logout.php supprime la session et redirige vers la page de login
         header('Location: ../vue/logout.php');
-    break;
+        break;
 
-    // Afficher la page d'authentification
+        // Afficher la page d'authentification
     case 'login':
         // Suppression de la variable de session nommée message
-        unset ($_SESSION['message']);
+        unset($_SESSION['message']);
 
         // header("X-Content-Type-Options", "nosniff");
         // Retourner la page login
         header('Location: ../vue/login.php');
-    break;
+        break;
 
-    // Afficher la page d'authentification
+        // Afficher la page d'authentification
     case 'update_mot_de_passe':
-        
-        unset ($_SESSION['message']);
+
+        unset($_SESSION['message']);
 
         // Suppression de la variable de session nommée message
-        if (!checkPOSTParameters(['password','password_conf'])) {
+        if (!checkPOSTParameters(['password', 'password_conf'])) {
             $_SESSION['message'] = "Champ obligatoire non renseigné";
             header('Location: ../vue/NewMotDePasse.php');
             // Fin du script
@@ -395,38 +427,37 @@ switch ($requested_page) {
         $mdp1 = $_POST['password'];
         // Récupérer le 2ème mot de passe saisi
         $mdp2 = $_POST['password_conf'];
-        $email = $_POST['email'] ; 
-        $hash = $_GET['hash']; 
+        $email = $_POST['email'];
+        $hash = $_GET['hash'];
         $PassWordService = new ForgetPasswordService();
 
-        if(!$PassWordService->check($hash, $email)){
-            $_SESSION['message'] = "Email non compatible"; 
+        if (!$PassWordService->check($hash, $email)) {
+            $_SESSION['message'] = "Email non compatible";
         }
-        
+
         if ($mdp1 == $mdp2 && $PassWordService->check($hash, $email)) {
-            try{ 
+            try {
                 $utilisateurService = new UtilisateurService();
-                
-                $utilisateurService->updateMDPUser($email ,$mdp1);
-                
+
+                $utilisateurService->updateMDPUser($email, $mdp1);
+
                 // Retourner la page inscription.php
                 header('Location: ../controleur/FrontControleur.php?action=login');
             }
             // Problème : exemple -> Impossible de se connecter à la BD
             catch (\Exception $e) {
                 // Positionner un message en variable de session : message utilisé par login.php
-                $_SESSION['message'] = "Réinitialisation de mot de passe impossible"; 
+                $_SESSION['message'] = "Réinitialisation de mot de passe impossible";
                 // Retourner la page inscription.php
                 header('Location: ../vue/NewMotDePasse.php');
                 // Fin du script
                 die();
             }
-
         }
         // SINON les 2 mots de passe sont différents
         else {
             // Positionner un message en variable de session 
-            $_SESSION['message'] = "Les mots de passe sont différents"; 
+            $_SESSION['message'] = "Les mots de passe sont différents";
             // Retourner la page d'inscription
             header('Location: ../vue/NewMotDePasse.php');
         }
@@ -435,15 +466,15 @@ switch ($requested_page) {
 
         // header("X-Content-Type-Options", "nosniff");
         // Retourner la page login
-    break;
+        break;
 
 
-    // Cas où l'action ne correspond à aucune action répertoriée
+        // Cas où l'action ne correspond à aucune action répertoriée
     default:
         // Déconnexion de l'utilisateur et retourner la page login
         // logout.php supprime la session et redirige vers la page de login
         header('Location: ../vue/logout.php');
-    break;
+        break;
 }
 
 /**
@@ -453,8 +484,9 @@ switch ($requested_page) {
  * @param $parameters : liste des paramètres à controler.
  * @return $bRet : true si tous les paramètres renseignés SINON false
  */
-function checkPOSTParameters($parameters) {
-    $bRet = true; 
+function checkPOSTParameters($parameters)
+{
+    $bRet = true;
     foreach ($parameters as $parameter) {
         if (empty($_POST[$parameter])) {
             $bRet = false;
@@ -464,7 +496,8 @@ function checkPOSTParameters($parameters) {
     return $bRet;
 }
 
-function afficherUtilisateurs() {
+function afficherUtilisateurs()
+{
     try {
         // Création de l'objet UtilisateurService : appel du constructeur de la classe
         // Si problème retourne une exception
@@ -473,7 +506,7 @@ function afficherUtilisateurs() {
     // Problème : exemple -> Impossible de se connecter à la BD
     catch (\Exception $e) {
         // Positionner un message en variable de session : message utilisé par login.php
-        $_SESSION['message'] = "Problème technique."; 
+        $_SESSION['message'] = "Problème technique.";
         // Retourner la page login.php
         header('Location: ../vue/login.php');
     }
@@ -485,12 +518,10 @@ function afficherUtilisateurs() {
     //$json_str = json_encode($tab_utilisateurs);
 
     // Positionner le tableau en variable de session 
-    $_SESSION['tableau']=$tab_utilisateurs;
+    $_SESSION['tableau'] = $tab_utilisateurs;
 
     // Enregistrement du message dans le fichier log
-    
+
     // Retourner la page liste_utilisateurs
     header('Location: ../vue/liste_utilisateurs.php');
 }
-
-?>
