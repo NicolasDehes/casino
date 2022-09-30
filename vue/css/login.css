@@ -86,6 +86,11 @@
     margin-right: 8%;
 }
 
+.message {
+    color: #3B3D73;
+    font-size: 16px;
+}
+
 @media screen and (min-width: 600px) {
     .body {
         display: flex;
