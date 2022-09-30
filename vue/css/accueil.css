@@ -26,14 +26,6 @@
     margin-left: -40px;
 }
 
-.action{
-    display: flex;
-    flex-direction: column;
-    padding: 9%;
-    height: 24vh;
-    justify-content: space-around;
-}
-
 @media screen and (min-width: 600px) {
     .home-solde{
         width: 500px;
