@@ -37,8 +37,8 @@ session_start();
             </form>
             
             <div class="messagesLogin">
-            <p class="messageLogin">Mot de passe oublié ? <a href="../controleur/FrontControleur.php?action=demander_motdepasse" class="link link--strong">Cliquez ici</a></p>
-            <p class="messageLogin">Vous n'avez pas de compte ? <br/><a href="../controleur/FrontControleur.php?action=demander_inscription" class="link">S'inscrire</a></p>
+            <p class="messageLogin"><a href="../controleur/FrontControleur.php?action=demander_motdepasse" class="link link--strong">Mot de passe oublié ?</a></p>
+            <p class="messageLogin"><a href="../controleur/FrontControleur.php?action=demander_inscription" class="link">Vous n'avez pas de compte ? <br/>S'inscrire</a></p>
             </div>
 
             <p class="separator"><span class="separator-text">Ou</span></p>

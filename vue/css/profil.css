@@ -42,6 +42,10 @@
 
 .credit__number {
     font-size: 32vw;
+    max-width: 100vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .credit__label {

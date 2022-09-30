@@ -2,7 +2,6 @@
 <?php session_name('myid');session_start(); ?>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/cotton/2x/checkmark.png">
@@ -29,7 +28,7 @@
                             <?php echo $_SESSION['message']; ?>
                         </div>
                     <?php } ?>
-                    <p class="describe">Vous devez vous créer un compte pour accéder aux différentes fonctionnalités.</p>
+                    <p class="describe">Vous devez vous créer un compte pour accéder aux différentes fonctionnalités. Pour votre inscription, nous vous offrons 50 crédits pour jouer !</p>
                     <form class="form" method="POST" action="../controleur/FrontControleur.php?action=creer_inscription">
                         <input type="nom" class="input--secondary" name="nom" placeholder="Nom" required>
                         <input type="prenom" class="input--secondary" name="prenom" placeholder="Prénom" required>

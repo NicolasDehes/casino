@@ -12,7 +12,7 @@ function sendForgetPassword(event){
         template_id: 'template_q49rmrj',
         template_params: {
             "forgetEmail":inputValue,
-            "link": "abc"
+            "link": "http://localhost/casino/vue/resetPwd.php"
         }
 
     };  

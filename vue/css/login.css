@@ -31,7 +31,7 @@
 
 .link {
     color: #3b3d73;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-decoration: none;
 }
 .link--strong {
@@ -93,7 +93,7 @@
 
     .body__content {
         margin: auto;
-        width: 400px;
+        width: 420px;
         height: auto;
     }
 
