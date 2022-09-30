@@ -11,10 +11,11 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 75vh;
     justify-content: center;
     align-items: center;
     gap: 20px;
+    margin-top: 8em;
 }
 
 #coin {
@@ -124,4 +125,38 @@
     background: #f79a6f;
     border: 1px solid #f79a6f;
     box-shadow: -2px 5px 26px -1px rgba(247, 154, 111, 0.6);
+}
+
+.toss-result {
+    display: none;
+    font-family: Nunito, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #3b3d73;
+    margin: 0 8%;
+    text-align: center;
+}
+
+.toss-result__gain {
+    display: none;
+    margin: 2vh 0 8vh;
+}
+
+.toss-result__gain span{
+    color: #f79a6f;
+}
+
+.toss-result__gain--null {
+    color: #f79a6f;
+}
+
+.toss-result__gain--null span {
+    color: #878ADB;
+}
+.toss-result,
+.toss-form{
+    height: 230px;
+    width: 300px;
+   
+    
 }

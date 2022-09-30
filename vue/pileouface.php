@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,15 +9,19 @@
     <link rel="stylesheet" href="../vue/css/global.css" />
     <link rel="stylesheet" type="text/css" href="css/navigation.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
+
     <title>Pile ou face </title>
 </head>
+
 <body>
-    <?php 
-      $id_actif_navigation = 1; 
-      require_once("./navigation.php") 
+    <?php
+    $id_actif_navigation = 1;
+    require_once("./navigation.php")
     ?>
     <main>
-        <span class="solde">Solde : <?php echo $_SESSION['USER']['solde'] ?></span>
+        <span class="solde">Solde : <span id="solde">
+                <?php echo $_SESSION['USER']['solde'] ?>
+            </span></span>
 
         <div class="cut-background">
 
@@ -30,32 +35,38 @@
                     <img src="../vue/img/coin1.png" alt="Image for coin's tail" />
                 </div>
             </div>
-            
+
             <div>
-                <form action="" method="post">
+                <form class="toss-form" id="toss-form">
                     <div class="radio_container">
                         <label class="btn-radio__container" for="pile">
                             <input type="radio" class="radio" id="pile" name="pileouface" value="0" checked>
-                            <span class="radio-btn"></span>    
+                            <span class="radio-btn"></span>
                             Pile
                         </label>
 
                         <label class="btn-radio__container" for="face">
-                            <input type="radio" class="radio" id="face" name="pileouface" value="1" >
+                            <input type="radio" class="radio" id="face" name="pileouface" value="1">
                             <span class="radio-btn"></span>
                             Face
                         </label>
                     </div>
-                    <br><input type="text" placeholder="Crédits misés" class="input " id="mise">
-                    <br><input type="submit" class="button button--secondary button--min" onclick="toss()" value="Jouer">
+                    <br><input max="<?php echo $_SESSION['USER']['solde'] ?>" id="creditsInput" type="number" min="1" class="input" placeholder="Crédits misés" required>
+                    <br><button type="submit" class="button button--secondary button--min" id="play-btn">Jouer</button>
                 </form>
-            </div> 
-            <div>
-
             </div>
+            
+                <section id="toss-result" class="toss-result">
+                    <p>Vous venez de jouer !</p>
+                    <p class="toss-result__gain" id="win">Votre gain : <span id="gain"></span> crédits</p>
+                    <p class="toss-result__gain toss-result__gain--null" id="lose">Vous perdez : <span id="perte"></span> crédits</p>
+                    <button class="button button--secondary button--min" id="retry-btn">Rejouer</button>
+                </section>
+            
         </div>
-        
+
     </main>
-    <script src="../vue/js/coin.js"></script> 
+    <script src="../vue/js/coin.js"></script>
 </body>
+
 </html>
