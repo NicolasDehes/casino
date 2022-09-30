@@ -65,7 +65,13 @@ class HistoriqueDAO {
                 $historique->setIdJeu($valeur["idJeu"]);
                 $historique->setDateJeu($valeur["dateJeu"]);
                 $historique->setMise($valeur["mise"]);
-                $historique->setGain($valeur["gain"]);
+                $gainReel = $valeur['mise'];
+                if($valeur["gain"] > 0){
+                    $gainReel += $valeur['mise'];
+                } else if($valeur['gain'] < 0){
+                    $gainReel = -$valeur['mise'];
+                }
+                $historique->setGain($gainReel);
                 // Ajouter l'objet historique dans le tableau
                 array_push($tab_historique, $historique->toJson());
             }
