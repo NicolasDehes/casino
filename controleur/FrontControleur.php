@@ -241,18 +241,18 @@ switch ($requested_page) {
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $email = $_POST['email'];
-        $utilisateurService = new UtilisateurService();
+        $UtilisateurService = new UtilisateurService();
 
-        if (!checkPOSTParameters([$password, $password_conf])) {
+        if (checkPOSTParameters(["password", "password_conf"])) {
             $password = $_POST['password'];
             $password_conf = $_POST['password_conf'];
-            if ($password == $password_conf && count($password) > 0) {
-
+            if ($password == $password_conf && $password!="") {
                 $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email, $password);
             };
         } else {
-            $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email);
+            $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email, "");
         };
+        header('location:../vue/profil.php');
 
         break;
 

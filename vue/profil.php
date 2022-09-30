@@ -27,7 +27,7 @@
             <p>Email: <?php echo $_SESSION['USER']['email'] ?></p>
             <div class="informations__buttons">
                 <a href="../controleur/FrontControleur.php?action=deconnexion" class="informations__button">Se déconnecter</a>
-                <a href="#" class="informations__button">Modifier</a>
+                <a href="../vue/modifUser.php" class="informations__button">Modifier</a>
             </div>
         </div>
         <div class="credits">
