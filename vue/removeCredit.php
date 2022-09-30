@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link rel="stylesheet" type="text/css" href="css/navigation.css">
     <link rel="stylesheet" type="text/css" href="css/addCredit.css">
-    <title>Ajouter des crédits</title>
+    <title>Retirer des crédits</title>
   </head>
   <body class="body">
     <?php 
@@ -24,7 +24,7 @@
             <a href="../controleur/FrontControleur.php?action=profil"><svg class="back" width="25" height="17" viewBox="0 0 25 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.939339 9.4246L7.3033 15.7886C7.88909 16.3744 8.83884 16.3744 9.42462 15.7886C10.0104 15.2028 10.0104 14.253 9.42462 13.6672L5.62132 9.86394L23 9.86394C23.8284 9.86394 24.5 9.19237 24.5 8.36394C24.5 7.53552 23.8284 6.86394 23 6.86394L5.62132 6.86394L9.42462 3.06064C10.0104 2.47486 10.0104 1.52511 9.42462 0.939322C8.83884 0.353534 7.88909 0.353534 7.3033 0.939321L0.939339 7.30328C0.353554 7.88907 0.353554 8.83882 0.939339 9.4246Z" fill="#F79A6F" stroke="#F79A6F"/>
             </svg></a>
-            <h2 class="header__title">Ajouter des crédits </h2>
+            <h2 class="header__title">Retirer des crédits </h2>
         </header>
         <div >
             <?php if (!empty($_SESSION['message'])) { ?>
@@ -32,27 +32,16 @@
                     <?php echo $_SESSION['message']; ?>
                 </div>
             <?php } ?>
-            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=add_credit">
-                <input type="email" class="input" name="credits" placeholder="Crédits à ajouter" required>
-                <fieldset class="form__content"> 
-                    <legend class="form__titre">Mode de paiement</legend>
-                    <input id="input-paypal" type="radio" class="radio" checked="checked" name="type"/>
-                    <label for="input-paypal" class="radio__label">Paypal</label>
+            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=remove_credit">
+                <input type="email" class="input" name="credits" placeholder="Crédits à retirer" required>
+                <fieldset class="form__content form"> 
+                    <legend class="form__titre">Coordonnées bancaires</legend>
+                    
+                    <input type="text" class="input" name="nom" placeholder="Nom du titulaire" required>
+                    <input type="text" class="input" name="iban" placeholder="IBAN" required>
 
-                    <input id="input-card" type="radio" class="radio" name="type"/>
-                    <label for="input-card" class="radio__label">Carte bleu</label>
-
-                    <div id="paypal" class="form">
-                        <input type="email" class="input" name="email" placeholder="Email" required>
-                    </div>
-
-                    <div id="card" class="form">
-                        <input type="text" class="input" name="numero" placeholder="Numéro de carte" required>
-                        <input type="text" class="input" name="date" placeholder="Date d'expiration" required>
-                        <input type="text" class="input" name="cryptogramme" placeholder="Cryptogramme visuel" required>
-                    </div>
                 </fieldset>
-                <button type="submit" class="button">Payer</button>
+                <button type="submit" class="button">Récupérer son solde</button>
             </form>
             
         </div>
