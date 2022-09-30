@@ -27,7 +27,8 @@
 
     <section class="home-solde">
       <p class="home-solde__texte">Vous avez : </p>
-      <p class="home-solde__credit"> <?php echo $_SESSION['USER']['solde'] ?> <span  class="home-solde__unite"> crédits</span> </p>
+      <p class="home-solde__credit"> <?php echo $_SESSION['USER']['solde'] ?></p>
+      <p class="home-solde__unite">crédits</p> 
     </section>
 
 
