@@ -247,7 +247,7 @@ class UtilisateurDAO {
             WHERE id = :id"
         );
         $requete->bindValue('id',$id);
-        $succes = $requete->execute();
+        $success = $requete->execute();
         $user = $requete->fetch();
         $isSoldeOk = $user['solde'] >= $mise;
         return $isSoldeOk;
@@ -267,6 +267,20 @@ class UtilisateurDAO {
         $this->Connection = null;
     }
     
+    public function didMailExist($mail): bool{
+        $requete = $this->Connection->prepare("
+            SELECT *
+            FROM ".self::TABLE."
+            WHERE email = :email
+        ");
+        $requete->bindValue("email",$mail);
+        $success = $requete->execute();
+        if($requete->rowCount() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
     /**  
     * Destructeur, appelé quand l'objet est détruit
     */  
