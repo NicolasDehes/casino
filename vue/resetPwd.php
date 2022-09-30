@@ -16,7 +16,7 @@
     <title>Mot de passe oublié</title>
   </head>
   <body class="body">
-    <img class="desktop-img" src="../asset/image/casino2.jpg">
+    <img class="desktop-img" src="../asset/image/casino2.jpg" alt="background-image">
     <section class="body__content">
         <header class="header">
             <h2 class="header__title"> Modifier votre mot de passe </h2>

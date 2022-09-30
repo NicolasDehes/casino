@@ -19,7 +19,7 @@ session_start();
     <title>Login</title>
 </head>
 <body class="body">
-    <img class="desktop-img" src="../asset/image/casino.jpg">
+    <img class="desktop-img" src="../asset/image/casino.jpg" alt="background-image">
     <section class="body__content">
         <header class="header">
             <h2 class="header__title">Se connecter</h2>

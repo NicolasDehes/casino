@@ -114,6 +114,11 @@
     display: block;
     margin: auto;
     padding: 0.5rem 2rem;
+    transition: .2s;
+}
+
+.button--min:hover {
+    padding: 0.5rem 3rem;
 }
 
 .button--secondary {

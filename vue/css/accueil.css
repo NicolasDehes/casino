@@ -14,15 +14,27 @@
     white-space: nowrap;
     overflow: hidden;
     position: relative;
+    transition: .3s;
 }
+
+.home-solde:hover {
+    background-color: #F79A6F;
+}
+
+.home-solde:hover .home-solde__texte, .home-solde:hover .home-solde__credit, .home-solde:hover .home-solde__unite {
+    color: white;
+}
+
 .home-solde__texte {
     color: #3B3D73;
     font-size: 20px;
+    transition: .2s;
 }
 .home-solde__credit {
     text-align: center;
     color: #F79A6F;
     font-size: 60px;
+    transition: .2s;
 }
 .home-solde__unite {
     color: #3B3D73;
@@ -30,6 +42,7 @@
     font-size: 27px;
     bottom: 20px;
     right: 20px;
+    transition: .2s;
 }
 
 @media screen and (min-width: 600px) {

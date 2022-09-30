@@ -38,7 +38,7 @@ async function onClickRoulette(evt) {
     solde.textContent = parseInt(solde.textContent) - parseInt(mise);
 
     var formData = new FormData();
-    formData.append('idUser', 1);
+    formData.append('idUser', creditInput.dataset.user);
     formData.append('mise', mise);
 
     const res = await fetch('../api/roulette.php', {

@@ -15,14 +15,14 @@
     <link rel="stylesheet" type="text/css" href="css/historique.css">
     <title>Accueil</title>
   </head>
-  <body>
+  <body class="body">
     <?php 
       $id_actif_navigation = 3; 
       require_once("./navigation.php") 
     ?>
     <header class="header">
-      <h2 class="header__title">Bonjour <span class="header__title--orange"><?php echo $_SESSION['USER']['prenom']. ' '.$_SESSION['USER']['nom'] ?></span>, </h2>
-      <img class="header__logo" src="../asset/image/logo.png">
+      <h2 class="header__title">Bonjour <a class="header__title--orange" href="../controleur/FrontControleur.php?action=profil"><?php echo $_SESSION['USER']['prenom']. ' '.$_SESSION['USER']['nom'] ?></a>, </h2>
+      <img class="header__logo" src="../asset/image/logo.png" alt="logo">
     </header>
 
     <section class="home-solde">
