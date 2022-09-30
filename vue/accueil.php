@@ -58,7 +58,8 @@
       </table>
     <?php } ?>
 
-  <?php if ($_SESSION['USER']['id'] == 3 && 1 == 2) { ?>
+  <!-- TODO a changer quand on aura implémenté l'administrateur -->
+  <?php if (false) { ?>
 
     <?php
     foreach ($_SESSION['JEUX'] as $value) {
