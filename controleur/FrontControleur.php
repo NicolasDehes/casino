@@ -387,7 +387,7 @@ switch ($requested_page) {
         // Suppression de la variable de session nommée message
         if (!checkPOSTParameters(['password','password_conf'])) {
             $_SESSION['message'] = "Champ obligatoire non renseigné";
-            header('Location: ../vue/NewMotDePasse.php');
+            header('Location: ../vue/resetPwd.php');
             // Fin du script
             die();
         }
@@ -399,10 +399,6 @@ switch ($requested_page) {
         $hash = $_GET['hash']; 
         $PassWordService = new ForgetPasswordService();
 
-        if(!$PassWordService->check($hash, $email)){
-            $_SESSION['message'] = "Email non compatible"; 
-        }
-        
         if ($mdp1 == $mdp2 && $PassWordService->check($hash, $email)) {
             try{ 
                 $utilisateurService = new UtilisateurService();
@@ -417,7 +413,7 @@ switch ($requested_page) {
                 // Positionner un message en variable de session : message utilisé par login.php
                 $_SESSION['message'] = "Réinitialisation de mot de passe impossible"; 
                 // Retourner la page inscription.php
-                header('Location: ../vue/NewMotDePasse.php');
+                header('Location: ../vue/resetPwd.php');
                 // Fin du script
                 die();
             }
@@ -425,10 +421,15 @@ switch ($requested_page) {
         }
         // SINON les 2 mots de passe sont différents
         else {
+
             // Positionner un message en variable de session 
             $_SESSION['message'] = "Les mots de passe sont différents"; 
+            if(!$PassWordService->check($hash, $email)){
+                $_SESSION['message'] = "Email non compatible"; 
+            }
+
             // Retourner la page d'inscription
-            header('Location: ../vue/NewMotDePasse.php');
+            header('Location: ../vue/resetPwd.php');
         }
 
         // updateMDPUser

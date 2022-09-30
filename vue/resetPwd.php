@@ -27,7 +27,7 @@
                     <?php echo $_SESSION['message']; ?>
                 </div>
             <?php } ?>
-            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=update_mot_de_passe">
+            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=update_mot_de_passe&hash=<?php echo $_GET['hash'] ?>">
                 <input type="email" class="input--secondary" name="email" placeholder="Email" required>
                 <input type="password" class="input--secondary" name="password" placeholder="Mot de passe" required>
                 <input type="password" class="input--secondary" name="password_conf" placeholder="Confirmer le mot de passe" required>
