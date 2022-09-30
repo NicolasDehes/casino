@@ -26,7 +26,6 @@ async function onClickRoulette(evt) {
     evt.preventDefault();
 
     if (isPlaying) return;
-
     isPlaying = true;
 
     const playBtn = document.getElementById('play-btn');
@@ -69,6 +68,8 @@ async function onClickRoulette(evt) {
 
         if (res.gain > 0) {
             win.style.display = 'block';
+
+            party.confetti(win);
             // Update gains
             gains = document.getElementById('gain');
             gains.textContent = res.gain;

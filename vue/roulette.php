@@ -56,7 +56,7 @@
     </section>
   </section>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
   <script src="./js/roulette.js"></script>
 </body>
 

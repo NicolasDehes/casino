@@ -64,6 +64,8 @@
         </div>
 
     </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
     <script src="../vue/js/coin.js"></script>
 </body>
 
