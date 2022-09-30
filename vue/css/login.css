@@ -1,13 +1,13 @@
 .body__content {
     height: 100vh;
-    padding: 30px 38px;
+    padding: 30px 38px 24px;
 }
 
 .form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 5vh;
+    row-gap: 4vh;
     margin-top: 4vh;
     width: 100%;
 }
