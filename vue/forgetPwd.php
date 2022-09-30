@@ -35,6 +35,7 @@
                 <input type="nom" class="input--secondary" id="inputPassword1" placeholder="Adresse email" required>
                 <button  type="submit" class="button button--secondary" >Réinitialiser le mot de passe</button>
             </form>
+            <span class="alert" id="alertSpan"></span>
         </div>
     </section>
     <script src="./js/mail.js">

@@ -8,7 +8,7 @@ use modele\dao\UtilisateurDAO;
 
 class ForgetPasswordService { 
 
-    private $hHistoriqueDao;
+    private $hForgetPasswordDAO;
 
     public function __construct() 
     {   

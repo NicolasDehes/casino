@@ -2,6 +2,7 @@
 
 namespace modele\dao;
 
+use Exception;
 use \modele\metier\Utilisateur;
 // Inclure le fichier des constantes : il contient notamment la constante LOGFILE
 //include(__DIR__.'/../../Constantes.php');
@@ -226,31 +227,40 @@ class UtilisateurDAO {
 
     // Change le solde de l'utilisateur et retourne son nouveau solde
     public function changeSolde($id, $gain){
-        $user = $this->getUserById($id);
-        $newSolde = $user->getSolde() + $gain;
-        $requete = $this->Connection->prepare("
-            UPDATE ".self::TABLE." 
-            SET solde = :newSolde
-            WHERE id = :id"
-        );
-        $requete->bindValue('newSolde',$newSolde);
-        $requete->bindValue('id',$id);
-        $succes = $requete->execute();
-        return $newSolde;
+        try{
+            $user = $this->getUserById($id);
+            $newSolde = $user->getSolde() + $gain;
+            $requete = $this->Connection->prepare("
+                UPDATE ".self::TABLE." 
+                SET solde = :newSolde
+                WHERE id = :id"
+            );
+            $requete->bindValue('newSolde',$newSolde);
+            $requete->bindValue('id',$id);
+            $succes = $requete->execute();
+            return $newSolde;
+        } catch(Exception $e){
+            throw new \Exception($e->getMessage());
+        }
     }
 
     // Défini si l'utilisateur à les fonds necéssaire pour jouer
     public function isSoldeOk($id, $mise){
-        $requete = $this->Connection->prepare("
-            SELECT *
-            FROM ".self::TABLE." 
-            WHERE id = :id"
-        );
-        $requete->bindValue('id',$id);
-        $success = $requete->execute();
-        $user = $requete->fetch();
-        $isSoldeOk = $user['solde'] >= $mise;
-        return $isSoldeOk;
+        try{
+            $requete = $this->Connection->prepare("
+                SELECT *
+                FROM ".self::TABLE." 
+                WHERE id = :id"
+            );
+            $requete->bindValue('id',$id);
+            $success = $requete->execute();
+            $user = $requete->fetch();
+            $isSoldeOk = $user['solde'] >= $mise;
+            return $isSoldeOk;
+
+        } catch(Exception $e){
+            throw new \Exception($e->getMessage());
+        }
     }
 
     // Défini si l'utilisateur à les fonds necéssaire pour jouer
