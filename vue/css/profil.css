@@ -27,10 +27,14 @@
     color: #f79a6f;
 }
 
-.informations__edit {
-    margin-top: 8px;
-    text-align: right;
-    font-weight: 800;
+.informations__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.informations__button {
+    font-weight: bold;
 }
 
 .credits {
@@ -61,21 +65,16 @@
     max-width: 300px;
 }
 
-.deconnect {
-    margin-top: 2vh;
-}
-
 @media screen and (min-width: 600px) {
-    
+    .body__container {
+        flex-direction: row;
+    }
+
     .credit__number {
         font-size: 150px;
     }
-    
+
     .credit__label {
         font-size: 80px;
-    }
-
-    .deconnect {
-        margin-top: 2vh;
     }
 }
