@@ -43,13 +43,13 @@
                     <label for="input-card" class="radio__label">Carte bleu</label>
 
                     <div id="paypal" class="form">
-                        <input type="email" class="input" name="email" placeholder="Email" required>
+                        <input type="email" class="input" name="email" placeholder="Email">
                     </div>
 
                     <div id="card" class="form">
-                        <input type="text" class="input" name="numero" placeholder="Numéro de carte" required>
-                        <input type="text" class="input" name="date" placeholder="Date d'expiration" required>
-                        <input type="text" class="input" name="cryptogramme" placeholder="Cryptogramme visuel" required>
+                        <input type="text" class="input" name="numero" placeholder="Numéro de carte">
+                        <input type="text" class="input" name="date" placeholder="Date d'expiration">
+                        <input type="text" class="input" name="cryptogramme" placeholder="Cryptogramme visuel">
                     </div>
                 </fieldset>
                 <button type="submit" class="button">Payer</button>
