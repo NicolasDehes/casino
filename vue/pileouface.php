@@ -50,7 +50,7 @@
                             Face
                         </label>
                     </div>
-                    <br><input max="<?php echo $_SESSION['USER']['solde'] ?>" id="creditsInput" type="number" min="1" class="input" placeholder="Crédits misés" required>
+                    <br><input max="<?php echo $_SESSION['USER']['solde'] ?>"  data-user="<?php echo $_SESSION['USER']['id'] ?>" id="creditsInput" type="number" min="1" class="input" placeholder="Crédits misés" required>
                     <br><button type="submit" class="button button--secondary button--min" id="play-btn">Jouer</button>
                 </form>
             
