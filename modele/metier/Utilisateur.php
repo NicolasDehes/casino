@@ -79,7 +79,7 @@ class Utilisateur {
         $this->solde = $solde;
     }
 
-    public function getSolde() {
+    public function getSolde(): float {
         return $this->solde;
     }
 

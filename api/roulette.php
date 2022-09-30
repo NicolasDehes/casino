@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once("../Autoloader.php");
 
 use modele\service\UtilisateurService;
@@ -53,7 +53,7 @@ try{
         "result" => $gain >= $mise,
         "gain" => $gainToPrint,
         "newSolde" => $newSolde,
-        'random' => $random,
+        'random' => $random
     ];
 
     header('Content-Type: application/json; charset=utf-8');

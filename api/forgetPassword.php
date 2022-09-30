@@ -21,7 +21,7 @@ try{
                     "message" => "Un paramètre est manquant"
                 ];
                 header('Content-Type: application/json; charset=utf-8');
-                http_response_code(418);
+                http_response_code(402);
                 echo json_encode($data);
                 exit;
             }
@@ -56,7 +56,7 @@ try{
                     "message" => "Un paramètre est manquant"
                 ];
                 header('Content-Type: application/json; charset=utf-8');
-                http_response_code(418);
+                http_response_code(402);
                 echo json_encode($data);
                 exit;
             }
