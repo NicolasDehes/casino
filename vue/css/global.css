@@ -15,6 +15,11 @@
     position: absolute;
     right: 30px;
     width: 38px;
+    transition: .3s;
+}
+
+.header__logo:hover {
+    transform: rotate(180deg);
 }
 
 .header__title {
