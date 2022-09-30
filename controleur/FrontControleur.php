@@ -379,7 +379,7 @@ switch ($requested_page) {
         header('Location: ../vue/login.php');
     break;
 
-    // Afficher la page d'authentification
+    // Afficher la page de réinitialisation de mot de passe
     case 'update_mot_de_passe':
         
         unset ($_SESSION['message']);
@@ -438,6 +438,48 @@ switch ($requested_page) {
         // Retourner la page login
     break;
 
+    
+    // Afficher la page de réinitialisation de mot de passe
+    case 'add_credit':
+        // Suppression de la variable de session nommée message
+        unset ($_SESSION['message']);
+        
+        header('Location: ../vue/addCredit.php');
+
+    break;
+
+    // Afficher la page de réinitialisation de mot de passe
+    case 'remove_credit':
+        // Suppression de la variable de session nommée message
+        unset ($_SESSION['message']);
+        
+        header('Location: ../vue/removeCredit.php');
+
+    break;
+
+    // Afficher la page de réinitialisation de mot de passe
+    case 'send_add_credit':
+        // Suppression de la variable de session nommée message
+        unset ($_SESSION['message']);
+
+        $credit = $_POST['credits']; 
+        $user = $_SESSION['id_user'];
+        
+        header('Location: ../controleur/FrontControleur.php?action=profil');
+
+    break;
+
+    // Afficher la page de réinitialisation de mot de passe
+    case 'send_remove_credit':
+        // Suppression de la variable de session nommée message
+        unset ($_SESSION['message']);
+        
+        $credit = $_POST['credits']; 
+        $user = $_SESSION['id_user']; 
+        
+        header('Location: ../controleur/FrontControleur.php?action=profil');
+
+    break;
 
     // Cas où l'action ne correspond à aucune action répertoriée
     default:

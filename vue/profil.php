@@ -35,8 +35,8 @@
             <p class="credit__label">crédits</p>
         </div>
         <div class="profil-btn">
-            <a class="button">Ajouter des crédits</a>
-            <a class="button button--secondary">Retirer ses crédits</a>
+            <a href="../controleur/FrontControleur.php?action=add_credit" class="button">Ajouter des crédits</a>
+            <a href="../controleur/FrontControleur.php?action=remove_credit" class="button button--secondary">Retirer ses crédits</a>
         </div>
     </section>
 </body>

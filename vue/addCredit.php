@@ -32,8 +32,8 @@
                     <?php echo $_SESSION['message']; ?>
                 </div>
             <?php } ?>
-            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=add_credit">
-                <input type="email" class="input" name="credits" placeholder="Crédits à ajouter" required>
+            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=send_add_credit">
+                <input type="number" class="input" name="credits" placeholder="Crédits à ajouter" required>
                 <fieldset class="form__content"> 
                     <legend class="form__titre">Mode de paiement</legend>
                     <input id="input-paypal" type="radio" class="radio" checked="checked" name="type"/>
