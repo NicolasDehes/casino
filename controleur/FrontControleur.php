@@ -5,6 +5,7 @@ require_once("../Autoloader.php");
 use \modele\service\UtilisateurService;
 use \modele\service\HistoriqueService;
 use \modele\service\ForgetPasswordService;
+use \modele\service\JeuService;
 
 // LES SESSIONS
 // Une session en PHP correspond à une façon de stocker des données différentes pour chaque 
@@ -158,6 +159,10 @@ switch ($requested_page) {
     case 'accueil':
         $HistoriqueService = new HistoriqueService();
         $_SESSION['HISTO'] = $HistoriqueService->findByUser($_SESSION["id_user"]);
+
+        
+        $JeuService = new JeuService(); 
+        $_SESSION['JEUX'] = $JeuService->findAll(); 
 
         // $UserService = new UtilisateurService(); 
         // $user = $UserService->findById($_SESSION["id_user"]); 
@@ -411,7 +416,7 @@ switch ($requested_page) {
         header('Location: ../vue/login.php');
         break;
 
-        // Afficher la page d'authentification
+    // Afficher la page de réinitialisation de mot de passe
     case 'update_mot_de_passe':
 
         unset($_SESSION['message']);
@@ -419,7 +424,7 @@ switch ($requested_page) {
         // Suppression de la variable de session nommée message
         if (!checkPOSTParameters(['password', 'password_conf'])) {
             $_SESSION['message'] = "Champ obligatoire non renseigné";
-            header('Location: ../vue/NewMotDePasse.php');
+            header('Location: ../vue/resetPwd.php');
             // Fin du script
             die();
         }
@@ -449,17 +454,22 @@ switch ($requested_page) {
                 // Positionner un message en variable de session : message utilisé par login.php
                 $_SESSION['message'] = "Réinitialisation de mot de passe impossible";
                 // Retourner la page inscription.php
-                header('Location: ../vue/NewMotDePasse.php');
+                header('Location: ../vue/resetPwd.php');
                 // Fin du script
                 die();
             }
         }
         // SINON les 2 mots de passe sont différents
         else {
+
             // Positionner un message en variable de session 
-            $_SESSION['message'] = "Les mots de passe sont différents";
+            $_SESSION['message'] = "Les mots de passe sont différents"; 
+            if(!$PassWordService->check($hash, $email)){
+                $_SESSION['message'] = "Email non compatible"; 
+            }
+
             // Retourner la page d'inscription
-            header('Location: ../vue/NewMotDePasse.php');
+            header('Location: ../vue/resetPwd.php');
         }
 
         // updateMDPUser
@@ -468,6 +478,54 @@ switch ($requested_page) {
         // Retourner la page login
         break;
 
+    
+    // Afficher la page de réinitialisation de mot de passe
+    case 'add_credit':
+        // Suppression de la variable de session nommée message
+        unset ($_SESSION['message']);
+        
+        header('Location: ../vue/addCredit.php');
+
+    break;
+
+    // Afficher la page de réinitialisation de mot de passe
+    case 'remove_credit':
+        // Suppression de la variable de session nommée message
+        unset ($_SESSION['message']);
+        
+        header('Location: ../vue/removeCredit.php');
+
+    break;
+
+    // Afficher la page de réinitialisation de mot de passe
+    case 'send_add_credit':
+        // Suppression de la variable de session nommée message
+        unset ($_SESSION['message']);
+
+        $credit = $_POST['credits']; 
+        $user = $_SESSION['id_user'];
+        
+        $userService = new UtilisateurService();
+        $userService->changeSolde($user, $credit);
+        
+        header('Location: ../controleur/FrontControleur.php?action=profil');
+
+    break;
+
+    // Afficher la page de réinitialisation de mot de passe
+    case 'send_remove_credit':
+        // Suppression de la variable de session nommée message
+        unset ($_SESSION['message']);
+        
+        $credit = $_POST['credits']; 
+        $user = $_SESSION['id_user']; 
+
+        $userService = new UtilisateurService();
+        $userService->changeSolde($user, '-'.$credit);
+        
+        header('Location: ../controleur/FrontControleur.php?action=profil');
+
+    break;
 
         // Cas où l'action ne correspond à aucune action répertoriée
     default:

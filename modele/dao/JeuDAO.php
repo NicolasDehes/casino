@@ -60,7 +60,7 @@ class JeuDAO {
             $utilisateur->setMaximum($valeur["maximum"]);
 
             // Ajouter l'objet Utilisateur dans le tableau
-            $tab_utilisateurs[] = $utilisateur;
+            $tab_utilisateurs[] = $utilisateur->toArray();
 
             // Enregistrement du message dans le fichier log
         }

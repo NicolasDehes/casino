@@ -9,10 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&family=Poppins:ital,wght@0,200;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/historique.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
     <link rel="stylesheet" type="text/css" href="css/accueil.css">
     <link rel="stylesheet" type="text/css" href="css/navigation.css">
-    <link rel="stylesheet" type="text/css" href="css/historique.css">
     <title>Accueil</title>
   </head>
   <body class="body">
@@ -57,9 +57,33 @@
       </table>
     <?php } ?>
 
-    <div class="action"> 
-      <a href="../controleur/FrontControleur.php?action=roulette" class="button">Accéder à la Roulette  </a>
-      <a href="../controleur/FrontControleur.php?action=pileouface" class="button button--secondary">Accéder au pile ou face  </a>
-    </div>
+
+    <?php if( $_SESSION['USER']['id'] == 3 && 1==2){ ?>
+
+      <?php 
+      foreach($_SESSION['JEUX'] as $value){ 
+      ?>
+              <div class="home-solde"> 
+                <p class="home-solde__titre"> <?= $value['nom'] ?></p>
+                <div class="home-solde__double"> 
+                    <p class="home-solde__texte">Minimum</p>
+                    <p class="home-solde__texte">Maximum</p>
+                </div>
+                <div class="home-solde__double"> 
+                    <p class="home-solde__info"><?= $value['minimum'] ?></p>
+                    <p class="home-solde__info"><?= $value['maximum'] ?></p>
+                </div>
+              </div>
+      <?php
+      } 
+      ?>
+      
+      
+    <?php }else{ ?>
+      <div class="action"> 
+        <a href="../controleur/FrontControleur.php?action=roulette" class="button">Accéder à la Roulette  </a>
+        <a href="../controleur/FrontControleur.php?action=pileouface" class="button button--secondary">Accéder au pile ou face  </a>
+      </div>
+    <?php } ?>
   </body>
 </html>

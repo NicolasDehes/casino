@@ -25,17 +25,19 @@
             <p>Nom: <?php echo $_SESSION['USER']['nom'] ?></p>
             <p>Prénom: <?php echo $_SESSION['USER']['prenom'] ?></p>
             <p>Email: <?php echo $_SESSION['USER']['email'] ?></p>
-            <a href="#" class="informations__edit">Modifier</a>
+            <div class="informations__buttons">
+                <a href="../controleur/FrontControleur.php?action=deconnexion" class="informations__button">Se déconnecter</a>
+                <a href="#" class="informations__button">Modifier</a>
+            </div>
         </div>
         <div class="credits">
             <p class="credit__number"><?php echo $_SESSION['USER']['solde'] ?></p>
             <p class="credit__label">crédits</p>
         </div>
         <div class="profil-btn">
-            <a class="button">Ajouter des crédits</a>
-            <a class="button button--secondary">Retirer ses crédits</a>
+            <a href="../controleur/FrontControleur.php?action=add_credit" class="button">Ajouter des crédits</a>
+            <a href="../controleur/FrontControleur.php?action=remove_credit" class="button button--secondary">Retirer ses crédits</a>
         </div>
-        <a href="../controleur/FrontControleur.php?action=deconnexion" class="deconnect">Se déconnecter</a>
     </section>
 </body>
 

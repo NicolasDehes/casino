@@ -7,7 +7,7 @@ use \modele\dao\UtilisateurDAO;
 class UtilisateurService { 
 
     // Référence sur l'objet UtilisateurDao
-    private $hUtilisateurDao;
+    private $hUtilisateurDAO;
 
         /** 
     * Cette méthode un peu spéciale est le constructeur
@@ -20,7 +20,7 @@ class UtilisateurService {
         try {
             // Instancier la classe UtilisateurDao : appel du constructeur __construct() 
             // Si problème, la classe UtilisateurDao lève une exception
-            $this->hUtilisateurDao = new UtilisateurDAO();
+            $this->hUtilisateurDAO = new UtilisateurDAO();
         }
         // Propagation de l'exception : l'exception est transmise à la méthode appelante
         catch (\Exception $e) {
@@ -42,7 +42,7 @@ class UtilisateurService {
 
         // Appel de la méthode check_login() de la classe UtilisateurDao
         // Retourne true si authentification ok SINON false 
-        $bRet = $this->hUtilisateurDao->check_login($login, $password);
+        $bRet = $this->hUtilisateurDAO->check_login($login, $password);
 
         // Retourne true si authentification ok SINON false
         return $bRet;
@@ -54,7 +54,7 @@ class UtilisateurService {
 
         // Appel de la méthode findAll() de la classe UtilisateurDao
         // Retourne le tableau des utilisateurs
-        $results = $this->hUtilisateurDao->findAll();
+        $results = $this->hUtilisateurDAO->findAll();
 
         // Enregistrement du tableau dans le fichier log
         
@@ -69,7 +69,7 @@ class UtilisateurService {
         try {
             // Appel de la méthode create() de la classe UtilisateurDao
             // Retourne true si utilisateur créé SINON false
-            $id = $this->hUtilisateurDao->create($utilisateur);
+            $id = $this->hUtilisateurDAO->create($utilisateur);
         }
         // Propagation de l'exception : utilisateur existe déjà
         catch (\Exception $e) {
@@ -87,7 +87,7 @@ class UtilisateurService {
         try {
             // Appel de la méthode deleteUser() de la classe UtilisateurDao
             // Retourne true si utilisateur créé SINON false
-            $bRet = $this->hUtilisateurDao->deleteUser($id);
+            $bRet = $this->hUtilisateurDAO->deleteUser($id);
         }
         // Propagation de l'exception : suppression impossible
         catch (\Exception $e) {
@@ -101,7 +101,7 @@ class UtilisateurService {
 
     public function getUserById($id){
         try {
-            $bRet = $this->hUtilisateurDao->getUserById($id);
+            $bRet = $this->hUtilisateurDAO->getUserById($id);
         }
         catch (\Exception $e) {
             throw new \Exception($e->getMessage());
@@ -111,7 +111,7 @@ class UtilisateurService {
 
     public function changeSolde($id,$gain){
         try {
-            $bRet = $this->hUtilisateurDao->changeSolde($id,$gain);
+            $bRet = $this->hUtilisateurDAO->changeSolde($id,$gain);
         }
         catch (\Exception $e) {
             throw new \Exception($e->getMessage());
@@ -121,7 +121,7 @@ class UtilisateurService {
 
     public function isSoldeOk($id,$mise){
         try {
-            $bRet = $this->hUtilisateurDao->isSoldeOk($id,$mise);
+            $bRet = $this->hUtilisateurDAO->isSoldeOk($id,$mise);
         }
         catch (\Exception $e) {
             throw new \Exception($e->getMessage());
@@ -131,7 +131,20 @@ class UtilisateurService {
 
     public function updateMDPUser($email,$mdp){
         try {
-            $bRet = $this->hUtilisateurDao->updateMDPUser($email,$mdp);
+            $bRet = $this->hUtilisateurDAO->updateMDPUser($email,$mdp);
+        }
+        catch (\Exception $e) {
+            throw new \Exception($e);
+        }
+        return $bRet;
+    }
+
+    public function updateUser($id, $nom, $prenom, $email, $mdp): bool{
+        try{
+            $bRet = $this->hUtilisateurDAO->updateUser($id, $nom, $prenom, $email);
+            if($bRet && $mdp != null && count($mdp)>0){
+                $bRet = $this->updateMDPUser($email,$mdp);
+            }
         }
         catch (\Exception $e) {
             throw new \Exception($e);

@@ -32,8 +32,8 @@
                     <?php echo $_SESSION['message']; ?>
                 </div>
             <?php } ?>
-            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=add_credit">
-                <input type="email" class="input" name="credits" placeholder="Crédits à ajouter" required>
+            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=send_add_credit">
+                <input type="number" class="input" name="credits" placeholder="Crédits à ajouter" required>
                 <fieldset class="form__content"> 
                     <legend class="form__titre">Mode de paiement</legend>
                     <input id="input-paypal" type="radio" class="radio" checked="checked" name="type"/>
@@ -43,13 +43,13 @@
                     <label for="input-card" class="radio__label">Carte bleu</label>
 
                     <div id="paypal" class="form">
-                        <input type="email" class="input" name="email" placeholder="Email" required>
+                        <input type="email" class="input" name="email" placeholder="Email">
                     </div>
 
                     <div id="card" class="form">
-                        <input type="text" class="input" name="numero" placeholder="Numéro de carte" required>
-                        <input type="text" class="input" name="date" placeholder="Date d'expiration" required>
-                        <input type="text" class="input" name="cryptogramme" placeholder="Cryptogramme visuel" required>
+                        <input type="text" class="input" name="numero" placeholder="Numéro de carte">
+                        <input type="text" class="input" name="date" placeholder="Date d'expiration">
+                        <input type="text" class="input" name="cryptogramme" placeholder="Cryptogramme visuel">
                     </div>
                 </fieldset>
                 <button type="submit" class="button">Payer</button>
