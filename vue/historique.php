@@ -44,8 +44,8 @@
                 </tbody>
             </table>
             <div class="double-btn">
-                <a class="double-btn__item" style="<?php if($_SESSION['JEU'] == 1) echo 'z-index: 3; ' ?>" href="../controleur/FrontControleur.php?action=historique&jeu=roulette">Roulette</a>
-                <a class="double-btn__item" style="<?php if($_SESSION['JEU'] == 2) echo 'z-index: 3; ' ?>" href="../controleur/FrontControleur.php?action=historique&jeu=pileouface">Pile ou Face</a>
+                <a class="double-btn__item <?php if($_SESSION['JEU'] == 1) echo "double-btn__item--selected" ?>" href="../controleur/FrontControleur.php?action=historique&jeu=roulette">Roulette</a>
+                <a class="double-btn__item <?php if($_SESSION['JEU'] == 2) echo "double-btn__item--selected" ?>" href="../controleur/FrontControleur.php?action=historique&jeu=pileouface">Pile ou Face</a>
             </div>
         <?php }else{ ?>
             <p class="describe">Commencez à jouer pour voir l’historique de vos gains</p>
