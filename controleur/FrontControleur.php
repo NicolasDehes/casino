@@ -252,7 +252,7 @@ switch ($requested_page) {
         } else {
             $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email, "");
         };
-        header('location:../vue/profil.php');
+        header('Location: ../controleur/FrontControleur.php?action=profil');
 
         break;
 

@@ -118,3 +118,33 @@
     row-gap: 18px;
     align-items: center;
 }
+
+
+.legend{
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+    margin: 10px auto;
+}
+
+.legend__item{
+    font-size: 14px;
+    color: #3b3d73;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.legend__code{
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    display: inline-table;
+    border-radius: 5px;
+    background: #f79a6f;
+}
+
+.legend__code-mauve{
+    background: #878adb;
+}
