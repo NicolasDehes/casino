@@ -59,7 +59,7 @@
     <?php } ?>
 
   <!-- TODO a changer quand on aura implémenté l'administrateur -->
-  <?php if (false) { ?>
+  <?php if ($_SESSION['USER']['isAdmin'] ) { ?>
 
     <?php
     foreach ($_SESSION['JEUX'] as $value) {
@@ -71,8 +71,8 @@
           <p class="home-solde__texte">Maximum</p>
         </div>
         <div class="home-solde__double">
-          <p class="home-solde__info"><?= $value['minimum'] ?></p>
-          <p class="home-solde__info"><?= $value['maximum'] ?></p>
+          <p class="home-solde__info"><?= $value['minimum'] ?? "Aucun" ?></p>
+          <p class="home-solde__info"><?= $value['maximum'] ?? "Aucun" ?></p>
         </div>
       </div>
     <?php
