@@ -81,12 +81,11 @@
     <?php
     }
     ?>
-
+      <a href="../controleur/FrontControleur.php?action=list_utilisateurs" class="button">admin </a>
   <?php } else { ?>
     <div class="action">
       <a href="../controleur/FrontControleur.php?action=roulette" class="button">Accéder à la Roulette </a>
       <a href="../controleur/FrontControleur.php?action=pileouface" class="button button--secondary">Accéder au pile ou face </a>
-      <a href="../controleur/FrontControleur.php?action=list_utilisateurs" class="button">admin </a>
     </div>
   <?php } ?>
 
