@@ -21,7 +21,7 @@
     background-color: #F79A6F;
 }
 
-.home-solde:hover .home-solde__texte, .home-solde:hover .home-solde__credit, .home-solde:hover .home-solde__unite,.home-solde:hover .home-solde__info,.home-solde:hover .home-solde__titre  {
+.home-solde:hover .home-solde__texte, .home-solde:hover .home-solde__credit, .home-solde:hover .home-solde__unite,.home-solde:hover .home-solde__info,.home-solde:hover .home-solde__titre, .home-solde:hover .home-solde__modifier  {
     color: white;
 }
 
@@ -65,6 +65,15 @@
     bottom: 20px;
     right: 20px;
     transition: .2s;
+}
+
+.home-solde__modifier{
+    text-align: end;
+    font-size: 18px;
+    margin-top: 30px;
+    color: #3B3D73;
+    font-weight: normal;
+    cursor: pointer;
 }
 
 .action{
