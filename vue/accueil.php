@@ -23,7 +23,13 @@
   require_once("./navigation.php")
   ?>
   <header class="header">
-    <h2 class="header__title">Bonjour <a class="header__title--orange" href="../controleur/FrontControleur.php?action=profil"><?php echo $_SESSION['USER']['prenom'] . ' ' . $_SESSION['USER']['nom'] ?></a>, </h2>
+    <h2 class="header__title">Bonjour <a class="header__title--orange" href="../controleur/FrontControleur.php?action=profil">
+    <?php 
+      echo $_SESSION['USER']['prenom'] . ' ' . $_SESSION['USER']['nom'];
+      if ($_SESSION['USER']['isAdmin']) {
+        echo ' (Admin)';
+      }
+    ?></a>, </h2>
     <img class="header__logo" src="../asset/image/logo.png" alt="logo">
   </header>
 
@@ -58,22 +64,19 @@
       </table>
     <?php } ?>
 
-  <!-- TODO a changer quand on aura implémenté l'administrateur -->
-  <?php if (false) { ?>
+
+  <?php if ($_SESSION['USER']['isAdmin'] ) { ?>
 
     <?php
     foreach ($_SESSION['JEUX'] as $value) {
     ?>
       <div class="home-solde">
-        <p class="home-solde__titre"> <?= $value['nom'] ?></p>
+        <p class="home-solde__titre"> Mises <?= $value['nom'] ?></p>
         <div class="home-solde__double">
           <p class="home-solde__texte">Minimum</p>
           <p class="home-solde__texte">Maximum</p>
         </div>
-        <div class="home-solde__double">
-          <p class="home-solde__info"><?= $value['minimum'] ?></p>
-          <p class="home-solde__info"><?= $value['maximum'] ?></p>
-        </div>
+        <div class="home-solde__container" data-id="<?= $value['id']; ?>"></div>
       </div>
     <?php
     }
@@ -105,6 +108,7 @@
       backgroundAlpha: 0.00
     });
   </script>
+  <script src="./js/accueil.js"></script>
 </body>
 
 </html>

@@ -25,6 +25,9 @@
             <p>Nom: <?php echo $_SESSION['USER']['nom'] ?></p>
             <p>Prénom: <?php echo $_SESSION['USER']['prenom'] ?></p>
             <p>Email: <?php echo $_SESSION['USER']['email'] ?></p>
+            <?php if ($_SESSION['USER']['isAdmin'] ) { ?>
+                <p>- Vous êtes administrateur -</p>
+            <?php } ?>
             <div class="informations__buttons">
                 <a href="../controleur/FrontControleur.php?action=deconnexion" class="informations__button">Se déconnecter</a>
                 <a href="../vue/modifUser.php" class="informations__button">Modifier</a>

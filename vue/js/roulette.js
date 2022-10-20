@@ -85,7 +85,11 @@ async function onClickRoulette(evt) {
 
         playBtn.classList.remove('button--disabled');
 
-        creditInput.setAttribute('max', res.newSolde);
+        if (creditInput.dataset.max != "") {
+            creditInput.setAttribute('max', Math.min(parseInt(creditInput.dataset.max), parseInt(res.newSolde)));
+        } else {
+            creditInput.setAttribute('max', res.newSolde);
+        }
 
         isPlaying = false;
 

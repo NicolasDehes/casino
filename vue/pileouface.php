@@ -21,7 +21,8 @@
     <main>
         <span class="solde">Solde : <span id="solde">
                 <?php echo $_SESSION['USER']['solde'] ?>
-            </span></span>
+            </span>
+        </span>
 
         <div class="cut-background">
 
@@ -50,7 +51,17 @@
                             Face
                         </label>
                     </div>
-                    <br><input max="<?php echo $_SESSION['USER']['solde'] ?>"  data-user="<?php echo $_SESSION['USER']['id'] ?>" id="creditsInput" type="number" min="1" class="input" placeholder="Crédits misés" required>
+                    <br><input 
+                        max="<?= min($_SESSION['USER']['solde'], $_SESSION['JEUX'][1]['maximum'] ?? $_SESSION['USER']['solde']) ?>"
+                        data-max="<?= $_SESSION['JEUX'][1]['maximum'] ?>"
+                        data-user="<?php echo $_SESSION['USER']['id'] ?>"
+                        id="creditsInput" 
+                        type="number" 
+                        min="<?= $_SESSION['JEUX'][1]['minimum'] ?? 1?>" 
+                        class="input" 
+                        placeholder="Crédits misés" 
+                        required
+                    >
                     <br><button type="submit" class="button button--secondary button--min" id="play-btn">Jouer</button>
                 </form>
             

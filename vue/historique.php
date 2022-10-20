@@ -43,6 +43,12 @@
                 
                 </tbody>
             </table>
+
+            <div class="legend">
+                <p class="legend__item"><span class="legend__code"></span>Gain</p>
+                <p class="legend__item"><span class="legend__code legend__code-mauve"></span>Perte</p>
+            </div>
+
             <div class="double-btn">
                 <a class="double-btn__item <?php if($_SESSION['JEU'] == 1) echo "double-btn__item--selected" ?>" href="../controleur/FrontControleur.php?action=historique&jeu=roulette">Roulette</a>
                 <a class="double-btn__item <?php if($_SESSION['JEU'] == 2) echo "double-btn__item--selected" ?>" href="../controleur/FrontControleur.php?action=historique&jeu=pileouface">Pile ou Face</a>

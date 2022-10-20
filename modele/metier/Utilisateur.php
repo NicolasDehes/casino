@@ -20,6 +20,7 @@ class Utilisateur {
     private $email; 
     private $motdepasse;
     private $solde;
+    private $isAdmin;
 
     /** 
     * Cette méthode un peu spéciale est le constructeur
@@ -83,6 +84,14 @@ class Utilisateur {
         return $this->solde;
     }
 
+    public function setIsAdmin($isAdmin) : void {
+        $this->isAdmin = $isAdmin;
+    }
+
+    public function getIsAdmin() {
+        return $this->isAdmin;
+    }
+
     public function toArray() : array{ 
         return array(
             'id' => $this->id,
@@ -90,7 +99,8 @@ class Utilisateur {
             'prenom' => $this->prenom,
             'email' => $this->email,
             'motdepasse' => $this->motdepasse,
-            'solde' => $this->solde
+            'solde' => $this->solde,
+            'isAdmin' => $this->isAdmin == 1
         );
     }
 
