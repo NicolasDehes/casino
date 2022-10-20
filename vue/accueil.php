@@ -23,7 +23,13 @@
   require_once("./navigation.php")
   ?>
   <header class="header">
-    <h2 class="header__title">Bonjour <a class="header__title--orange" href="../controleur/FrontControleur.php?action=profil"><?php echo $_SESSION['USER']['prenom'] . ' ' . $_SESSION['USER']['nom'] ?></a>, </h2>
+    <h2 class="header__title">Bonjour <a class="header__title--orange" href="../controleur/FrontControleur.php?action=profil">
+    <?php 
+      echo $_SESSION['USER']['prenom'] . ' ' . $_SESSION['USER']['nom'];
+      if ($_SESSION['USER']['isAdmin']) {
+        echo ' (Admin)';
+      }
+    ?></a>, </h2>
     <img class="header__logo" src="../asset/image/logo.png" alt="logo">
   </header>
 
@@ -58,7 +64,6 @@
       </table>
     <?php } ?>
 
-  <!-- TODO a changer quand on aura implémenté l'administrateur -->
   <?php if ($_SESSION['USER']['isAdmin'] ) { ?>
 
     <?php
