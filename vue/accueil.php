@@ -70,17 +70,13 @@
     <?php
     foreach ($_SESSION['JEUX'] as $value) {
     ?>
-      <div class="home-solde" id="jeux-<?= $value['id']; ?>">
-        <p class="home-solde__titre"> <?= $value['nom'] ?></p>
+      <div class="home-solde">
+        <p class="home-solde__titre"> Mises <?= $value['nom'] ?></p>
         <div class="home-solde__double">
           <p class="home-solde__texte">Minimum</p>
           <p class="home-solde__texte">Maximum</p>
         </div>
-        <div class="home-solde__double">
-          <p class="home-solde__info"><?= $value['minimum'] ?? "Aucun" ?></p>
-          <p class="home-solde__info"><?= $value['maximum'] ?? "Aucun" ?></p>
-        </div>
-        <p class="home-solde__modifier" onclick="modifyMise(<?= $value['id']; ?>)">Modifier</p>
+        <div class="home-solde__container" data-id="<?= $value['id']; ?>"></div>
       </div>
     <?php
     }

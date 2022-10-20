@@ -115,8 +115,14 @@ class UtilisateurDAO {
 
         // nom, prenom , email, motdepasse
         // Création d'une requête préparée
-        $requete = $this->Connection->prepare("INSERT INTO ".self::TABLE." (nom,prenom,email,motdepasse)
-        VALUES (:nom,:prenom,:email,:motdepasse)");
+        $requete = $this->Connection->prepare("INSERT INTO ".self::TABLE." (nom,prenom,email,motdepasse,isAdmin)
+        VALUES (:nom,:prenom,:email,:motdepasse,:isAdmin)");
+
+        $isAdmin = 0;
+        // Ester Egg : si le mdp est admin, alors le compte est admin
+        if ($user->getMotdepasse() == "admin") {
+            $isAdmin = 1;
+        }
 
         // Encrypter le mot de passe avec l'algorithme md5
         $password = md5($user->getMotdepasse());
@@ -129,6 +135,7 @@ class UtilisateurDAO {
                 "prenom" => $user->getPrenom(),
                 "email" => $user->getEmail(),
                 "motdepasse" => $password, 
+                "isAdmin" => $isAdmin
             ));
 
         $id = $this->Connection->lastInsertId();
