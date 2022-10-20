@@ -195,7 +195,7 @@ class UtilisateurDAO {
             $utilisateur->setMotdepasse($valeur["motdepasse"]);
 
             // Ajouter l'objet Utilisateur dans le tableau
-            $tab_utilisateurs[] = $utilisateur;
+            array_push($tab_utilisateurs,$utilisateur);
 
             // Enregistrement du message dans le fichier log
         }

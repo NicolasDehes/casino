@@ -395,7 +395,7 @@ switch ($requested_page) {
         // Afficher la liste des utilisateurs
     case 'list_utilisateurs':
         // Enregistrement du message dans le fichier log
-
+        
         // Afficher la page liste_utilisateurs
         afficherUtilisateurs();
         break;
@@ -576,7 +576,7 @@ function afficherUtilisateurs()
     //$json_str = json_encode($tab_utilisateurs);
 
     // Positionner le tableau en variable de session 
-    $_SESSION['tableau'] = $tab_utilisateurs;
+    $_SESSION['allUsers'] = serialize($tab_utilisateurs);
 
     // Enregistrement du message dans le fichier log
 
