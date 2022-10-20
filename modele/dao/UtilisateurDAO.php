@@ -128,7 +128,8 @@ class UtilisateurDAO {
                 "nom" => $user->getNom(),
                 "prenom" => $user->getPrenom(),
                 "email" => $user->getEmail(),
-                "motdepasse" => $password));
+                "motdepasse" => $password, 
+            ));
 
         $id = $this->Connection->lastInsertId();
         
@@ -172,7 +173,7 @@ class UtilisateurDAO {
         // Enregistrement du message dans le fichier log
         
         // Création d'une requête préparée
-        $requete = $this->Connection->prepare("SELECT id,nom,prenom,email,motdepasse FROM ".self::TABLE);
+        $requete = $this->Connection->prepare("SELECT id,nom,prenom,email,motdepasse,isAdmin FROM ".self::TABLE);
 
         // Exécution de la requête
         $requete->execute();
@@ -193,6 +194,7 @@ class UtilisateurDAO {
             $utilisateur->setPrenom($valeur["prenom"]);
             $utilisateur->setEmail($valeur["email"]);
             $utilisateur->setMotdepasse($valeur["motdepasse"]);
+            $utilisateur->setIsAdmin($valeur["isAdmin"]);
 
             // Ajouter l'objet Utilisateur dans le tableau
             $tab_utilisateurs[] = $utilisateur;
@@ -209,7 +211,7 @@ class UtilisateurDAO {
 
     public function getUserById($id){
         $requete = $this->Connection->prepare("
-            SELECT id,nom,prenom,email,motdepasse,solde
+            SELECT id,nom,prenom,email,motdepasse,solde,isAdmin
             FROM ".self::TABLE."
             WHERE id = :id"
         );
@@ -222,6 +224,7 @@ class UtilisateurDAO {
         $user->setNom($result['nom']);
         $user->setPrenom($result['prenom']);
         $user->setSolde($result['solde']);
+        $user->setIsAdmin($result['isAdmin']);
         return $user;
     }
 
@@ -237,7 +240,7 @@ class UtilisateurDAO {
             );
             $requete->bindValue('newSolde',$newSolde);
             $requete->bindValue('id',$id);
-            $succes = $requete->execute();
+            $requete->execute();
             return $newSolde;
         } catch(Exception $e){
             throw new \Exception($e->getMessage());
@@ -272,8 +275,8 @@ class UtilisateurDAO {
         );
         $requete->bindValue('email',$email);
         $requete->bindValue('motdepasse', md5($mdp));
-        $succes = $requete->execute();
-        $user = $requete->fetch();
+        $requete->execute();
+        $requete->fetch();
         $this->Connection = null;
     }
     
@@ -284,7 +287,7 @@ class UtilisateurDAO {
             WHERE email = :email
         ");
         $requete->bindValue("email",$mail);
-        $success = $requete->execute();
+        $requete->execute();
         if($requete->rowCount() > 0){
             return true;
         }

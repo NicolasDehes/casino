@@ -42,8 +42,9 @@
     </div>
     <form class="roulette-form" id="roulette-form">
       <input
-        min="1"
-        max="<?php echo $_SESSION['USER']['solde'] ?>"
+        min="<?= $_SESSION['JEUX'][0]['minimum'] ?? 1?>" 
+        max="<?= min($_SESSION['USER']['solde'], $_SESSION['JEUX'][0]['maximum'] ?? $_SESSION['USER']['solde']) ?>"
+        data-max="<?= $_SESSION['JEUX'][0]['maximum'] ?>"
         data-user="<?php echo $_SESSION['USER']['id'] ?>"
         id="creditsInput" type="number" class="input" placeholder="Crédits misés" required>
       <button type="submit" class="button button--secondary button--min" id="play-btn">Jouer</button>

@@ -149,7 +149,7 @@ class UtilisateurService {
         catch (\Exception $e) {
             throw new \Exception($e);
         }
-        return $bRet;
+        return json_encode($bRet);
     }
 }
 ?>
