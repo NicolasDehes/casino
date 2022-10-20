@@ -21,7 +21,8 @@
     <main>
         <span class="solde">Solde : <span id="solde">
                 <?php echo $_SESSION['USER']['solde'] ?>
-            </span></span>
+            </span>
+        </span>
 
         <div class="cut-background">
 

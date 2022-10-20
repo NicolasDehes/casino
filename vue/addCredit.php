@@ -19,6 +19,12 @@
         $id_actif_navigation = 5; 
         require_once("./navigation.php") 
     ?>
+    <span class="solde">Solde : 
+        <span id="solde">
+            <?php echo $_SESSION['USER']['solde'] ?>
+        </span>
+    </span>
+
     <section class="body__content">
         <header class="header">
             <a href="../controleur/FrontControleur.php?action=profil"><svg class="back" width="25" height="17" viewBox="0 0 25 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +39,7 @@
                 </div>
             <?php } ?>
             <form class="form" method="POST" action="../controleur/FrontControleur.php?action=send_add_credit">
-                <input type="number" class="input" name="credits" placeholder="Crédits à ajouter" required>
+                <input type="number" class="input" name="credits" placeholder="Crédits à ajouter" min="0" required>
                 <fieldset class="form__content"> 
                     <legend class="form__titre">Mode de paiement</legend>
                     <input id="input-paypal" type="radio" class="radio" checked="checked" name="type"/>
