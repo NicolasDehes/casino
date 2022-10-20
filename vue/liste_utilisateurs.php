@@ -18,44 +18,45 @@
     <div class="banner">
         <div class="banner__content"></div>
     </div>
-    <div class="container d-flex justify-content-center mt-5">
-        <div class="row w-60">
-            <div class="col-md text-center">
-                <h1 class="display-2 text-center">Liste des utilisateurs</h1>
+    <h1 class="title">Liste des utilisateurs</h1>
 
-
-                <table id="table_user" class="historique">       
-                    <thead class="historique__header">
-                        <th scope="col">Id</th>
-                        <th scope="col">Prénom</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Mail</th>
-                        <th scope="col">Action</th>
-                    </thead>
-                <tbody class="historique__body">
-                <?php
-                    //$data = json_decode($_SESSION['tableau']); //to decode the string into an object
-                    // Tableau des utilisateurs a été positionné en variable de session
-                   $tableau=unserialize($_SESSION['allUsers']);
-                  // var_dump($tableau) ;
-                   $color = 0;
-                   foreach ($tableau as $utilisateur) { 
-                   var_dump($utilisateur)?>
-                    <tr class="historique__item <?php if($color%2 != 0 ) echo 'historique__item--lost'?> ">
+    <table class="historique">       
+        <thead class="historique__header">
+            <td>Id</td>
+            <td>Prénom</td>
+            <td>Nom</td>
+            <td>Mail</td>
+            <td>Action</td>
+        </thead>
+        <tbody class="historique__body">
+            <?php
+            //$data = json_decode($_SESSION['tableau']); //to decode the string into an object
+            // Tableau des utilisateurs a été positionné en variable de session
+            $tableau=$_SESSION['allUsers'];
+            $color = 0;
+            foreach ($tableau as $utilisateur) { ?>
+                <tr class="historique__item <?php if($color%2 != 0 ) echo 'historique__item--lost'; ?> ">
                     <td>
-                        <?php echo $utilisateur->getId(); ?>
+                        <?php echo $utilisateur['id']; ?>
                     </td>
-                    
-                    <?php $color = $color+1 ?>
-                    <?php }?>
-                  </tbody>
-                </table>
-
-
-                <div><a href="../controleur/FrontControleur.php?action=accueil">Revenir à la page d'accueil</a></div>
-            </div>     
-        </div>      
-    </div>
+                    <td>
+                        <?php echo $utilisateur['prenom']; ?>
+                    </td>
+                    <td>
+                        <?php echo $utilisateur['nom']; ?>
+                    </td>
+                    <td>
+                        <?php echo $utilisateur['email']; ?>
+                    </td>
+                    <td>
+                        <?php echo $utilisateur['id']; ?>
+                    </td>
+                </tr>
+                <?php $color = $color+1 ; 
+            } ?>
+        </tbody>
+    </table>
+    
     <script>
         $(document).ready(function () {
         $('#table_user').DataTable();

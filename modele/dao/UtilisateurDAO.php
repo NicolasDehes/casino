@@ -180,7 +180,7 @@ class UtilisateurDAO {
         // Enregistrement du message dans le fichier log
         
         // Création d'une requête préparée
-        $requete = $this->Connection->prepare("SELECT id,nom,prenom,email,motdepasse,isAdmin FROM ".self::TABLE);
+        $requete = $this->Connection->prepare("SELECT id, nom, prenom, email, motdepasse, solde, isAdmin FROM ".self::TABLE);
 
         // Exécution de la requête
         $requete->execute();
@@ -201,10 +201,12 @@ class UtilisateurDAO {
             $utilisateur->setPrenom($valeur["prenom"]);
             $utilisateur->setEmail($valeur["email"]);
             $utilisateur->setMotdepasse($valeur["motdepasse"]);
+            $utilisateur->setSolde($valeur["solde"]);
             $utilisateur->setIsAdmin($valeur["isAdmin"]);
 
+            $user = $utilisateur->toArray(); 
             // Ajouter l'objet Utilisateur dans le tableau
-            array_push($tab_utilisateurs,$utilisateur);
+            array_push($tab_utilisateurs,$user);
 
             // Enregistrement du message dans le fichier log
         }

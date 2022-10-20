@@ -572,11 +572,14 @@ function afficherUtilisateurs()
     // Appel de la méthode findAll() de la classe UtilisateurService
     // Retourne un tableau contenant les utilisateurs
     $tab_utilisateurs = $hUtilisateurService->findAll();
-
+    // $tab= array(); 
+    // foreach($tab_utilisateurs as $user){
+    //     array_push($tab, $user->toArray()); 
+    // }
     //$json_str = json_encode($tab_utilisateurs);
 
     // Positionner le tableau en variable de session 
-    $_SESSION['allUsers'] = serialize($tab_utilisateurs);
+    $_SESSION['allUsers'] = $tab_utilisateurs;
 
     // Enregistrement du message dans le fichier log
 
