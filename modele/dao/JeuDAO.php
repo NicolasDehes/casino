@@ -44,23 +44,23 @@ class JeuDAO {
         $requete->execute();
         
         // Retourne le résultat de la requête sous forme d'un tableau
-        $result = $requete->fetchAll();
+        $results = $requete->fetchAll();
 
-        // Tableau des utilisateurs
-        $tab_utilisateurs = array();
+        // Tableau des jeus
+        $tab_jeux = array();
 
-        foreach ($result as $valeur) {
-            // Création d'un objet Utilisateur
-            $utilisateur = new Jeu();
+        foreach ($results as $valeur) {
+            // Création d'un objet jeu
+            $jeu = new Jeu();
 
             // Positionner les attributs en utilisant les fonctions setter
-            $utilisateur->setId($valeur["id"]);
-            $utilisateur->setNom($valeur["nom"]);
-            $utilisateur->setMinimum($valeur["minimum"]);
-            $utilisateur->setMaximum($valeur["maximum"]);
+            $jeu->setId($valeur["id"]);
+            $jeu->setNom($valeur["nom"]);
+            $jeu->setMinimum($valeur["minimum"]);
+            $jeu->setMaximum($valeur["maximum"]);
 
-            // Ajouter l'objet Utilisateur dans le tableau
-            $tab_utilisateurs[] = $utilisateur->toArray();
+            // Ajouter l'objet jeu dans le tableau
+            $tab_jeux[] = $jeu->toArray();
 
             // Enregistrement du message dans le fichier log
         }
@@ -68,8 +68,8 @@ class JeuDAO {
         // Fermer la connexion à la BDD
         $this->Connection = null; 
 
-        // Retourner le tableau des utilisateurs
-        return $tab_utilisateurs;
+        // Retourner le tableau des jeux
+        return $tab_jeux;
     }
 
     public function findByName($name){

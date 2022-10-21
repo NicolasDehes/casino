@@ -19,7 +19,11 @@ if($mise == null || $idUser == null){
     exit;
 }
 try{
-
+    $jeuService = new \modele\service\JeuService();
+    $jeu = $jeuService->findById(2);
+    if($mise < $jeu->getMin() || $mise < $jeu->getMax()){
+        throw new \Exception("Mise non valide");
+    }
     $utilisateurService = new UtilisateurService();
     $isSoldeOk = $utilisateurService->isSoldeOk($idUser, $mise);
 
