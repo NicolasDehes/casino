@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":199:{a:2:{s:7:"defects";a:1:{s:40:"UtilisateurTest::testGetSoldeReturnSolde";i:6;}s:5:"times";a:2:{s:40:"UtilisateurTest::testGetSoldeReturnSolde";d:0.002;s:31:"UtilisateurTest::testInstanceOf";d:0.007;}}}
