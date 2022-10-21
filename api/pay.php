@@ -2,9 +2,9 @@
 
 require '../vendor/autoload.php';
 require '../consts.php';
-require './stripeHelper.php';
+require '../controleur/stripeControleur.php';
 
-use App\StripeHelper;
+use App\StripeControleur;
 use Stripe\Stripe;
 
 header('Content-Type: application/json');
@@ -29,16 +29,16 @@ try {
     $cart = require './cart.php';
 
     // Calculate the total amount for the payment intent, once again, implement yours here
-    $amount = StripeHelper::calculateAmountFromCart($cart);
+    $amount = StripeControleur::calculateAmountFromCart($cart);
 
     // Build a body object from the request, we'll use it for creating our payment intent
-    $body = StripeHelper::buildBodyFromRequest();
+    $body = StripeControleur::buildBodyFromRequest();
 
     // Build the payment intent
-    $intent = StripeHelper::createPaymentIntent($body, $amount);
+    $intent = StripeControleur::createPaymentIntent($body, $amount);
 
     // Build the response
-    $response = StripeHelper::generateResponse($intent);
+    $response = StripeControleur::generateResponse($intent);
 
     echo json_encode($response);
 }

@@ -1,14 +1,14 @@
 <?php
 
-require '../api/stripeHelper.php';
+require '../controleur/stripeControleur.php';
 require '../vendor/autoload.php';
 require '../consts.php';
 
-use App\StripeHelper;
+use App\StripeControleur;
 
 $cart = require '../api/cart.php';
-$amount = StripeHelper::calculateAmountFromCart($cart);
-$price = StripeHelper::convertToHumanReadablePrice($amount);
+$amount = StripeControleur::calculateAmountFromCart($cart);
+$price = StripeControleur::convertToHumanReadablePrice($amount);
 ?>
 <!doctype html>
 <html lang="en">

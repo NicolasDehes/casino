@@ -12,7 +12,7 @@ use Stripe\PaymentIntent;
  *
  * @package App
  */
-class StripeHelper
+class StripeControleur
 {
     /**
      * Try to build a PaymentIntent object
