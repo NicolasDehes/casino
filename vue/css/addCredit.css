@@ -61,3 +61,16 @@ input[type='radio']:checked + label:before {
     background-color: #f79a6f;
     border: 1px solid #f79a6f;
 }
+
+
+.formulaire-stripe{
+    display: flex;
+    row-gap: 80px;
+    flex-direction: column;
+}
+
+.formulaire-stripe__input{
+    background-color: #fddacc;
+    padding: 20px;
+    border-radius: 20px;
+}
