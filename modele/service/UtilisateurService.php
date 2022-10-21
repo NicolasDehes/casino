@@ -2,6 +2,7 @@
 
 namespace modele\service;
 
+use Exception;
 use \modele\dao\UtilisateurDAO;
 
 class UtilisateurService { 
@@ -150,6 +151,18 @@ class UtilisateurService {
             throw new \Exception($e);
         }
         return json_encode($bRet);
+    }
+
+    public function changeAdmin($id){
+        try{
+            $result = $this->hUtilisateurDAO->changeAdmin($id);
+            if($result === false){
+                throw new Exception("Une erreur s'est produite lors du changement de rôle");
+            }
+        } catch (Exception $e) {
+            throw new Exception($e);
+        }
+        return $result;
     }
 }
 ?>

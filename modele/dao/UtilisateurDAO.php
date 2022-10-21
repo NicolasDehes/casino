@@ -325,6 +325,22 @@ class UtilisateurDAO {
     {  
         // Enregistrement du message dans le fichier log
     }
+
+    public function changeAdmin($id){
+        $user = $this->getUserById($id);
+        $requete = $this->Connection->prepare("
+            UPDATE ".self::TABLE."
+            SET isAdmin = :isAdmin
+            WHERE id = :id
+        ");
+        $newIsAdmin = ($user->getIsAdmin()) ? 0 : 1;
+        $requete->bindValue("id",$id);
+        $requete->bindValue("isAdmin",$newIsAdmin);
+        if($requete->execute()){
+            return true;
+        }
+        return false;
+    }
 }
 
 ?>
