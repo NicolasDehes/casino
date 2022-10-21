@@ -17,10 +17,5 @@ final class UtilisateurServiceTest extends TestCase
         $stub = $this->createMock(UtilisateurService::class);
         $this->assertInstanceOf(UtilisateurService::class, $stub);
     }
-
-    public function testGetSoldeReturnSolde(): void
-    {
-        $stub = $this->createMock(UtilisateurService::class);
-    }
 }
 
