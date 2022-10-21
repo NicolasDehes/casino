@@ -62,7 +62,7 @@
                         <!-- Rounded switch -->
                         <label class="switch">
                
-                                    <input class="tooggleAdmin" type="checkbox" data-id='<?= $utilisateur['id']?>' <?= $utilisateur['isAdmin']?"checked" : ""?> >
+                                    <input class="tooggleAdmin" type="checkbox" data-id='<?= $utilisateur['id']?>' <?= $utilisateur['isAdmin']?"checked" : ""?> <?php if($_SESSION['id_user']==$utilisateur['id']){echo 'disabled';}?> >
                                     <span class="slider round"></span>    
                         </label>
                           
