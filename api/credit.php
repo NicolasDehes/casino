@@ -9,7 +9,8 @@ $action = $_GET['action'];
 $credit = $_POST['credit'];
 $idUser = $_POST['idUser'];
 
-if($credit == null || $idUser == null){
+if(is_null($credit) || is_null($idUser) ||
+is_nan($credit) || is_nan($idUser)){
     $data = [
         "message" => "Un paramètre est manquant"
     ];

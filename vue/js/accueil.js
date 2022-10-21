@@ -16,11 +16,11 @@ function affichageMise(parent) {
 
     const minDisplay = document.createElement('p');
     minDisplay.classList.add('home-solde__info');
-    minDisplay.innerText = min ?? 'Aucune';
+    minDisplay.innerText = min;
 
     const maxDisplay = document.createElement('p');
     maxDisplay.classList.add('home-solde__info');
-    maxDisplay.innerText = max ?? 'Aucune';
+    maxDisplay.innerText = max == "" ? 'Aucune limite' : max;
 
     homeSoldeDoubleValues.appendChild(minDisplay);
     homeSoldeDoubleValues.appendChild(maxDisplay);
@@ -72,23 +72,25 @@ function editerMise(parent) {
     homeSoldeModifier.innerText = 'Confirmer';
     homeSoldeModifier.addEventListener('click', () => {
         if (minInput.checkValidity() && maxInput.checkValidity()) {
-            const id = parent.dataset.id;
+            var formData = new FormData();
+            formData.append('id', parent.dataset.id);
+            formData.append('min', minInput.value);
+            formData.append('max', maxInput.value);
             fetch(`../api/admin.php?action=updateGameById`, {
                 method: 'POST',
-                body: JSON.stringify({
-                    id: id,
-                    min: minInput.value,
-                    max: maxInput.value,
-                }),
+                body: formData,
             })
                 .then((data) => data.json())
                 .then((data) => {
                     parent.dataset.min = data.min;
-                    parent.dataset.max = data.max;
+                    parent.dataset.max = data.max ?? "";
                     homeSoldeDoubleInput.remove();
                     homeSoldeModifier.remove();
                     affichageMise(parent);
                 });
+        } else {
+            minInput.reportValidity();
+            maxInput.reportValidity();
         }
     });
 

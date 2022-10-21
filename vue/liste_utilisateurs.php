@@ -13,17 +13,20 @@
   </head>
   <body>
     <?php 
-        $id_actif_navigation = 4; 
-        require_once("./navigation.php") ;
+        $id_actif_navigation = 3; 
+        require_once("./navigation.php") 
     ?>
-    <div class="banner">
-        <div class="banner__content"></div>
-    </div>
-    <h1 class="title">Liste des utilisateurs</h1>
+    <header class="header header--user">
+        <a href="../controleur/FrontControleur.php?action=accueil">
+            <svg class="back" width="25" height="17" viewBox="0 0 25 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.939339 9.4246L7.3033 15.7886C7.88909 16.3744 8.83884 16.3744 9.42462 15.7886C10.0104 15.2028 10.0104 14.253 9.42462 13.6672L5.62132 9.86394L23 9.86394C23.8284 9.86394 24.5 9.19237 24.5 8.36394C24.5 7.53552 23.8284 6.86394 23 6.86394L5.62132 6.86394L9.42462 3.06064C10.0104 2.47486 10.0104 1.52511 9.42462 0.939322C8.83884 0.353534 7.88909 0.353534 7.3033 0.939321L0.939339 7.30328C0.353554 7.88907 0.353554 8.83882 0.939339 9.4246Z" fill="#F79A6F" stroke="#F79A6F"/>
+            </svg>
+        </a>
+        <h2 class="header__title">Liste des utilisateurs</h2>
+    </header>
 
     <table class="historique">       
         <thead class="historique__header">
-            <td>Id</td>
             <td>Prénom</td>
             <td>Nom</td>
             <td>Mail</td>
@@ -40,9 +43,6 @@
             $color = 0;
             foreach ($tableau as $utilisateur) { ?>
                 <tr class="historique__item <?php if($color%2 != 0 ) echo 'historique__item--lost'; ?> ">
-                    <td id='idRow'>
-                        <?php echo $utilisateur['id']; ?>
-                    </td>
                     <td>
                         <?php echo $utilisateur['prenom']; ?>
                     </td>
@@ -56,7 +56,7 @@
                         <?php echo $utilisateur['solde']; ?>
                     </td>
                     <td>
-                        <a href="../controleur/FrontControleur.php?action=reinitialiser_solde&id=<?= $utilisateur['id']; ?>">Reinitialiser solde</a>
+                        <a href="../controleur/FrontControleur.php?action=reinitialiser_solde&id=<?= $utilisateur['id']; ?>" class="historique__item <?php if($color%2 != 0 ) echo 'historique__item--lost'; ?>">Reinitialiser solde</a>
                     </td>
                     <td> 
                         <!-- Rounded switch -->

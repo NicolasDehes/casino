@@ -5,8 +5,8 @@ require_once("../Autoloader.php");
 use modele\service\UtilisateurService;
 use modele\service\HistoriqueService;
 
-$idUser = (int)$_POST['idUser'];
-$mise = (int)$_POST['mise'];
+$idUser = (is_null($_POST['idUser']) || $_POST['idUser'] == "") ? null : intval($_POST['idUser']);
+$mise = (is_null($_POST['mise']) || $_POST['mise'] == "") ? null : intval($_POST['mise']);
 
 if($mise == null || $idUser == null){
     $data = [
@@ -19,7 +19,15 @@ if($mise == null || $idUser == null){
     exit;
 }
 try{
-
+    $jeuService = new \modele\service\JeuService();
+    $jeu = $jeuService->findById(1);
+    if($mise < (int) $jeu['minimum'] || $mise > (int) $jeu['maximum']){
+        $data['message'] = "Mise Invalide";
+        header('Content-Type: application/json; charset=utf-8');
+        http_response_code(400);
+        echo json_encode($data);
+        exit;
+    }
     $utilisateurService = new UtilisateurService();
     $isSoldeOk = $utilisateurService->isSoldeOk($idUser, $mise);
 
