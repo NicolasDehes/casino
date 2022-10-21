@@ -24,13 +24,13 @@ class StripeControleur
      *
      * @throws Exception Thrown if the payment intent couldn't be create
      */
-    public static function createPaymentIntent(object $body, int $amount): PaymentIntent
+    public static function createPaymentIntent(object $body): PaymentIntent
     {
         try {
             // Create new PaymentIntent with a PaymentMethod ID from the client.
             if (!empty($body->paymentMethodId)) {
                 $intent = PaymentIntent::create([
-                    'amount' => $amount,
+                    'amount' => $body->amount,
                     'currency' => STRIPE_CURRENCY,
                     'payment_method' => $body->paymentMethodId,
                     'confirmation_method' => 'manual',
@@ -143,24 +143,5 @@ class StripeControleur
     public static function convertToHumanReadablePrice(int $amount): string
     {
         return number_format(($amount / 100), 2, ',', ' ');
-    }
-
-    /**
-     * Override this method with your own implementation.
-     * This one is only built to stay simple with the current example.
-     *
-     * @param array $cart
-     *
-     * @return int
-     */
-    public static function calculateAmountFromCart(array $cart): int
-    {
-        $total = 0;
-
-        foreach ($cart['items'] as $item) {
-            $total += $item['amount'] * $item['quantity'];
-        }
-
-        return $total;
     }
 }

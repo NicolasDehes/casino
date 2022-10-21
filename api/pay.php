@@ -25,17 +25,11 @@ try {
     // Set Stripe key
     Stripe::setApiKey(STRIPE_SECRET_KEY);
 
-    // Simulate a cart, implement yours here
-    $cart = require './cart.php';
-
-    // Calculate the total amount for the payment intent, once again, implement yours here
-    $amount = StripeControleur::calculateAmountFromCart($cart);
-
     // Build a body object from the request, we'll use it for creating our payment intent
     $body = StripeControleur::buildBodyFromRequest();
 
     // Build the payment intent
-    $intent = StripeControleur::createPaymentIntent($body, $amount);
+    $intent = StripeControleur::createPaymentIntent($body);
 
     // Build the response
     $response = StripeControleur::generateResponse($intent);
