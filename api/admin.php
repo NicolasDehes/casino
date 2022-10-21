@@ -39,9 +39,9 @@ switch ($action) {
             $data['message'] = "Méthode invalide.";
             break;
         }
-        $id = intval($_POST['id']);
-        $min = intval($_POST['min']);
-        $max = intval($_POST['max']);
+        $id = (is_null($_POST['id']) || $_POST['id'] == "") ? null : intval($_POST['id']);
+        $min = (is_null($_POST['min']) || $_POST['min'] == "") ? null : intval($_POST['min']);
+        $max = (is_null($_POST['max']) || $_POST['max'] == "") ? null : intval($_POST['max']);
         if(is_null($id) || is_null($min)){
             $statusCode = 400;
             $data['message'] = "Paramètre(s) manquant(s)";
