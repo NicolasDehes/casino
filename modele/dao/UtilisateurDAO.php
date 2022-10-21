@@ -195,7 +195,7 @@ class UtilisateurDAO {
             $utilisateur->setMotdepasse($valeur["motdepasse"]);
 
             // Ajouter l'objet Utilisateur dans le tableau
-            $tab_utilisateurs[] = $utilisateur;
+            array_push($tab_utilisateurs,$utilisateur);
 
             // Enregistrement du message dans le fichier log
         }
@@ -209,7 +209,7 @@ class UtilisateurDAO {
 
     public function getUserById($id){
         $requete = $this->Connection->prepare("
-            SELECT id,nom,prenom,email,motdepasse,solde
+            SELECT id,nom,prenom,email,motdepasse,solde,isAdmin
             FROM ".self::TABLE."
             WHERE id = :id"
         );
@@ -222,6 +222,7 @@ class UtilisateurDAO {
         $user->setNom($result['nom']);
         $user->setPrenom($result['prenom']);
         $user->setSolde($result['solde']);
+        $user->setIsAdmin($result['isAdmin']);
         return $user;
     }
 
@@ -312,6 +313,22 @@ class UtilisateurDAO {
     public function __destruct()  
     {  
         // Enregistrement du message dans le fichier log
+    }
+
+    public function changeAdmin($id){
+        $user = $this->getUserById($id);
+        $requete = $this->Connection->prepare("
+            UPDATE ".self::TABLE."
+            SET isAdmin = :isAdmin
+            WHERE id = :id
+        ");
+        $newIsAdmin = ($user->getIsAdmin()) ? 0 : 1;
+        $requete->bindValue("id",$id);
+        $requete->bindValue("isAdmin",$newIsAdmin);
+        if($requete->execute()){
+            return true;
+        }
+        return false;
     }
 }
 

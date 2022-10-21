@@ -71,6 +71,53 @@ class JeuDAO {
         // Retourner le tableau des utilisateurs
         return $tab_utilisateurs;
     }
+
+    public function findByName($name){
+        $requete = $this->Connection->prepare("
+            SELECT * 
+            FROM ".self::TABLE."
+            WHERE name = :name
+        ");
+        $requete->bindValue("name",$name);
+        // Exécution de la requête
+        $requete->execute();
+        
+        // Retourne le résultat de la requête sous forme d'un tableau
+        $result = $requete->fetch();
+        return $result;
+    }
+
+    public function findById($id){
+        $requete = $this->Connection->prepare("
+            SELECT * 
+            FROM ".self::TABLE."
+            WHERE id = :id
+        ");
+        $requete->bindValue('id',$id);
+        // Exécution de la requête
+        $requete->execute();
+        
+        // Retourne le résultat de la requête sous forme d'un tableau
+        $result = $requete->fetch();
+        return $result;
+    }
+
+    public function editMise($id,$min,$max){
+        try{
+            $requete = $this->Connection->prepare("
+                UPDATE ".self::TABLE." 
+                SET minimum = :min, maximum = :max
+                WHERE id = :id"
+            );
+            $requete->bindValue('min',$min);
+            $requete->bindValue('max',$max);
+            $requete->bindValue('id',$id);
+            $succes = $requete->execute();
+            return $succes;
+        } catch(\Exception $e){
+            throw new \Exception($e->getMessage());
+        }
+    }
     
     /**  
     * Destructeur, appelé quand l'objet est détruit
