@@ -38,11 +38,11 @@ switch($action){
             $statusCode = 405;
             $data['message'] = "Méthode invalide.";
         }
-        $id = $_POST['id'];
-        $min = $_POST['min'];
-        $max = $_POST['max'];
+        $id = (int) $_POST['id'];
+        $min = (int) $_POST['min'];
+        $max = (int) $_POST['max'];
         if(is_null($id) || is_nan($id) || 
-        is_null($min) || is_nan($min) || is_nan($max)){
+        is_null($min) || is_nan($min)){
             $statusCode = 400;
             $data['message'] = "Paramètre(s) manquant(s)";
             break;
