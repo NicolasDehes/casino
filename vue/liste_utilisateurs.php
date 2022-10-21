@@ -12,7 +12,7 @@
   </head>
   <body>
     <?php 
-        $id_actif_navigation = 4; 
+        $id_actif_navigation = 3; 
         require_once("./navigation.php") 
     ?>
     <div class="banner">
@@ -53,7 +53,7 @@
                         <?php echo $utilisateur['solde']; ?>
                     </td>
                     <td>
-                        <a href="../controleur/FrontControleur.php?action=reinitialiser_solde&id=<?= $utilisateur['id']; ?>">Reinitialiser solde</a>
+                        <a href="../controleur/FrontControleur.php?action=reinitialiser_solde&id=<?= $utilisateur['id']; ?>" class="historique__item <?php if($color%2 != 0 ) echo 'historique__item--lost'; ?>">Reinitialiser solde</a>
                     </td>
                 </tr>
                 <?php $color = $color+1 ; 
