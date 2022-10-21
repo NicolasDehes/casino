@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL ^ E_NOTICE);
+
 /**
  * Permet de charger les classes sans utiliser explicitement require(), require_once()
  * include()ou include_once()

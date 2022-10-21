@@ -51,6 +51,7 @@ function editerMise(parent) {
     minInput.classList.add('input');
     minInput.classList.add('input--solde');
     minInput.min = 1;
+    minInput.type = 'number';
     minInput.name = 'minimum';
     minInput.required = true;
     minInput.value = min;
@@ -58,6 +59,7 @@ function editerMise(parent) {
     const maxInput = document.createElement('input');
     maxInput.classList.add('input');
     maxInput.classList.add('input--solde');
+    maxInput.type = 'number';
     maxInput.min = 1;
     maxInput.name = 'maximum';
     maxInput.value = max;
@@ -71,7 +73,7 @@ function editerMise(parent) {
     homeSoldeModifier.addEventListener('click', () => {
         if (minInput.checkValidity() && maxInput.checkValidity()) {
             const id = parent.dataset.id;
-            fetch(`../api/admin.php?action=updateGamebyId`, {
+            fetch(`../api/admin.php?action=updateGameById`, {
                 method: 'POST',
                 body: JSON.stringify({
                     id: id,
