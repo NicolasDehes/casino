@@ -74,17 +74,22 @@ class JeuDAO {
 
     public function findByName($name){
         $requete = $this->Connection->prepare("
-            SELECT * 
+            SELECT id, nom, minimum, maximum
             FROM ".self::TABLE."
             WHERE name = :name
         ");
         $requete->bindValue("name",$name);
         // Exécution de la requête
-        $requete->execute();
+        $result = $requete->execute();
         
-        // Retourne le résultat de la requête sous forme d'un tableau
-        $result = $requete->fetch();
-        return $result;
+        $valeur = $requete->fetch();
+        $jeu = new Jeu();
+        // Positionner les attributs en utilisant les fonctions setter
+        $jeu->setId($valeur["id"]);
+        $jeu->setNom($valeur["nom"]);
+        $jeu->setMinimum($valeur["minimum"]);
+        $jeu->setMaximum($valeur["maximum"]);
+        return $jeu->toArray();
     }
 
     public function findById($id){
