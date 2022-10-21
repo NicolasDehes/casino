@@ -32,7 +32,7 @@ switch ($action) {
         $statusCode = 200;
         $data['message'] = "Le changement des droits s'est bien appliqué.";
         break;
-
+    
     case "updateGameById":
         if($_SERVER['REQUEST_METHOD'] !== "POST"){
             $statusCode = 405;
@@ -50,7 +50,9 @@ switch ($action) {
         if(!is_null($max) && $min > $max){
             $statusCode = 400;
             $data['message'] = "Le montant maximmum ne peut pas être inférieur au minimum.";
-            break;
+            break; 
+            
+            
         }
         $jeuService = new \modele\service\JeuService();
         $result = $jeuService->editMise($id, $min, $max);
