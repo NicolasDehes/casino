@@ -11,6 +11,9 @@ async function sendForgetPassword(event){
     const formData = new FormData();
     formData.append("mail",inputValue);
     
+    dir = window.location.href; 
+    dir = dir.split('/vue'); 
+
     fetch("../api/forgetPassword.php?action=create",{
         method: "POST",
         body: formData
@@ -25,7 +28,7 @@ async function sendForgetPassword(event){
                 template_id: 'template_q49rmrj',
                 template_params: {
                     "forgetEmail":res.mail,
-                    "link": `http://localhost/casino/vue/resetPwd.php?hash=${res.hash}`
+                    "link": `${dir[0]}/vue/resetPwd.php?hash=${res.hash}`
                 }
         
             };  
