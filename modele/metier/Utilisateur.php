@@ -84,11 +84,11 @@ class Utilisateur {
         return $this->solde;
     }
 
-    public function setIsAdmin($isAdmin) : void {
+    public function setIsAdmin($isAdmin): void {
         $this->isAdmin = $isAdmin;
     }
 
-    public function getIsAdmin() {
+    public function getIsAdmin(){
         return $this->isAdmin;
     }
 
@@ -100,7 +100,7 @@ class Utilisateur {
             'email' => $this->email,
             'motdepasse' => $this->motdepasse,
             'solde' => $this->solde,
-            'isAdmin' => $this->isAdmin == 1
+            'isAdmin' => $this->isAdmin
         );
     }
 

@@ -2,6 +2,7 @@
 
 namespace modele\service;
 
+use LDAP\Result;
 use modele\dao\JeuDAO;
 
 class JeuService { 
@@ -42,6 +43,21 @@ class JeuService {
     
         // Retourne le tableau des utilisateurs
         return $results;
+    }
+
+    public function findByName($name){
+        $result = $this->hJeuDao->findByName($name);
+        return $result;
+    }
+
+    public function findById($id){
+        $result = $this->hJeuDao->findById($id);
+        return $result;
+    }
+
+    public function editMise($id,$min,$max){
+        $result = $this->hJeuDao->editMise($id,$min,$max);
+        return $result;
     }
 
 }

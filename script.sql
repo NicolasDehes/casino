@@ -17,7 +17,7 @@ CREATE TABLE T_JEU (
     id INT(6) AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(30) NOT NULL,
     minimum FLOAT DEFAULT 1,
-    maximum FLOAT DEFAULT 1000
+    maximum FLOAT DEFAULT 250
 );
 
 CREATE TABLE T_HISTORIQUE (
@@ -36,8 +36,8 @@ CREATE TABLE T_FORGETPASSWORD (
     outdated boolean
 );
 
-INSERT INTO T_UTILISATEUR (nom, prenom , email, motdepasse) 
-VALUES ('Marley', 'Bob', 'bob.marley@gmail.com', md5('bob123'));
+INSERT INTO T_UTILISATEUR (nom, prenom , email, motdepasse, isAdmin) 
+VALUES ('Marley', 'Bob', 'bob.marley@gmail.com', md5('bob123'), true);
 INSERT INTO T_UTILISATEUR ( nom, prenom , email, motdepasse) 
 VALUES ('Wonder', 'Stevie', 'stevie.wonder@gmail.com', md5('stevie123'));
 INSERT INTO T_JEU(nom, minimum) VALUES ('Roulette',1),('Pile ou Face',1);
