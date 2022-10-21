@@ -119,6 +119,16 @@ class UtilisateurService {
         return $bRet;
     }
 
+    public function resetSolde($id){
+        try {
+            $bRet = $this->hUtilisateurDAO->resetSolde($id);
+        }
+        catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+        return $bRet;
+    }
+
     public function isSoldeOk($id,$mise){
         try {
             $bRet = $this->hUtilisateurDAO->isSoldeOk($id,$mise);

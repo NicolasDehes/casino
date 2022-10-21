@@ -256,6 +256,20 @@ class UtilisateurDAO {
         }
     }
 
+    public function resetSolde($id){
+        try{
+            $requete = $this->Connection->prepare("
+                UPDATE ".self::TABLE." 
+                SET solde = 0
+                WHERE id = :id"
+            );
+            $requete->bindValue('id', $id);
+            $requete->execute();
+        } catch(Exception $e){
+            throw new \Exception($e->getMessage());
+        }
+    }
+
     // Défini si l'utilisateur à les fonds necéssaire pour jouer
     public function isSoldeOk($id, $mise){
         try{

@@ -26,6 +26,7 @@
             <td>Prénom</td>
             <td>Nom</td>
             <td>Mail</td>
+            <td>Solde</td>
             <td>Action</td>
         </thead>
         <tbody class="historique__body">
@@ -49,18 +50,15 @@
                         <?php echo $utilisateur['email']; ?>
                     </td>
                     <td>
-                        <?php echo $utilisateur['id']; ?>
+                        <?php echo $utilisateur['solde']; ?>
+                    </td>
+                    <td>
+                        <a href="../controleur/FrontControleur.php?action=reinitialiser_solde&id=<?= $utilisateur['id']; ?>">Reinitialiser solde</a>
                     </td>
                 </tr>
                 <?php $color = $color+1 ; 
             } ?>
         </tbody>
     </table>
-    
-    <script>
-        $(document).ready(function () {
-        $('#table_user').DataTable();
-    });
-    </script>
 </body>
 </html>

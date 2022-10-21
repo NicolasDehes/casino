@@ -67,22 +67,24 @@
 
   <?php if ($_SESSION['USER']['isAdmin'] ) { ?>
 
+    <div class="action">
+      <a href="../controleur/FrontControleur.php?action=list_utilisateurs" class="button">Liste des utilisateurs </a>
+    </div>
+
     <?php
-    foreach ($_SESSION['JEUX'] as $value) {
+      foreach ($_SESSION['JEUX'] as $value) {
     ?>
-      <div class="home-solde">
-        <p class="home-solde__titre"> Mises <?= $value['nom'] ?></p>
-        <div class="home-solde__double">
-          <p class="home-solde__texte">Minimum</p>
-          <p class="home-solde__texte">Maximum</p>
+        <div class="home-solde">
+          <p class="home-solde__titre"> Mises <?= $value['nom'] ?></p>
+          <div class="home-solde__double">
+            <p class="home-solde__texte">Minimum</p>
+            <p class="home-solde__texte">Maximum</p>
+          </div>
+          <div class="home-solde__container" data-id="<?= $value['id']; ?>" data-min="<?= $value['minimum']; ?>" data-max="<?= $value['maximum']; ?>"></div>
         </div>
-        <div class="home-solde__container" data-id="<?= $value['id']; ?>"></div>
-      </div>
     <?php
-    }
-    ?>
-      <a href="../controleur/FrontControleur.php?action=list_utilisateurs" class="button">admin </a>
-  <?php } else { ?>
+      }
+    } else { ?>
     <div class="action">
       <a href="../controleur/FrontControleur.php?action=roulette" class="button">Accéder à la Roulette </a>
       <a href="../controleur/FrontControleur.php?action=pileouface" class="button button--secondary">Accéder au pile ou face </a>

@@ -160,9 +160,9 @@ switch ($requested_page) {
         $HistoriqueService = new HistoriqueService();
         $_SESSION['HISTO'] = $HistoriqueService->findByUser($_SESSION["id_user"]);
 
-        
-        $JeuService = new JeuService(); 
-        $_SESSION['JEUX'] = $JeuService->findAll(); 
+
+        $JeuService = new JeuService();
+        $_SESSION['JEUX'] = $JeuService->findAll();
 
         // $UserService = new UtilisateurService(); 
         // $user = $UserService->findById($_SESSION["id_user"]); 
@@ -246,7 +246,7 @@ switch ($requested_page) {
         if (checkPOSTParameters(["password", "password_conf"])) {
             $password = $_POST['password'];
             $password_conf = $_POST['password_conf'];
-            if ($password == $password_conf && $password!="") {
+            if ($password == $password_conf && $password != "") {
                 $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email, $password);
             };
         } else {
@@ -392,10 +392,17 @@ switch ($requested_page) {
         afficherUtilisateurs();
         break;
 
+    case 'reinitialiser_solde':
+        $id = $_GET['id'];
+        $userService = new UtilisateurService();
+        $userService->resetSolde($id);
+        afficherUtilisateurs();
+        break;
+
         // Afficher la liste des utilisateurs
     case 'list_utilisateurs':
         // Enregistrement du message dans le fichier log
-        
+
         // Afficher la page liste_utilisateurs
         afficherUtilisateurs();
         break;
@@ -416,7 +423,7 @@ switch ($requested_page) {
         header('Location: ../vue/login.php');
         break;
 
-    // Afficher la page de réinitialisation de mot de passe
+        // Afficher la page de réinitialisation de mot de passe
     case 'update_mot_de_passe':
 
         unset($_SESSION['message']);
@@ -463,9 +470,9 @@ switch ($requested_page) {
         else {
 
             // Positionner un message en variable de session 
-            $_SESSION['message'] = "Les mots de passe sont différents"; 
-            if(!$PassWordService->check($hash, $email)){
-                $_SESSION['message'] = "Email non compatible"; 
+            $_SESSION['message'] = "Les mots de passe sont différents";
+            if (!$PassWordService->check($hash, $email)) {
+                $_SESSION['message'] = "Email non compatible";
             }
 
             // Retourner la page d'inscription
@@ -478,54 +485,54 @@ switch ($requested_page) {
         // Retourner la page login
         break;
 
-    
-    // Afficher la page de réinitialisation de mot de passe
+
+        // Afficher la page de réinitialisation de mot de passe
     case 'add_credit':
         // Suppression de la variable de session nommée message
-        unset ($_SESSION['message']);
-        
+        unset($_SESSION['message']);
+
         header('Location: ../vue/addCredit.php');
 
-    break;
+        break;
 
-    // Afficher la page de réinitialisation de mot de passe
+        // Afficher la page de réinitialisation de mot de passe
     case 'remove_credit':
         // Suppression de la variable de session nommée message
-        unset ($_SESSION['message']);
-        
+        unset($_SESSION['message']);
+
         header('Location: ../vue/removeCredit.php');
 
-    break;
+        break;
 
-    // Afficher la page de réinitialisation de mot de passe
+        // Afficher la page de réinitialisation de mot de passe
     case 'send_add_credit':
         // Suppression de la variable de session nommée message
-        unset ($_SESSION['message']);
+        unset($_SESSION['message']);
 
-        $credit = $_POST['credits']; 
+        $credit = $_POST['credits'];
         $user = $_SESSION['id_user'];
-        
+
         $userService = new UtilisateurService();
         $userService->changeSolde($user, $credit);
-        
+
         header('Location: ../controleur/FrontControleur.php?action=profil');
 
-    break;
+        break;
 
-    // Afficher la page de réinitialisation de mot de passe
+        // Afficher la page de réinitialisation de mot de passe
     case 'send_remove_credit':
         // Suppression de la variable de session nommée message
-        unset ($_SESSION['message']);
-        
-        $credit = $_POST['credits']; 
-        $user = $_SESSION['id_user']; 
+        unset($_SESSION['message']);
+
+        $credit = $_POST['credits'];
+        $user = $_SESSION['id_user'];
 
         $userService = new UtilisateurService();
-        $userService->changeSolde($user, '-'.$credit);
-        
+        $userService->changeSolde($user, '-' . $credit);
+
         header('Location: ../controleur/FrontControleur.php?action=profil');
 
-    break;
+        break;
 
         // Cas où l'action ne correspond à aucune action répertoriée
     default:
