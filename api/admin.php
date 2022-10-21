@@ -34,21 +34,24 @@ switch ($action) {
         break;
 
     case "updateGameById":
-        if ($_SERVER['REQUEST_METHOD'] != "POST") {
+        if($_SERVER['REQUEST_METHOD'] !== "POST"){
             $statusCode = 405;
             $data['message'] = "Méthode invalide.";
             break;
         }
-        $id = $_POST['id'];
-        $min = $_POST['min'];
-        $max = $_POST['max'];
-        // if (
-        //     !isset($_POST['id'])
-        // ) {
-        //     $statusCode = 400;
-        //     $data['message'] = "Paramètre(s) manquant(s)";
-        //     break;
-        // }
+        $id = intval($_POST['id']);
+        $min = intval($_POST['min']);
+        $max = intval($_POST['max']);
+        if(is_null($id) || is_null($min)){
+            $statusCode = 400;
+            $data['message'] = "Paramètre(s) manquant(s)";
+            break;
+        }
+        if(!is_null($max) && $min > $max){
+            $statusCode = 400;
+            $data['message'] = "Le montant maximmum ne peut pas être inférieur au minimum.";
+            break;
+        }
         $jeuService = new \modele\service\JeuService();
         $result = $jeuService->editMise($id, $min, $max);
         if ($result === false) {
