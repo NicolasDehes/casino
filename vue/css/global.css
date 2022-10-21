@@ -4,6 +4,9 @@
     column-gap: 8px;
     margin-bottom: 2vh;
 }
+.header--user{
+    justify-content: center;
+}
 
 .header .back {
     margin-right: 1rem;

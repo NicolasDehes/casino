@@ -225,6 +225,15 @@ switch ($requested_page) {
         header('Location: ../vue/forgetPwd.php');
         break;
 
+    case 'demande_modifUser': 
+        // Suppression de la variable de session nommée message
+        unset($_SESSION['message']);
+
+        // Retourner la page motdepasse.php 
+        header('Location: ../vue/modifUser.php');
+        break;
+
+
         //Recupère les unfo utilisateur 
     case 'info_utilisateur':
 
