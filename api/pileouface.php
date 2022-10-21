@@ -20,9 +20,11 @@ if($mise == null || $idUser == null){
 }
 try{
     $jeuService = new \modele\service\JeuService();
-    $jeu = $jeuService->findById(1);
+    $jeu = $jeuService->findById(2);
     if($mise < (int) $jeu['minimum'] || $mise > (int) $jeu['maximum']){
         $data['message'] = "Mise Invalide";
+        $data["min"] = $jeu['minimum'];
+        $data['max'] = $jeu['maximum'];
         header('Content-Type: application/json; charset=utf-8');
         http_response_code(400);
         echo json_encode($data);

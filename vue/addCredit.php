@@ -55,14 +55,14 @@ $price = StripeControleur::convertToHumanReadablePrice($amount);
             <?php } ?>
             <div>
                 <div>
-                    <form id="payment-form" data-iduser="<?= $_SESSION['id_user'] ?>" data-stripe-public-key="<?= STRIPE_PUBLIC_KEY ?>">
-                    <input type="number" placeholder="Nombre de crédits" id="number-credit">    
-                    <div class="sr-combo-inputs-row">
+                    <form id="payment-form" data-iduser="<?= $_SESSION['id_user'] ?>" data-stripe-public-key="<?= STRIPE_PUBLIC_KEY ?>" class="formulaire-stripe" >
+                    <input type="number" placeholder="Nombre de crédits" id="number-credit" class="input">    
+                    <div class="sr-combo-inputs-row formulaire-stripe__input">
                             <div id="card-element"></div>
                             <div id="card-errors"></div>
                         </div>
 
-                        <button id="submit" type="submit">
+                        <button id="submit" type="submit" class="button">
                             <div class="spinner hidden" id="spinner"></div>
                             <span id="button-text">Payer</span>
                             </span>

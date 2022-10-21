@@ -311,7 +311,16 @@ class UtilisateurDAO {
     }
 
     public function updateUser($id, $nom, $prenom, $email): bool{
-        if($this->didMailExist($email)){
+        $requete = $this->Connection->prepare("SELECT * FROM ".self::TABLE." where email=:email and id!=:id limit 1");
+        
+        // Exécution de la requête
+        $requete->execute(array(':email' => $email, ':id'=>$id));
+
+        // Récupérer le résultat de la requête sous forme d'un tableau 
+        $result = $requete->fetchAll();
+
+        // Si le compte existe déjà
+        if (count($result) > 0){
             throw new \Exception('Compte existe.');
         }else{
             $requete = $this->Connection->prepare("

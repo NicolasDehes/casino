@@ -58,6 +58,7 @@
 .historique td {
     text-align: center;
     padding: 10px 24px;
+    vertical-align: middle;
 }
 
 .historique__item {
