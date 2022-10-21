@@ -83,7 +83,7 @@ function editerMise(parent) {
                 .then((data) => data.json())
                 .then((data) => {
                     parent.dataset.min = data.min;
-                    parent.dataset.max = data.max;
+                    parent.dataset.max = data.max ?? "";
                     homeSoldeDoubleInput.remove();
                     homeSoldeModifier.remove();
                     affichageMise(parent);
