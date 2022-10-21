@@ -30,7 +30,7 @@
             <?php } ?>
             <div class="informations__buttons">
                 <a href="../controleur/FrontControleur.php?action=deconnexion" class="informations__button">Se déconnecter</a>
-                <a href="../vue/modifUser.php" class="informations__button">Modifier</a>
+                <a href="../controleur/FrontControleur.php?action=demande_modifUser" class="informations__button">Modifier</a>
             </div>
         </div>
         <div class="credits">
