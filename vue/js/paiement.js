@@ -1,6 +1,6 @@
 var stripe = null;
 var form = document.getElementById('payment-form');
-var formBtn = document.querySelector('button');
+var formBtn = document.getElementById('submit-btn');
 var formBtnText = document.querySelector('#button-text');
 var formSpinner = document.querySelector('#spinner');
 

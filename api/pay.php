@@ -42,7 +42,7 @@ try {
     $idUser = $body->idUser;
 
     $userService = new UtilisateurService();
-    $userService->changeSolde($idUser, $credit);
+    $userService->changeSolde($idUser, $credit/100);
 
     echo json_encode($response);
 }

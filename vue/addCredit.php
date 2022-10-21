@@ -62,7 +62,7 @@ $price = StripeControleur::convertToHumanReadablePrice($amount);
                             <div id="card-errors"></div>
                         </div>
 
-                        <button id="submit" type="submit" class="button">
+                        <button id="submit-btn" type="submit" class="button">
                             <div class="spinner hidden" id="spinner"></div>
                             <span id="button-text">Payer</span>
                             </span>
