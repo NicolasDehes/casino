@@ -6,8 +6,7 @@ require '../consts.php';
 
 use App\StripeControleur;
 
-$cart = require '../api/cart.php';
-$amount = StripeControleur::calculateAmountFromCart($cart);
+$amount = 80;
 $price = StripeControleur::convertToHumanReadablePrice($amount);
 ?>
 <!doctype html>
@@ -41,34 +40,6 @@ $price = StripeControleur::convertToHumanReadablePrice($amount);
         </span>
     </span>
 
-    <div class="sr-root">
-			<div class="sr-main">
-				<form id="payment-form" data-stripe-public-key="<?= STRIPE_PUBLIC_KEY ?>">
-					<div class="sr-combo-inputs-row">
-						<div class="sr-input sr-card-element" id="card-element"></div>
-                        <div id="card-errors"></div>
-					</div>
-
-					<div class="sr-field-error" id="card-errors" role="alert"></div>
-
-					<button id="submit" type="submit">
-						<div class="spinner hidden" id="spinner"></div>
-
-						<span id="button-text">
-                            Pay
-
-                            <span id="order-amount"><?= $price ?> <?= STRIPE_CURRENCY_SYMBOL ?></span>
-                        </span>
-					</button>
-				</form>
-
-				<div class="sr-result hidden">
-                    <p>Payment completed<br/></p>
-                    <pre></pre>
-				</div>
-			</div>
-		</div>
-
     <section class="body__content">
         <header class="header">
             <a href="../controleur/FrontControleur.php?action=profil"><svg class="back" width="25" height="17" viewBox="0 0 25 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +53,24 @@ $price = StripeControleur::convertToHumanReadablePrice($amount);
                     <?php echo $_SESSION['message']; ?>
                 </div>
             <?php } ?>
-            <form class="form" method="POST" action="../controleur/FrontControleur.php?action=send_add_credit">
+            <div>
+                <div>
+                    <form id="payment-form" data-stripe-public-key="<?= STRIPE_PUBLIC_KEY ?>">
+                    <input type="number" placeholder="Nombre de crédits" id="number-credit">    
+                    <div class="sr-combo-inputs-row">
+                            <div id="card-element"></div>
+                            <div id="card-errors"></div>
+                        </div>
+
+                        <button id="submit" type="submit">
+                            <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">Payer</span>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <!-- <form class="form" method="POST" action="../controleur/FrontControleur.php?action=send_add_credit">
                 <input type="number" class="input" name="credits" placeholder="Crédits à ajouter" min="0" required>
                 <fieldset class="form__content">
                     <legend class="form__titre">Mode de paiement</legend>
@@ -103,7 +91,7 @@ $price = StripeControleur::convertToHumanReadablePrice($amount);
                     </div>
                 </fieldset>
                 <button type="submit" class="button">Payer</button>
-            </form>
+            </form> -->
 
         </div>
     </section>

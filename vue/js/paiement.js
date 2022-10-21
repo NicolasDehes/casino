@@ -5,16 +5,12 @@ var formBtnText = document.querySelector('#button-text');
 var formSpinner = document.querySelector('#spinner');
 var cardErrorContainer = document.getElementById('card-errors');
 var errorContainer = document.querySelector('.sr-field-error');
-var resultContainer = document.querySelector('.sr-result');
 var preContainer = document.querySelector('pre');
 
 document.addEventListener('DOMContentLoaded', function () {
     var stripePublicKey = form.dataset.stripePublicKey;
     stripe = Stripe(stripePublicKey);
     var card = stripe.elements().create('card', {
-        // This hide zipcode field. If you enable it, you can increase card acceptance
-        // and also reduce card fraud. But sometime your users don't like to fill it
-        // Please adapt to your need
         hidePostalCode: true,
         style: {
             base: {
@@ -72,6 +68,7 @@ var pay = function (stripe, card) {
                     },
                     body: JSON.stringify({
                         paymentMethodId: result.paymentMethod.id,
+                        amount : document.getElementById("number-credit").value + '00',
                     }),
                 });
             }
@@ -113,6 +110,7 @@ var handleAction = function (clientSecret) {
                     },
                     body: JSON.stringify({
                         paymentIntentId: data.paymentIntent.id,
+                        amount : document.getElementById("number-credit").value + '00',
                     }),
                 })
                     .then(function (result) {
@@ -139,11 +137,6 @@ var orderComplete = function (clientSecret) {
 
             form.classList.add('hidden');
             preContainer.textContent = paymentIntentJson;
-            resultContainer.classList.remove('hidden');
-
-            setTimeout(function () {
-                resultContainer.classList.add('expand');
-            }, 200);
 
             changeLoadingState(false);
         });
