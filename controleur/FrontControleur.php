@@ -256,10 +256,32 @@ switch ($requested_page) {
             $password = $_POST['password'];
             $password_conf = $_POST['password_conf'];
             if ($password == $password_conf && $password != "") {
-                $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email, $password);
+                try{
+                    $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email, $password);
+                }
+                catch (\Exception $e) {
+                    // Positionner un message en variable de session 
+                    $_SESSION['message'] = $e->getMessage();
+                    header('Location: ../vue/modifUser.php');
+                    // Fin du script
+                    die();
+                }
+            }else{
+                $_SESSION['message'] = "Les mots de passes ne sont pas identiques"; 
+                header('Location: ../vue/modifUser.php');
+                die();
             };
         } else {
-            $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email, "");
+            try{
+                $infoModif = $UtilisateurService->updateUser($id, $nom, $prenom, $email, "");
+            }
+            catch (\Exception $e) {
+                // Positionner un message en variable de session 
+                $_SESSION['message'] = $e->getMessage();
+                header('Location: ../vue/modifUser.php');
+                // Fin du script
+                die();
+            }
         };
         header('Location: ../controleur/FrontControleur.php?action=profil');
 
@@ -366,6 +388,8 @@ switch ($requested_page) {
 
         // clique sur un lien supprimer de la page list_utilisateurs.php
     case 'supprimer_utilisateur':
+        $id = $_SESSION["id_user"]; 
+        session_destroy();  
         try {
             // Création de l'objet UtilisateurService : appel du constructeur de la classe
             // Si problème retourne une exception
@@ -385,7 +409,7 @@ switch ($requested_page) {
             // Appel de la méthode createUser() de la classe UtilisateurService
             // La fonction prend en paramètre un objet de type Utilisateur
             // La fonction lève une exception si impossible de créer l'utilisateur
-            $bRet = $hUtilisateurService->deleteUser($_GET['id']);
+            $bRet = $hUtilisateurService->deleteUser($id);
         }
         // Exception levée si impossible de créer le compte utilisateur
         catch (\Exception $e) {
@@ -396,10 +420,48 @@ switch ($requested_page) {
             // Fin du script
             die();
         }
+        header('Location: ../vue/login.php');
 
+        
         // Afficher la page liste_utilisateurs
-        afficherUtilisateurs();
+        // afficherUtilisateurs();
         break;
+
+        case 'delete_utilisateur':
+            try {
+                // Création de l'objet UtilisateurService : appel du constructeur de la classe
+                // Si problème retourne une exception
+                $hUtilisateurService = new \modele\service\UtilisateurService();
+            }
+            // Problème : exemple -> Impossible de se connecter à la BD
+            catch (\Exception $e) {
+                // Positionner un message en variable de session : message utilisé par login.php
+                $_SESSION['message'] = "Problème technique.";
+                // Retourner la page login.php
+                header('Location: ../vue/login.php');
+                // Fin du script
+                die();
+            }
+    
+            try {
+                // Appel de la méthode createUser() de la classe UtilisateurService
+                // La fonction prend en paramètre un objet de type Utilisateur
+                // La fonction lève une exception si impossible de créer l'utilisateur
+                $bRet = $hUtilisateurService->deleteUser($_GET['id']);
+            }
+            // Exception levée si impossible de créer le compte utilisateur
+            catch (\Exception $e) {
+                // Positionner un message en variable de session : message utilisé par login.php
+                $_SESSION['message'] = "Problème technique.";
+                // Retourner la page login.php
+                header('Location: ../vue/login.php');
+                // Fin du script
+                die();
+            }
+    
+            // Afficher la page liste_utilisateurs
+            afficherUtilisateurs();
+            break;
 
     case 'reinitialiser_solde':
         $id = $_GET['id'];
