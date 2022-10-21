@@ -1,0 +1,7 @@
+<?php
+
+// Set your keys here
+const STRIPE_PUBLIC_KEY = 'pk_test_51KOMk2ApFYENeqShqVoTHFsWdYcS3oEooKeRg9nMdAUB7oLNX8Nkpzot10YQ23K7D3zWCoQPLxvE9RMox8R29hYh00iMmXhhzp';
+const STRIPE_SECRET_KEY = 'sk_test_51KOMk2ApFYENeqSh7ZuNmsNJAsLfFjsyreRTL2ZEgu1tbym7IhHX5mdDlfd5GS0yYoVKr4BS1ludz5i5QXBSnPFR00S9tul0RS';
+const STRIPE_CURRENCY = 'EUR';
+const STRIPE_CURRENCY_SYMBOL = '€';

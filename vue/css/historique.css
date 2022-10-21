@@ -154,3 +154,7 @@
 .legend__code-mauve{
     background: #878adb;
 }
+
+.header--user {
+    margin: 3vh 0;
+}
