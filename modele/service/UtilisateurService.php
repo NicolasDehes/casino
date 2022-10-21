@@ -155,10 +155,10 @@ class UtilisateurService {
             $bRet = $this->hUtilisateurDAO->updateUser($id, $nom, $prenom, $email);
             if($bRet && $mdp != null && $mdp!=""){
                 $bRet = $this->updateMDPUser($email,$mdp);
-            }
+            } 
         }
         catch (\Exception $e) {
-            throw new \Exception($e);
+            throw new \Exception($e->getMessage());
         }
         return json_encode($bRet);
     }

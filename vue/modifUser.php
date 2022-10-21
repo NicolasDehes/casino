@@ -37,10 +37,11 @@
                         <input type="password" class="input--secondary" name="password_conf" placeholder="Confirmer le mot de passe" >
                         <button type="submit" class="button button--secondary">Modifier</button>
                     </form>
+                    <button class="button" onclick="DeleteUser()">Supprimer mon compte</button>
                 </div>
                     
-                </div>
+            </div>
         </section>
-   
+        <script src="./js/user.js"></script>
     </body>
 </html>
