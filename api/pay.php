@@ -1,10 +1,13 @@
 <?php
 
+require_once("../Autoloader.php");
+
 require '../vendor/autoload.php';
 require '../consts.php';
 require '../controleur/stripeControleur.php';
 
 use App\StripeControleur;
+use modele\service\UtilisateurService;
 use Stripe\Stripe;
 
 header('Content-Type: application/json');
@@ -33,6 +36,13 @@ try {
 
     // Build the response
     $response = StripeControleur::generateResponse($intent);
+
+    $credit = $body->amount;
+
+    $idUser = $body->idUser;
+
+    $userService = new UtilisateurService();
+    $userService->changeSolde($idUser, $credit);
 
     echo json_encode($response);
 }

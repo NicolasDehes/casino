@@ -3,9 +3,6 @@ var form = document.getElementById('payment-form');
 var formBtn = document.querySelector('button');
 var formBtnText = document.querySelector('#button-text');
 var formSpinner = document.querySelector('#spinner');
-var cardErrorContainer = document.getElementById('card-errors');
-var errorContainer = document.querySelector('.sr-field-error');
-var preContainer = document.querySelector('pre');
 
 document.addEventListener('DOMContentLoaded', function () {
     var stripePublicKey = form.dataset.stripePublicKey;
@@ -31,17 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Bind Stripe card to the DOM
     card.mount('#card-element');
-
-    // Show errors when completing card information
-    card.addEventListener('change', function (e) {
-        if (e.error) {
-            cardErrorContainer.classList.add('show');
-            cardErrorContainer.textContent = e.error.message;
-        } else {
-            cardErrorContainer.classList.remove('show');
-            cardErrorContainer.textContent = '';
-        }
-    });
 
     // Launch payment on submit
     form.addEventListener('submit', function (event) {
@@ -69,6 +55,7 @@ var pay = function (stripe, card) {
                     body: JSON.stringify({
                         paymentMethodId: result.paymentMethod.id,
                         amount : document.getElementById("number-credit").value + '00',
+                        idUser : form.dataset.iduser,
                     }),
                 });
             }
@@ -111,6 +98,7 @@ var handleAction = function (clientSecret) {
                     body: JSON.stringify({
                         paymentIntentId: data.paymentIntent.id,
                         amount : document.getElementById("number-credit").value + '00',
+                        idUser : form.dataset.iduser,
                     }),
                 })
                     .then(function (result) {
@@ -132,25 +120,17 @@ var orderComplete = function (clientSecret) {
     stripe
         .retrievePaymentIntent(clientSecret)
         .then(function (result) {
-            var paymentIntent = result.paymentIntent;
-            var paymentIntentJson = JSON.stringify(paymentIntent, null, 2);
-
+            console.info(result);
             form.classList.add('hidden');
-            preContainer.textContent = paymentIntentJson;
-
             changeLoadingState(false);
+            window.location.href = '../controleur/FrontControleur.php?action=profil';
         });
 };
 
 // Show an error message
 var showError = function (errorMsgText) {
+    console.error(errorMsgText);
     changeLoadingState(false);
-
-    errorContainer.textContent = errorMsgText;
-
-    setTimeout(function () {
-        errorContainer.textContent = '';
-    }, 4000);
 };
 
 // Toggle spinner on payment submission
