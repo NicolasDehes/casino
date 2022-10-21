@@ -174,7 +174,8 @@ switch ($requested_page) {
 
         // Afficher le jeu roulette
     case 'roulette':
-
+        $JeuService = new JeuService();
+        $_SESSION['JEUX'] = $JeuService->findById(1);
         // Retourner la page accueil.php : page d'accueil de l'application
         header("Location: ../vue/roulette.php");
 
@@ -183,6 +184,8 @@ switch ($requested_page) {
         // Afficher le jeu pileouface
     case 'pileouface':
         // Retourner la page pileouface.php
+        $JeuService = new JeuService();
+        $_SESSION['JEUX'] = $JeuService->findById(2);
         header("Location: ../vue/pileouface.php");
         break;
 

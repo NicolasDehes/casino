@@ -52,12 +52,12 @@
                         </label>
                     </div>
                     <br><input 
-                        max="<?= min($_SESSION['USER']['solde'], $_SESSION['JEUX'][1]['maximum'] ?? $_SESSION['USER']['solde']) ?>"
-                        data-max="<?= $_SESSION['JEUX'][1]['maximum'] ?>"
+                        max="<?= min($_SESSION['USER']['solde'], $_SESSION['JEUX']['maximum'] ?? $_SESSION['USER']['solde']) ?>"
+                        data-max="<?= $_SESSION['JEUX']['maximum'] ?>"
                         data-user="<?php echo $_SESSION['USER']['id'] ?>"
                         id="creditsInput" 
                         type="number" 
-                        min="<?= $_SESSION['JEUX'][1]['minimum'] ?? 1?>" 
+                        min="<?= $_SESSION['JEUX']['minimum'] ?? 1?>" 
                         class="input" 
                         placeholder="Crédits misés" 
                         required
